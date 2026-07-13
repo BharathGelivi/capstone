@@ -1,0 +1,18 @@
+[
+  {
+    "claim_text": "In strict liability, the defendant is liable for damages regardless of intent or negligence.",
+    "sentence_id": "S001"
+  },
+  {
+    "claim_text": "This commonly applies to abnormally dangerous activities.",
+    "sentence_id": "S002"
+  },
+  {
+    "claim_text": "Abnormally dangerous activities include keeping wild animals.",
+    "sentence_id": "S002"
+  },
+  {
+    "claim_text": "Abnormally dangerous activities include storing explosives.",
+    "sentence_id": "S002"
+  }
+]
