@@ -19,9 +19,8 @@ from typing import List, Dict, Any, Optional
 from src.rag_trace import RAGTrace
 from src.retriever import RetrievedChunk
 from src.claim_decomposer import CandidateClaim, CandidateClaimSet
-from src.config import (
-    VERIFICATION_MODEL,
-    VERIFICATION_BATCH_SIZE,
+from configs.models import VERIFICATION_MODEL, VERIFICATION_BATCH_SIZE
+from configs.thresholds import (
     ENTAILMENT_THRESHOLD,
     CONTRADICTION_THRESHOLD,
     PARTIAL_SUPPORT_THRESHOLD
@@ -239,6 +238,41 @@ class ClaimVerifier:
             
         logger.info(f"Verified claim '{claim.candidate_id}': {res.verification_status.value} (Latency: {res.verification_latency_ms:.1f}ms)")
         return res
+
+    def verify(self, trace: RAGTrace, claim_set: CandidateClaimSet) -> VerificationSummary:
+        from src.chunk_registry import ChunkRegistry
+        import os
+        
+        registry_path = "artifacts/chunk_registry.json"
+        if not os.path.exists(registry_path):
+            raise FileNotFoundError(f"Cannot find {registry_path} to load chunk texts.")
+        
+        registry = ChunkRegistry.load_from_json(registry_path)
+        
+        retrieved_chunks = []
+        for ref in trace.retrieved_chunk_references:
+            chunk_id = ref["chunk_id"]
+            record = registry.get_chunk(chunk_id)
+            if record:
+                from src.retriever import RetrievedChunk
+                chunk = RetrievedChunk(
+                    chunk_id=chunk_id,
+                    similarity_score=ref.get("similarity_score", 0.0),
+                    rank=ref.get("rank", 0),
+                    page_number=str(ref.get("page_number", "")),
+                    source_file=ref.get("source_file", ""),
+                    chunk_index=ref.get("chunk_index", 0),
+                    chunk_text=record.text,
+                    dense_score=ref.get("dense_score", 0.0),
+                    sparse_score=ref.get("sparse_score", 0.0),
+                    dense_rank=ref.get("dense_rank", -1),
+                    sparse_rank=ref.get("sparse_rank", -1),
+                    rrf_score=ref.get("rrf_score", 0.0),
+                    reranker_score=ref.get("reranker_score", 0.0)
+                )
+                retrieved_chunks.append(chunk)
+                
+        return self.verify_all(claim_set, trace.trace_id, retrieved_chunks)
 
     def verify_all(self, claim_set: CandidateClaimSet, trace_id: str, retrieved_chunks: List[RetrievedChunk]) -> VerificationSummary:
         """Verifies all claims in a CandidateClaimSet."""

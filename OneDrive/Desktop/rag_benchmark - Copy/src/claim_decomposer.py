@@ -22,7 +22,7 @@ from llama_index.llms.huggingface_api import HuggingFaceInferenceAPI
 from llama_index.core.llms import ChatMessage, MessageRole
 
 from src.rag_trace import RAGTrace
-from src.config import CLAIM_DECOMPOSER_PROMPT_VERSION, CLAIM_DECOMPOSER_MAX_TOKENS
+from configs.pipeline import CLAIM_DECOMPOSER_PROMPT_VERSION, CLAIM_DECOMPOSER_MAX_TOKENS
 
 logger = logging.getLogger(__name__)
 
@@ -65,7 +65,7 @@ class JSONRecoveryError(Exception):
 
 
 class ClaimDecomposer:
-    def __init__(self, debug: Optional[bool] = None, model_name: str = "gemini"):
+    def __init__(self, debug: Optional[bool] = None, model_name: str = "mistralai/Mistral-7B-Instruct-v0.2"):
         if debug is None:
             self.debug = os.environ.get("CLAIM_DECOMPOSER_DEBUG", "False").lower() == "true"
         else:
@@ -78,7 +78,8 @@ class ClaimDecomposer:
             self.llm = HuggingFaceInferenceAPI(
                 model_name=model_name,
                 temperature=0.1,
-                max_new_tokens=CLAIM_DECOMPOSER_MAX_TOKENS
+                max_new_tokens=CLAIM_DECOMPOSER_MAX_TOKENS,
+                token=os.environ.get("HF_TOKEN")
             )
 
     def decompose(self, trace: RAGTrace) -> CandidateClaimSet:

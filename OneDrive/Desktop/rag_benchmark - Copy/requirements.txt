@@ -11,3 +11,6 @@ pymupdf
 llama-index-readers-file
 rank_bm25
 sentence-transformers
+
+fastapi
+uvicorn

@@ -13,7 +13,7 @@ from chromadb.config import Settings
 
 from src.embedding_engine import EmbeddingRecord
 from src.chunk_registry import ChunkRegistry
-from src.config import CHROMA_PERSIST_DIR, CHROMA_COLLECTION_NAME
+from configs.pipeline import CHROMA_PERSIST_DIR, CHROMA_COLLECTION_NAME
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

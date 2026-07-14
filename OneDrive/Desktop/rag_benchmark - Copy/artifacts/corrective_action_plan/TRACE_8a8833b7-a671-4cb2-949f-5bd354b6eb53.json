@@ -1,0 +1,24 @@
+{
+    "trace_id": "8a8833b7-a671-4cb2-949f-5bd354b6eb53",
+    "primary_cause": "GROUNDING_FAILURE",
+    "artifact_version": "1.0",
+    "immediate_actions": [],
+    "short_term_actions": [],
+    "experimental_actions": [
+        {
+            "action_id": "1b8b8d01-83e4-46d2-9c10-978b7dc52b68",
+            "category": "GENERATION",
+            "title": "Require Explicit Citations",
+            "description": "Force the LLM to append [Chunk-ID] to every sentence it generates.",
+            "observed_evidence": "LLM struggles to maintain factual fidelity across long generation spans.",
+            "root_cause": "Lack of forced intermediate reasoning (citations) causes drift from context.",
+            "expected_improvement": "Self-correction during generation ensures every fact is linked to evidence.",
+            "success_metric": "100% of claims map cleanly to a cited chunk.",
+            "tradeoff": "Increases output token length and adds parsing overhead.",
+            "priority": "experimental",
+            "metadata": {}
+        }
+    ],
+    "created_at": "2026-07-13T16:30:26.348387Z",
+    "metadata": {}
+}

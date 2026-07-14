@@ -14,7 +14,8 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from rank_bm25 import BM25Okapi
 from sentence_transformers import CrossEncoder
 
-from src.config import EMBEDDING_MODEL_NAME, RETRIEVAL_TOP_K, RERANKER_MODEL_NAME, RERANKER_TOP_N
+from configs.models import EMBEDDING_MODEL_NAME, RERANKER_MODEL_NAME
+from configs.pipeline import RETRIEVAL_TOP_K, RERANKER_TOP_N
 from src.vector_store import VectorStore
 from src.chunk_registry import ChunkRegistry
 

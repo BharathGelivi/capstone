@@ -4,6 +4,7 @@ Responsible exclusively for synthesizing answers using a Large Language Model
 based on the results provided by the Retriever.
 """
 
+import os
 import time
 import logging
 from typing import List, Dict, Any
@@ -12,7 +13,7 @@ from dataclasses import dataclass
 from llama_index.llms.huggingface_api import HuggingFaceInferenceAPI
 from llama_index.core.llms import ChatMessage, MessageRole
 from src.retriever import RetrievalResult
-from src.config import LLM_MODEL_NAME, LLM_TEMPERATURE, LLM_MAX_TOKENS
+from configs.models import LLM_MODEL_NAME, LLM_TEMPERATURE, LLM_MAX_TOKENS
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -88,7 +89,8 @@ class Generator:
         self.llm = HuggingFaceInferenceAPI(
             model_name=self.model_name,
             temperature=self.temperature,
-            max_new_tokens=self.max_tokens
+            max_new_tokens=self.max_tokens,
+            token=os.environ.get("HF_TOKEN")
         )
         
     def generate(self, retrieval_result: RetrievalResult) -> GenerationResult:

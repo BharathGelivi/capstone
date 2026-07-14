@@ -1,0 +1,18 @@
+{
+    "trace_id": "8a8833b7-a671-4cb2-949f-5bd354b6eb53",
+    "artifact_version": "1.0",
+    "primary_cause": "GROUNDING_FAILURE",
+    "secondary_effects": [],
+    "reasoning_chain": [
+        "Starting root cause analysis for trace 8a8833b7-a671-4cb2-949f-5bd354b6eb53.",
+        "Skipping CORPUS: State is UNKNOWN. Insufficient evidence.",
+        "Skipping RETRIEVER: State is UNKNOWN. Insufficient evidence.",
+        "Skipping CHUNKING: State is UNKNOWN. Insufficient evidence.",
+        "Assumption Passed at GENERATOR. Moving to next stage.",
+        "Primary Cause Identified at GROUNDING: GROUNDING_FAILURE. Observation: One or more claims (0) remain unsupported by evidence.",
+        "Concluding analysis with primary cause: GROUNDING_FAILURE."
+    ],
+    "confidence": 0.95,
+    "recommendations_needed": true,
+    "metadata": {}
+}

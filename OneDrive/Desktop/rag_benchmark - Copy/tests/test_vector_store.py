@@ -14,7 +14,7 @@ from src.chunk_engine import create_chunks
 from src.chunk_registry import ChunkRegistry
 from src.embedding_engine import generate_embeddings
 from src.vector_store import ChromaVectorStore
-from src.config import CHROMA_COLLECTION_NAME
+from configs.pipeline import CHROMA_COLLECTION_NAME
 
 logging.getLogger("llama_index").setLevel(logging.WARNING)
 # Suppress chromadb telemetry logs

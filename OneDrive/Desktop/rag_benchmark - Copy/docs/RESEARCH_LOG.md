@@ -82,3 +82,113 @@ By capturing the exact state of the pipeline (including configuration, time metr
 - **Strict JSON Enforcement:** The LLM was prompted heavily to only return a strict JSON array. By forcing a schema (`claim_text`, `source_sentence`, `sentence_id`), downstream automated pipelines can securely parse and manipulate the generated factual items. We implemented a 1-retry fallback for decode errors.
 - **Python-Side Indexing:** We decided to calculate `character_start` and `character_end` in Python via string-matching instead of asking the LLM to output them. LLMs frequently hallucinate exact string indices, which leads to misalignment when highlighting text in frontend tools.
 - **Intentional Exclusion of Validation:** Verification, typing, and complex classification (e.g., complexity metrics) are explicitly avoided at this stage. The sole responsibility of the decomposer is *fracturing* the text into atomic blocks. Pushing validation here would create a monolithic prompt and increase latency, violating the single responsibility principle.
+
+---
+
+## Session: Assumption Checker (Phase 3.1)
+
+### Module
+`src/assumption_checker.py` and `src/test_assumption_checker.py`
+
+### Implementation
+- Added `PipelineStage` and `AssumptionStatus` Enums.
+- Created `AssumptionResult` and `AssumptionMatrix` dataclasses to store evaluation outcomes.
+- Implemented `AssumptionChecker` utilizing deterministic, rule-based logic to evaluate `RAGTrace`, `ClaimSet`, and `VerificationSummary` across 5 key pipeline stages (Corpus, Retriever, Chunking, Generator, Grounding).
+
+### Design Decisions
+- **Rule-Based Evaluation over LLMs:** We explicitly chose to implement deterministic rule-based checking rather than using an LLM. This ensures consistent, reproducible evaluation metrics and significantly reduces latency and cost.
+- **Assumptions vs. Direct Failure Prediction:** We evaluate *pipeline assumptions* rather than directly predicting failures because failures in RAG are often cascading. By checking if foundational assumptions hold true (e.g., "The retriever found relevant evidence", "The generator only used retrieved evidence"), we can logically deduce where the pipeline broke. Direct failure prediction often conflates symptoms (like hallucinated text) with root causes (like poor retrieval forcing the model to guess).
+- **Traceability:** The `AssumptionMatrix` acts as a discrete, serializable artifact mapping directly to a specific `trace_id`. This allows downstream modules to analyze pipeline health historically.
+
+---
+
+## Session: Refactoring Pipeline State Analyzer (Phase 3.1 Refined)
+
+### Design Decisions
+- **Separation of Observation from Reasoning:** The `AssumptionChecker` was refactored into the `PipelineStateAnalyzer` to strictly isolate factual observations from interpretative reasoning. Words like "hallucination" or "failure" have been completely removed from observations. The analyzer strictly reports "what happened" (e.g., "Three claims remain unsupported") rather than "why it happened" (e.g., "Generator Hallucinated"). This ensures downstream modules receive untainted facts.
+- **Preference for UNKNOWN:** We explicitly prefer returning a status of `UNKNOWN` rather than engaging in speculative inference. If evidence is ambiguous, the factual layer must reflect that ambiguity, leaving deduction to the future Root Cause Reasoner.
+- **Immutability of the Pipeline State Matrix:** The newly designated `PipelineStateMatrix` (PSM) is designed as a rigid, immutable research artifact (versioned, e.g., "1.0"). It represents a frozen snapshot of observable pipeline state immediately post-verification.
+- **Read-Only Consumption:** By saving the PSM to disk (e.g., `TRACE_xxxxx.json`), we enforce a strict architectural boundary. Future diagnostic or reasoning modules must consume this serialized artifact rather than recomputing the observations themselves, guaranteeing consistency across experiments.
+
+---
+
+## Session: Root Cause Reasoner (Phase 3.2)
+
+### Module
+`src/root_cause_reasoner.py` and `src/test_root_cause_reasoner.py`
+
+### Implementation
+- Added `FailureType` Enum to represent standardized pipeline failures (`MISSING_CORPUS`, `RETRIEVAL_MISS`, `CHUNK_BOUNDARY`, `UNSUPPORTED_GENERATION`, `GROUNDING_FAILURE`, etc.).
+- Created the `RootCauseAnalysis` dataclass to encapsulate the reasoning artifact.
+- Implemented `RootCauseReasoner` to consume a read-only `PipelineStateMatrix` and evaluate causality sequentially.
+
+### Design Decisions
+- **Separation of Reasoning from Observation:** Causal reasoning is entirely detached from the observation layer (`PipelineStateAnalyzer`). The PSM strictly provides facts, and the Reasoner provides interpretations. This decoupling allows us to swap reasoning algorithms (e.g., deterministic vs. LLM-based) without altering the foundational facts.
+- **Earliest Violated Assumption as Primary Cause:** Since RAG pipelines are sequential and highly coupled, a failure upstream almost guarantees a failure downstream (e.g., a retrieval miss forces the generator to hallucinate). We treat the *earliest* `FAIL` state in the pipeline execution order (Corpus -> Retriever -> Chunking -> Generator -> Grounding) as the primary root cause. Subsequent failures are cataloged as secondary effects.
+- **UNKNOWN States are Skipped:** `UNKNOWN` states indicate missing or ambiguous evidence. We do not infer causality from them; they are skipped during traversal to avoid speculative, low-confidence conclusions.
+
+---
+
+## Session: Corrective Action Engine (Phase 3.3)
+
+### Module
+`src/corrective_action_engine.py` and `src/test_corrective_action_engine.py`
+
+### Implementation
+- Created the `ActionCategory` Enum to classify actions structurally.
+- Developed the `CorrectiveAction` and `CorrectiveActionPlan` dataclasses.
+- Implemented the `CorrectiveActionEngine` which consumes the `RootCauseAnalysis` artifact.
+
+### Design Decisions
+- **Separation of Correction from Diagnosis:** Corrective action generation is detached from Root Cause Analysis. This ensures the reasoning layer acts solely as a diagnosis engine, while the corrective layer maps those diagnoses to actionable engineering tasks. This decoupling aligns with our strict single-responsibility architecture across the framework.
+- **Deterministic, Evidence-Backed Actions:** We chose to use a static, deterministic lookup table rather than an LLM for generating actions. Because RAG architectural failures (e.g., `RETRIEVAL_MISS`, `CHUNK_BOUNDARY`) map to well-known engineering solutions (e.g., "Increase Top-K", "Increase Overlap"), using an LLM introduces unnecessary latency, cost, and risk of hallucinated advice. Deterministic mapping guarantees consistent, proven engineering tradeoffs are presented to the developer, strictly backed by observed evidence.
+- **Iterative Improvement through Success Metrics:** Each corrective action includes an expected improvement and a quantifiable success metric. This grounds the diagnostic framework in measurable software engineering practices, ensuring that changes to the RAG architecture can be empirically verified against future `RAGTrace` evaluations.
+
+---
+
+## Session: Diagnostic Report Data Model (Phase 4.1)
+
+### Module
+src/report.py and src/test_report.py`n
+### Implementation
+- Created the DiagnosticEvaluationReport canonical data model and nested dataclasses (FrameworkMetadata, ExecutiveSummary, PipelineStageResult, EvaluationMetrics, etc.).
+- Implemented strict serialization logic for the final report artifact.
+
+### Design Decisions
+- **Separation of Schema from Generation:** The report schema is strictly defined as an immutable data structure. The generation logic (which will calculate metrics and merge artifacts) is explicitly pushed to a future Report Builder phase. This enforces the Single Responsibility Principle.
+- **Immutable Artifacts for Reproducibility:** By forcing the final report to be serialized and saved as an immutable JSON artifact (TRACE_xxxxx.json), we guarantee absolute reproducibility. Researchers can load and inspect any historical evaluation exactly as it was generated.
+- **Separation of Rendering from the Object:** Rendering logic (Markdown, HTML, PDF) is intentionally kept out of the report object. The report is pure structured data. This allows front-ends or CI/CD pipelines to consume the raw data and render it dynamically without being coupled to hardcoded text formats.
+
+---
+
+## Session: Diagnostic Report Presenter (Phase 4.3)
+
+### Module
+src/report_presenter.py and src/test_report_presenter.py`n
+### Implementation
+- Created the DiagnosticReportPresenter class to render the diagnostic evaluation report into Console, Markdown, and HTML.
+- Extracted evidence traceability paths using the evidence_analysis records and root cause conclusions.
+- Added an Artifacts Generated Appendix to strictly track file paths for RAG traces, pipeline state matrices, and reports.
+
+### Design Decisions
+- **Separation of Presentation from Reasoning:** Presentation logic must never perform causal inference or metrics calculation. By separating presentation into the final layer, any front-end UI can reliably consume the same DiagnosticEvaluationReport object without implementing custom diagnostic logic.
+- **Traceability for Explainability:** The Evidence Traceability section is critical to establishing trust. It explicitly maps every system failure back to the specific claim, text chunk, and pipeline stage that caused it, preserving total provenance.
+- **Format Independence:** By generating native Markdown and semantic HTML directly from the deterministic report object, the framework supports headless execution, CI/CD pipeline integration, and automated research paper assembly.
+
+---
+
+## Session: API Layer + Repository Refactoring (Phase 4.5)
+
+### Implementation
+- Refactored repository structure to isolate 	ests/, configs/, rtifacts/, data/, and docs/.
+- Migrated all unit tests out of the main src/ logic.
+- Split src/config.py into distinct modular pieces: configs/models.py, configs/pipeline.py, configs/thresholds.py, and configs/api.py.
+- Implemented src/runner.py to seamlessly orchestrate the pipeline.
+- Integrated a comprehensive FastAPI layer in src/api.py and un_api.py.
+- Standardized internal logging via src/logger.py.
+
+### Design Decisions
+- **API-First Architecture:** Shifting to an API-first approach drastically increases the flexibility of the diagnostic framework. It allows front-end web dashboards, CI/CD runners, and external agents to trigger analyses via JSON requests without integrating directly with the python codebase.
+- **FastAPI over Flask:** FastAPI was chosen due to its native support for Pydantic (which pairs seamlessly with our existing dataclass architecture), automatic Swagger UI generation for effortless faculty demonstration, and high performance.
+- **Repository Cleanup:** Isolating unit tests ensures the main src/ directory only contains deployment-ready framework code, minimizing bundle sizes for future distributions and streamlining developer onboarding.
+- **Test Isolation:** Moving tests to a dedicated 	ests/ directory prevents production code from accidentally importing or relying on testing logic, enforcing strict separation of concerns.

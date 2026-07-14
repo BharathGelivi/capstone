@@ -15,13 +15,10 @@ from typing import List, Dict, Any, Optional
 
 from src.retriever import RetrievalResult
 from src.generator import GenerationResult
-from src.config import (
+from configs.pipeline import CHUNK_SIZE, CHUNK_OVERLAP, RETRIEVAL_TOP_K, RERANKER_TOP_N
+from configs.models import (
     EMBEDDING_MODEL_NAME, 
-    CHUNK_SIZE, 
-    CHUNK_OVERLAP,
-    RETRIEVAL_TOP_K,
-    RERANKER_TOP_N,
-    RERANKER_MODEL_NAME,
+    RERANKER_MODEL_NAME, 
     LLM_MODEL_NAME, 
     LLM_TEMPERATURE, 
     LLM_MAX_TOKENS
@@ -56,6 +53,14 @@ class RAGTrace:
     pipeline_stage_status: Dict[str, str]
     
     diagnostics: Optional[Dict[str, Any]] = None
+
+    def to_json(self) -> str:
+        return json.dumps(asdict(self), indent=4)
+
+    @classmethod
+    def from_json(cls, data_str: str) -> 'RAGTrace':
+        data = json.loads(data_str) if isinstance(data_str, str) else data_str
+        return cls(**data)
 
 class RAGTraceBuilder:
     """
@@ -143,7 +148,7 @@ class RAGTraceBuilder:
         return trace
 
     @staticmethod
-    def save_to_json(trace: RAGTrace, base_dir: str = "artifacts/rag_traces") -> str:
+    def save_to_json(trace: 'RAGTrace', base_dir: str = "artifacts/rag_traces") -> str:
         """
         Saves a RAGTrace to a date-partitioned JSON file.
         Returns the path to the saved file.
@@ -160,7 +165,7 @@ class RAGTraceBuilder:
         logger.info(f"Saving RAGTrace to {file_path}...")
         
         with open(file_path, 'w', encoding='utf-8') as f:
-            json.dump(asdict(trace), f, indent=4)
+            f.write(trace.to_json())
             
         logger.info("RAGTrace saved successfully.")
         return file_path
