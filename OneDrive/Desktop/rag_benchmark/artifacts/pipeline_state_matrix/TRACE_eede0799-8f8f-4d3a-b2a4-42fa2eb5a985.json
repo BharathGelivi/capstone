@@ -1,0 +1,97 @@
+{
+    "trace_id": "eede0799-8f8f-4d3a-b2a4-42fa2eb5a985",
+    "artifact_version": "1.0",
+    "pipeline_states": [
+        {
+            "stage": "CORPUS",
+            "status": "PASS",
+            "observation": "Corpus contains sufficient relevant content, evidenced by at least one supported claim.",
+            "confidence": 0.9,
+            "supporting_claim_ids": [],
+            "supporting_chunk_ids": [],
+            "supporting_verification_ids": [],
+            "metadata": {
+                "pre_rerank_min_dense_distance": 0.23572611808776855,
+                "pool_size": 36
+            }
+        },
+        {
+            "stage": "RETRIEVER",
+            "status": "PASS",
+            "observation": "At least one retrieved chunk provides supporting evidence for a verified claim.",
+            "confidence": 0.95,
+            "supporting_claim_ids": [
+                "a67e485d-e7a3-48ca-ad66-b04718d25243",
+                "79de8640-7df5-49c3-bbb7-c1e8fe7e5570"
+            ],
+            "supporting_chunk_ids": [
+                "f69e6aef-3594-43c8-86e9-415389ec638f",
+                "63b53cdc-7519-44a9-b89f-c58baebf570b"
+            ],
+            "supporting_verification_ids": [
+                "0e9f73f7-d579-4656-8e06-13e7c0618f47",
+                "69cfcd2b-b374-4673-bb24-6dbb616e67ba"
+            ],
+            "metadata": {
+                "max_score": 0.6039613485336304,
+                "threshold": 0.5
+            }
+        },
+        {
+            "stage": "CHUNKING",
+            "status": "UNKNOWN",
+            "observation": "Deterministic chunk-boundary evidence is currently unobservable.",
+            "confidence": 1.0,
+            "supporting_claim_ids": [],
+            "supporting_chunk_ids": [],
+            "supporting_verification_ids": [],
+            "metadata": {
+                "boundary_claim_ids": []
+            }
+        },
+        {
+            "stage": "GENERATOR",
+            "status": "PASS",
+            "observation": "All generated claims are fully supported by evidence.",
+            "confidence": 0.95,
+            "supporting_claim_ids": [
+                "a67e485d-e7a3-48ca-ad66-b04718d25243",
+                "79de8640-7df5-49c3-bbb7-c1e8fe7e5570"
+            ],
+            "supporting_chunk_ids": [
+                "f69e6aef-3594-43c8-86e9-415389ec638f",
+                "63b53cdc-7519-44a9-b89f-c58baebf570b"
+            ],
+            "supporting_verification_ids": [
+                "0e9f73f7-d579-4656-8e06-13e7c0618f47",
+                "69cfcd2b-b374-4673-bb24-6dbb616e67ba"
+            ],
+            "metadata": {
+                "unsupported_count": 0,
+                "max_score": 0.6039613485336304
+            }
+        },
+        {
+            "stage": "GROUNDING",
+            "status": "PASS",
+            "observation": "No claims are contradicted by retrieved evidence.",
+            "confidence": 0.9,
+            "supporting_claim_ids": [
+                "a67e485d-e7a3-48ca-ad66-b04718d25243",
+                "79de8640-7df5-49c3-bbb7-c1e8fe7e5570"
+            ],
+            "supporting_chunk_ids": [
+                "f69e6aef-3594-43c8-86e9-415389ec638f",
+                "63b53cdc-7519-44a9-b89f-c58baebf570b"
+            ],
+            "supporting_verification_ids": [
+                "0e9f73f7-d579-4656-8e06-13e7c0618f47",
+                "69cfcd2b-b374-4673-bb24-6dbb616e67ba"
+            ],
+            "metadata": {
+                "contradicted_count": 0
+            }
+        }
+    ],
+    "created_at": "2026-07-18T04:49:39.046711Z"
+}

@@ -10,7 +10,7 @@ from llama_index.core.schema import Document, BaseNode, TextNode
 from llama_index.core.node_parser import SentenceSplitter
 
 # Import configuration instead of hardcoding
-from src.config import CHUNK_SIZE, CHUNK_OVERLAP
+from configs.pipeline import CHUNK_SIZE, CHUNK_OVERLAP
 
 # Configure logging for the module
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

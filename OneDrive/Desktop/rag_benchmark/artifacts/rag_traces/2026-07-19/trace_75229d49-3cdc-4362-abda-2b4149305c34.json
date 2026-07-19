@@ -1,0 +1,85 @@
+{
+    "trace_id": "75229d49-3cdc-4362-abda-2b4149305c34",
+    "trace_version": "1.0",
+    "pipeline_version": "1.0",
+    "framework_version": "1.0",
+    "timestamp": "2026-07-19T06:01:35.426950Z",
+    "question": "What punishment applies to abetment of an offence when the Sanhita makes no express provision for punishing that specific abetment?",
+    "generated_answer": "When the Sanhita makes no express provision for punishing a specific abetment, the punishment for the abetment is the same as the punishment for the offence that was abetted, if the act abetted is committed in consequence of the abetment [Chunk-ID: 3a452a16-b9c6-4177-bd3d-bafce7713aaf]. Additionally, if the person abetted does the act with a different intention or knowledge from that of the abettor, the abettor is punished with the punishment provided for the offence that would have been committed if the act had been done with the intention or knowledge of the abettor [Chunk-ID: 3a452a16-b9c6-4177-bd3d-bafce7713aaf]. Furthermore, if the offence abetted is punishable with death or imprisonment for life and is not committed, the abettor is punished with imprisonment for a term which may extend to seven years, and is also liable to a fine [Chunk-ID: f69e6aef-3594-43c8-86e9-415389ec638f].",
+    "prompt_snapshot": "[SYSTEM]: You are a helpful assistant. Read the provided context carefully to answer the user's question.\nIf the context contains the answer, summarize it clearly. If the provided context is completely irrelevant to the question, explicitly state 'I do not have enough information to answer this.'\nDo not hallucinate or use outside knowledge.\nCRITICAL: You must append the specific [Chunk-ID] to every single sentence you generate to explicitly cite your sources.\n\n[USER]: --- Context chunk 1 [Chunk-ID: 3a452a16-b9c6-4177-bd3d-bafce7713aaf] ---\nIllustration.\nA, in country X, instigates B, to commit a murder in India,Ais guilty of abetting murder.\n49. Whoever abets any offence shall, if the act abetted is committed in consequence of\nthe abetment, and no express provision is made by this Sanhita for the punishment of such\nabetment, be punished with the punishment provided for the offence.\nExplanation.\u2014An act or offence is said to be committed in consequence of abetment,\nwhen it is committed in consequence of the instigation, or in pursuance of the conspiracy, or\nwith the aid which constitutes the abetment.\nIllustrations.\n(a) Ainstigates B to give false evidence. B, in consequence of the instigation, commits\nthat offence. A is guilty of abetting that offence, and is liable to the same punishment as B.\n(b) A and B conspire to poison Z. A, in pursuance of the conspiracy, procures the\npoison and delivers it to B in order that he may administer it to Z. B, in pursuance of the\nconspiracy, administers the poison to Z in A\u2019s absence and thereby causes Z\u2019s death. Here\nB is guilty of murder. A is guilty of abetting that offence by conspiracy, and is liable to the\npunishment for murder.\n50. Whoever abets the commission of an offence shall, if the person abetted does the\nact with a different intention or knowledge from that of the abettor, be punished with the\npunishment provided for the offence which would have been committed if the act had been\ndone with the intention or knowledge of the abettor and with no other.\n51. When an act is abetted and a different act is done, the abettor is liable for the act\ndone, in the same manner and to the same extent as if he had directly abetted it:\nProvided that the act done was a probable consequence of the abetment, and was\ncommitted under the influence of the instigation, or with the aid or in pursuance of the\nconspiracy which constituted the abetment.\nIllustrations.\n\n--- Context chunk 2 [Chunk-ID: f69e6aef-3594-43c8-86e9-415389ec638f] ---\n55. Whoever abets the commission of an offence punishable with death or\nimprisonment for life, shall, if that offence be not committed in consequence of the abetment,\nand no express provision is made under this Sanhita for the punishment of such abetment, be\npunished with imprisonment of either description for a term which may extend to seven\nyears, and shall also be liable to fine; and if any act for which the abettor is liable in consequence\nof the abetment, and which causes hurt to any person, is done, the abettor shall be liable to\nimprisonment of either description for a term which may extend to fourteen years, and shall\nalso be liable to fine.\nIllustration.\nA instigates B to murder Z. The offence is not committed. If B had murdered Z, he\nwould have been subject to the punishment of death or imprisonment for life.Therefore, Ais\nliable to imprisonment for a term which may extend to seven years and also to a fine; and if\nany hurt be done to Z in consequence of the abetment, he will be liable to imprisonment for\na term which may extend to fourteen years, and to fine.\n56. Whoever abets an offence punishable with imprisonment shall, if that offence be\nnot committed in consequence of the abetment, and no express provision is made under this\nSanhita for the punishment of such abetment, be punished with imprisonment of any\ndescription provided for that offence for a term which may extend to one-fourth part of the\nlongest term provided for that offence; or with such fine as is provided for that offence, or\nwith both; and if the abettor or the person abetted is a public servant, whose duty it is to\nprevent the commission of such offence, the abettor shall be punished with imprisonment of\nany description provided for that offence, for a term which may extend to one-half of the\nlongest term provided for that offence, or with such fine as is provided for the offence, or\nwith both.\nIllustrations.\n(a)Ainstigates B to give false evidence.\n\n--- Context chunk 3 [Chunk-ID: 429770e7-e2cb-406a-9551-6298faa8712f] ---\nExplanation 4.\u2014The abetment of an offence being an offence, the abetment of such\nan abetment is also an offence.\nIllustration.\nA instigates B to instigate C to murder Z. B accordingly instigates C to murder Z, and\nC commits that offence in consequence of B\u2019s instigation. B is liable to be punished for his\noffence with the punishment for murder; and, as A instigated B to commit the offence, A is\nalso liable to the same punishment.\nExplanation 5.\u2014It is not necessary to the commission of the offence of abetment by\nconspiracy that the abettor should concert the offence with the person who commits it. It is\nsufficient if he engages in the conspiracy in pursuance of which the offence is committed.\nIllustration.\nAconcerts with B a plan for poisoning Z. It is agreed thatAshall administer the poison.\nB then explains the plan to C mentioning that a third person is to administer the poison, but\nwithout mentioningA\u2019s name. C agrees to procure the poison, and procures and delivers it to\nB for the purpose of its being used in the manner explained.Aadministers the poison; Z dies\nin consequence. Here, though A and C have not conspired together, yet C has been engaged\nin the conspiracy in pursuance of which Z has been murdered. C has therefore committed the\noffence defined in this section and is liable to the punishment for murder.\n47. A person abets an offence within the meaning of this Sanhita who, in India, abets\nthe commission of any act without and beyond India which would constitute an offence if\ncommitted in India.\nIllustration.\nA, in India, instigates B, a foreigner in country X, to commit a murder in that country,\nA is guilty of abetting murder.\n48. A person abets an offence within the meaning of this Sanhita who, without and\nbeyond India, abets the commission of any act in India which would constitute an offence if\ncommitted in India.\nAbetment in\nIndia of\noffences\noutside India.\nAbetment\noutside India\nfor offence in\nIndia.\n\n\nQuestion: What punishment applies to abetment of an offence when the Sanhita makes no express provision for punishing that specific abetment?",
+    "prompt_length": 6634,
+    "retrieved_chunk_references": [
+        {
+            "chunk_id": "3a452a16-b9c6-4177-bd3d-bafce7713aaf",
+            "rank": 1,
+            "similarity_score": 0.9984022974967957,
+            "rrf_score": 0.02946236559139785,
+            "reranker_score": 0.9984022974967957,
+            "dense_score": 0.22377383708953857,
+            "sparse_score": 26.545509896241025,
+            "dense_rank": 15,
+            "sparse_rank": 2,
+            "page_number": "19",
+            "source_file": "bns.pdf",
+            "chunk_index": 0,
+            "parent_document_id": "a22a3ba1-5a3e-4d18-82e8-5650a15cdae0"
+        },
+        {
+            "chunk_id": "f69e6aef-3594-43c8-86e9-415389ec638f",
+            "rank": 2,
+            "similarity_score": 0.9983355402946472,
+            "rrf_score": 0.032266458495966696,
+            "reranker_score": 0.9983355402946472,
+            "dense_score": 0.20427387952804565,
+            "sparse_score": 27.843152685940343,
+            "dense_rank": 3,
+            "sparse_rank": 1,
+            "page_number": "20",
+            "source_file": "bns.pdf",
+            "chunk_index": 1,
+            "parent_document_id": "e02f304c-b43b-4701-b645-a3dffd0028cc"
+        },
+        {
+            "chunk_id": "429770e7-e2cb-406a-9551-6298faa8712f",
+            "rank": 3,
+            "similarity_score": 0.9608432054519653,
+            "rrf_score": 0.028205128205128206,
+            "reranker_score": 0.9608432054519653,
+            "dense_score": 0.22889375686645508,
+            "sparse_score": 17.159742199441002,
+            "dense_rank": 18,
+            "sparse_rank": 5,
+            "page_number": "18",
+            "source_file": "bns.pdf",
+            "chunk_index": 1,
+            "parent_document_id": "d245f72f-e5f7-4b87-aa04-09e3af3aba4b"
+        }
+    ],
+    "configuration_snapshot": {
+        "embedding_model": "BAAI/bge-small-en-v1.5",
+        "chunk_size": 512,
+        "chunk_overlap": 50,
+        "retrieval_top_k": 5,
+        "reranker_model": "BAAI/bge-reranker-base",
+        "reranker_top_n": 5,
+        "llm_model": "llama-3.3-70b-versatile",
+        "llm_temperature": 0.1,
+        "llm_max_tokens": 1024
+    },
+    "execution_statistics": {
+        "retrieval_time": 6.46384596824646,
+        "generation_time": 5.014333248138428,
+        "total_pipeline_time": 11.478179216384888,
+        "pre_rerank_candidate_pool_size": 37,
+        "pre_rerank_min_dense_distance": 0.20427387952804565
+    },
+    "pipeline_stage_status": {
+        "document_loader": "completed",
+        "chunk_engine": "completed",
+        "embedding_engine": "completed",
+        "vector_store": "completed",
+        "retriever": "completed",
+        "generator": "completed"
+    },
+    "diagnostics": null
+}

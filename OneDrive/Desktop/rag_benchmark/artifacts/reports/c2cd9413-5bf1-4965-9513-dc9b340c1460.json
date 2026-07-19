@@ -1,0 +1,147 @@
+{
+    "framework_metadata": {
+        "trace_id": "c2cd9413-5bf1-4965-9513-dc9b340c1460",
+        "framework_name": "X-RAG Diagnostic Framework",
+        "framework_version": "1.0",
+        "analysis_timestamp": "2026-07-19T09:37:24.238441Z",
+        "metadata": {}
+    },
+    "executive_summary": {
+        "question": "What punishment does section 69 of the BNS prescribe for having sexual intercourse with a woman by deceitful means or a false promise of marriage, where it does not amount to rape?",
+        "generated_answer": "According to section 69, the punishment for having sexual intercourse with a woman by deceitful means or a false promise of marriage, where it does not amount to rape, is imprisonment of either description for a term which may extend to ten years and shall also be liable to fine [Chunk-ID: a83c2bce-ea76-4859-9604-7f1b9d86d751].",
+        "overall_health_score": 1.0,
+        "primary_issue": "UNKNOWN",
+        "supported_claims": 3,
+        "total_claims": 3,
+        "number_of_corrective_actions": 0,
+        "summary": "Analysis completed."
+    },
+    "pipeline_overview": {
+        "pipeline_stages": [
+            {
+                "stage": "CORPUS",
+                "status": "PASS",
+                "observation": "Corpus contains sufficient relevant content, evidenced by at least one supported claim.",
+                "confidence": "0.9",
+                "metadata": {
+                    "pre_rerank_min_dense_distance": 0.22280210256576538,
+                    "pool_size": 35
+                }
+            },
+            {
+                "stage": "RETRIEVER",
+                "status": "PASS",
+                "observation": "At least one retrieved chunk provides supporting evidence for a verified claim.",
+                "confidence": "0.95",
+                "metadata": {
+                    "max_score": 0.9966850876808167,
+                    "threshold": 0.5,
+                    "chunk_utilization_rate": 0.4,
+                    "chunks_used": 2,
+                    "chunks_retrieved": 5
+                }
+            },
+            {
+                "stage": "CHUNKING",
+                "status": "UNKNOWN",
+                "observation": "Deterministic chunk-boundary evidence is currently unobservable.",
+                "confidence": "1.0",
+                "metadata": {
+                    "boundary_claim_ids": []
+                }
+            },
+            {
+                "stage": "GENERATOR",
+                "status": "PASS",
+                "observation": "All generated claims are fully supported by evidence.",
+                "confidence": "0.95",
+                "metadata": {
+                    "unsupported_count": 0,
+                    "max_score": 0.9966850876808167
+                }
+            },
+            {
+                "stage": "GROUNDING",
+                "status": "PASS",
+                "observation": "No claims are contradicted by retrieved evidence.",
+                "confidence": "0.9",
+                "metadata": {
+                    "contradicted_count": 0
+                }
+            }
+        ]
+    },
+    "evaluation_metrics": {
+        "retrieved_chunks": 5,
+        "verified_claims": 3,
+        "supported_claims": 3,
+        "partially_supported_claims": 0,
+        "unsupported_claims": 0,
+        "contradicted_claims": 0,
+        "grounding_score": 1.0,
+        "evidence_coverage": 0.4,
+        "average_entailment": 0.9459106723467509,
+        "retrieval_latency_ms": 1887.0840072631836,
+        "generation_latency_ms": 1494.9946403503418,
+        "verification_latency_ms": 363059.46683883667
+    },
+    "root_cause_analysis": {
+        "primary_cause": "UNKNOWN",
+        "secondary_effects": [],
+        "reasoning_chain": [
+            "Starting root cause analysis for trace c2cd9413-5bf1-4965-9513-dc9b340c1460.",
+            "Assumption Passed at CORPUS. Moving to next stage.",
+            "Assumption Passed at RETRIEVER. Moving to next stage.",
+            "Skipping CHUNKING: State is UNKNOWN. Insufficient evidence.",
+            "Assumption Passed at GENERATOR. Moving to next stage.",
+            "Assumption Passed at GROUNDING. Moving to next stage.",
+            "No failures detected. Pipeline is healthy or evidence is purely UNKNOWN."
+        ],
+        "diagnosis_confidence": 0.93
+    },
+    "overall_assessment": {
+        "major_strength": "Strong evidence grounding.",
+        "major_weakness": "UNKNOWN",
+        "next_priority": "Monitor pipeline",
+        "overall_recommendation": "Pipeline is healthy."
+    },
+    "evidence_analysis": [
+        {
+            "claim_id": "003aa426-d08c-4257-940f-e0acc6daffbd",
+            "claim_text": "Punishment for having sexual intercourse with a woman by deceitful means or a false promise of marriage is imprisonment.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "a83c2bce-ea76-4859-9604-7f1b9d86d751",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever, by deceitful means or by making promise to marry to a woman without\nany intention of fulfilling the same, has sexual intercourse with her, such sexual intercourse\nnot amounting to the offence of rape, shall be punished with imprisonment of either\ndescription for a term which may extend to ten years and shall also be liable to fine."
+        },
+        {
+            "claim_id": "898faf67-c92f-4917-9834-8b106cf2093d",
+            "claim_text": "The imprisonment term may extend to ten years.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "fa3fa45a-e08c-4bb8-9482-ddaaca446191",
+            "supporting_chunk_rank": 2,
+            "supporting_evidence": "Whoever, being\u2014\n(a) in a position of authority or in a fiduciary relationship; or\n(b) a public servant; or\n(c) superintendent or manager of a jail, remand home or other place of custody\nestablished by or under any law for the time being in force, or a women\u2019s or children\u2019s\ninstitution; or\n(d) on the management of a hospital or being on the staff of a hospital,\nabuses such position or fiduciary relationship to induce or seduce any woman either in his\ncustody or under his charge or present in the premises to have sexual intercourse with him,\nsuch sexual intercourse not amounting to the offence of rape, shall be punished with rigorous\nimprisonment of either description for a term which shall not be less than five years, but\nwhich may extend to ten years, and shall also be liable to fine."
+        },
+        {
+            "claim_id": "e1e7c07f-9639-4ee0-93a6-5f59d3b5e9c1",
+            "claim_text": "The punishment is also liable to fine.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "fa3fa45a-e08c-4bb8-9482-ddaaca446191",
+            "supporting_chunk_rank": 2,
+            "supporting_evidence": "Whoever, being\u2014\n(a) in a position of authority or in a fiduciary relationship; or\n(b) a public servant; or\n(c) superintendent or manager of a jail, remand home or other place of custody\nestablished by or under any law for the time being in force, or a women\u2019s or children\u2019s\ninstitution; or\n(d) on the management of a hospital or being on the staff of a hospital,\nabuses such position or fiduciary relationship to induce or seduce any woman either in his\ncustody or under his charge or present in the premises to have sexual intercourse with him,\nsuch sexual intercourse not amounting to the offence of rape, shall be punished with rigorous\nimprisonment of either description for a term which shall not be less than five years, but\nwhich may extend to ten years, and shall also be liable to fine."
+        }
+    ],
+    "corrective_actions": [],
+    "ragas_metrics": null,
+    "answer_correctness": {
+        "claim_recall": 1.0,
+        "total_gold_claims": 2,
+        "recalled_gold_claims": 2
+    },
+    "artifact_version": "1.0",
+    "analysis_status": "COMPLETED",
+    "created_at": "2026-07-19T09:37:24.238584Z",
+    "metadata": {
+        "missing_artifacts": []
+    }
+}

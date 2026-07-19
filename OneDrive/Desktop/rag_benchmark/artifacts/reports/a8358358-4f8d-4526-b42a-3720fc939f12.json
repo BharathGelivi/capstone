@@ -1,0 +1,129 @@
+{
+    "framework_metadata": {
+        "trace_id": "a8358358-4f8d-4526-b42a-3720fc939f12",
+        "framework_name": "X-RAG Diagnostic Framework",
+        "framework_version": "1.0",
+        "analysis_timestamp": "2026-07-18T15:54:18.845532Z",
+        "metadata": {}
+    },
+    "executive_summary": {
+        "question": "According to the BNS, what three ways can a person 'abet' the doing of a thing?",
+        "generated_answer": "According to the BNS (as detailed in [Chunk-ID: 5827b990-b669-4dc2-96fd-629c903da94a]), a person can abet the doing of a thing in three ways:\n\n1. By instigating any person to do that thing.\n2. By engaging with one or more other persons in any conspiracy for the doing of that thing, if an act or illegal omission takes place in pursuance of that conspiracy, and in order to the doing of that thing.\n3. By intentionally aiding, by any act or illegal omission, the doing of that thing. [Chunk-ID: 5827b990-b669-4dc2-96fd-629c903da94a]",
+        "overall_health_score": 1.0,
+        "primary_issue": "UNKNOWN",
+        "supported_claims": 4,
+        "total_claims": 4,
+        "number_of_corrective_actions": 0,
+        "summary": "Analysis completed."
+    },
+    "pipeline_overview": {
+        "pipeline_stages": [
+            {
+                "stage": "CORPUS",
+                "status": "PASS",
+                "observation": "Corpus contains sufficient relevant content, evidenced by at least one supported claim.",
+                "confidence": "0.9"
+            },
+            {
+                "stage": "RETRIEVER",
+                "status": "PASS",
+                "observation": "At least one retrieved chunk provides supporting evidence for a verified claim.",
+                "confidence": "0.95"
+            },
+            {
+                "stage": "CHUNKING",
+                "status": "UNKNOWN",
+                "observation": "Deterministic chunk-boundary evidence is currently unobservable.",
+                "confidence": "1.0"
+            },
+            {
+                "stage": "GENERATOR",
+                "status": "PASS",
+                "observation": "All generated claims are fully supported by evidence.",
+                "confidence": "0.95"
+            },
+            {
+                "stage": "GROUNDING",
+                "status": "PASS",
+                "observation": "No claims are contradicted by retrieved evidence.",
+                "confidence": "0.9"
+            }
+        ]
+    },
+    "evaluation_metrics": {
+        "retrieved_chunks": 3,
+        "verified_claims": 4,
+        "supported_claims": 4,
+        "partially_supported_claims": 0,
+        "unsupported_claims": 0,
+        "contradicted_claims": 0,
+        "grounding_score": 1.0,
+        "evidence_coverage": 0.3333333333333333,
+        "average_entailment": 0.9576498717069626,
+        "retrieval_latency_ms": 1564.422607421875,
+        "generation_latency_ms": 1891.4971351623535,
+        "verification_latency_ms": 370948.64320755005
+    },
+    "root_cause_analysis": {
+        "primary_cause": "UNKNOWN",
+        "secondary_effects": [],
+        "reasoning_chain": [
+            "Starting root cause analysis for trace a8358358-4f8d-4526-b42a-3720fc939f12.",
+            "Assumption Passed at CORPUS. Moving to next stage.",
+            "Assumption Passed at RETRIEVER. Moving to next stage.",
+            "Skipping CHUNKING: State is UNKNOWN. Insufficient evidence.",
+            "Assumption Passed at GENERATOR. Moving to next stage.",
+            "Assumption Passed at GROUNDING. Moving to next stage.",
+            "No failures detected. Pipeline is healthy or evidence is purely UNKNOWN."
+        ],
+        "diagnosis_confidence": 0.93
+    },
+    "overall_assessment": {
+        "major_strength": "Strong evidence grounding.",
+        "major_weakness": "UNKNOWN",
+        "next_priority": "Monitor pipeline",
+        "overall_recommendation": "Pipeline is healthy."
+    },
+    "evidence_analysis": [
+        {
+            "claim_id": "a7237afb-e789-458d-aeac-425bad149c08",
+            "claim_text": "A person can abet the doing of a thing in three ways.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "7d2049ae-0586-4e0c-af6e-7286b4bd9af6",
+            "claim_text": "By instigating any person to do that thing.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "5e3beb4f-7b5f-47f4-b532-b343688438db",
+            "claim_text": "By engaging with one or more other persons in any conspiracy for the doing of that thing, if an act or illegal omission takes place in pursuance of that conspiracy, and in order to the doing of that thing.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "16bfb2cc-dd67-4f74-8905-93f7ebf552c7",
+            "claim_text": "By intentionally aiding, by any act or illegal omission, the doing of that thing.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Explanation 1.\u2014A person who, by wilful misrepresentation, or by wilful concealment\nof a material fact which he is bound to disclose, voluntarily causes or procures, or attempts\nto cause or procure, a thing to be done, is said to instigate the doing of that thing."
+        }
+    ],
+    "corrective_actions": [],
+    "ragas_metrics": null,
+    "artifact_version": "1.0",
+    "analysis_status": "COMPLETED",
+    "created_at": "2026-07-18T15:54:18.845726Z",
+    "metadata": {
+        "missing_artifacts": []
+    }
+}

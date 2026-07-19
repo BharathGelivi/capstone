@@ -1,0 +1,153 @@
+{
+    "framework_metadata": {
+        "trace_id": "75905ccd-5eb7-4266-bf4b-ba7f57e637ff",
+        "framework_name": "X-RAG Diagnostic Framework",
+        "framework_version": "1.0",
+        "analysis_timestamp": "2026-07-18T20:38:03.229220Z",
+        "metadata": {}
+    },
+    "executive_summary": {
+        "question": "According to the BNS, what three ways can a person 'abet' the doing of a thing?",
+        "generated_answer": "According to the context chunk 1 [Chunk-ID: 5827b990-b669-4dc2-96fd-629c903da94a], a person abets the doing of a thing in three ways: (a) instigates any person to do that thing [Chunk-ID: 5827b990-b669-4dc2-96fd-629c903da94a], (b) engages with one or more other person or persons in any conspiracy for the doing of that thing, if an act or illegal omission takes place in pursuance of that conspiracy, and in order to the doing of that thing [Chunk-ID: 5827b990-b669-4dc2-96fd-629c903da94a], or (c) intentionally aids, by any act or illegal omission, the doing of that thing [Chunk-ID: 5827b990-b669-4dc2-96fd-629c903da94a].",
+        "overall_health_score": 0.7142857142857143,
+        "primary_issue": "UNKNOWN",
+        "supported_claims": 5,
+        "total_claims": 7,
+        "number_of_corrective_actions": 0,
+        "summary": "Analysis completed."
+    },
+    "pipeline_overview": {
+        "pipeline_stages": [
+            {
+                "stage": "CORPUS",
+                "status": "PASS",
+                "observation": "Corpus contains sufficient relevant content, evidenced by at least one supported claim.",
+                "confidence": "0.9"
+            },
+            {
+                "stage": "RETRIEVER",
+                "status": "PASS",
+                "observation": "At least one retrieved chunk provides supporting evidence for a verified claim.",
+                "confidence": "0.95"
+            },
+            {
+                "stage": "CHUNKING",
+                "status": "UNKNOWN",
+                "observation": "Deterministic chunk-boundary evidence is currently unobservable.",
+                "confidence": "1.0"
+            },
+            {
+                "stage": "GENERATOR",
+                "status": "PASS",
+                "observation": "All generated claims are fully supported by evidence.",
+                "confidence": "0.95"
+            },
+            {
+                "stage": "GROUNDING",
+                "status": "PASS",
+                "observation": "No claims are contradicted by retrieved evidence.",
+                "confidence": "0.9"
+            }
+        ]
+    },
+    "evaluation_metrics": {
+        "retrieved_chunks": 3,
+        "verified_claims": 7,
+        "supported_claims": 5,
+        "partially_supported_claims": 0,
+        "unsupported_claims": 0,
+        "contradicted_claims": 0,
+        "grounding_score": 0.7142857142857143,
+        "evidence_coverage": 0.6666666666666666,
+        "average_entailment": 0.6977931346212115,
+        "retrieval_latency_ms": 6496.989488601685,
+        "generation_latency_ms": 5552.38938331604,
+        "verification_latency_ms": 465795.98474502563
+    },
+    "root_cause_analysis": {
+        "primary_cause": "UNKNOWN",
+        "secondary_effects": [],
+        "reasoning_chain": [
+            "Starting root cause analysis for trace 75905ccd-5eb7-4266-bf4b-ba7f57e637ff.",
+            "Assumption Passed at CORPUS. Moving to next stage.",
+            "Assumption Passed at RETRIEVER. Moving to next stage.",
+            "Skipping CHUNKING: State is UNKNOWN. Insufficient evidence.",
+            "Assumption Passed at GENERATOR. Moving to next stage.",
+            "Assumption Passed at GROUNDING. Moving to next stage.",
+            "No failures detected. Pipeline is healthy or evidence is purely UNKNOWN."
+        ],
+        "diagnosis_confidence": 0.93
+    },
+    "overall_assessment": {
+        "major_strength": "N/A",
+        "major_weakness": "UNKNOWN",
+        "next_priority": "Monitor pipeline",
+        "overall_recommendation": "Requires architectural adjustments."
+    },
+    "evidence_analysis": [
+        {
+            "claim_id": "317cc689-9e14-4616-afc2-638e9893d845",
+            "claim_text": "A person abets the doing of a thing in three ways.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "ae91512d-ac53-4ff7-8dbc-775d1d3c1463",
+            "claim_text": "A person instigates any person to do that thing.",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "04dd01ee-00f0-4521-a31c-0fd5bf862510",
+            "claim_text": "A person engages with one or more other person or persons in any conspiracy for the doing of that thing.",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Here B abets by instigation the apprehension of C."
+        },
+        {
+            "claim_id": "f706f4f0-bc2f-4ea9-9b83-9b666dc8bd0e",
+            "claim_text": "An act or illegal omission takes place in pursuance of that conspiracy.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "A is attacked by a mob who attempt to murder him."
+        },
+        {
+            "claim_id": "3eb3e696-724d-4a38-bc4f-6b82fd60cd5e",
+            "claim_text": "The act or illegal omission is in order to the doing of that thing.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "124467d2-caab-4b47-8e51-9f9a229033e7",
+            "supporting_chunk_rank": 2,
+            "supporting_evidence": "(2) A person is said to commit house-breaking who commits house-trespass if he\neffects his entrance into the house or any part of it in any of the six ways hereinafter\ndescribed; or if, being in the house or any part of it for the purpose of committing an offence,\nor having committed an offence therein, he quits the house or any part of it in any of the\nfollowing ways, namely:\u2013\u2013\n(a) if he enters or quits through a passage made by himself, or by any abettor of\nthe house-trespass, in order to the committing of the house-trespass;\n(b) if he enters or quits through any passage not intended by any person, other\nthan himself or an abettor of the offence, for human entrance; or through any passage\nto which he has obtained access by scaling or climbing over any wall or building;\n(c) if he enters or quits through any passage which he or any abettor of the\nhouse-trespass has opened, in order to the committing of the house-trespass by any\nmeans by which that passage was not intended by the occupier of the house to be\nopened;\n(d) if he enters or quits by opening any lock in order to the committing of the\nhouse-trespass, or in order to the quitting of the house after a house-trespass;\n(e) if he effects his entrance or departure by using criminal force or committing\nan assault, or by threatening any person with assault;\n(f) if he enters or quits by any passage which he knows to have been fastened\nagainst such entrance or departure, and to have been unfastened by himself or by an\nabettor of the house-trespass."
+        },
+        {
+            "claim_id": "099c633e-c227-49b6-a23b-1955e5fa7155",
+            "claim_text": "A person intentionally aids the doing of that thing by any act.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "124467d2-caab-4b47-8e51-9f9a229033e7",
+            "supporting_chunk_rank": 2,
+            "supporting_evidence": "(2) A person is said to commit house-breaking who commits house-trespass if he\neffects his entrance into the house or any part of it in any of the six ways hereinafter\ndescribed; or if, being in the house or any part of it for the purpose of committing an offence,\nor having committed an offence therein, he quits the house or any part of it in any of the\nfollowing ways, namely:\u2013\u2013\n(a) if he enters or quits through a passage made by himself, or by any abettor of\nthe house-trespass, in order to the committing of the house-trespass;\n(b) if he enters or quits through any passage not intended by any person, other\nthan himself or an abettor of the offence, for human entrance; or through any passage\nto which he has obtained access by scaling or climbing over any wall or building;\n(c) if he enters or quits through any passage which he or any abettor of the\nhouse-trespass has opened, in order to the committing of the house-trespass by any\nmeans by which that passage was not intended by the occupier of the house to be\nopened;\n(d) if he enters or quits by opening any lock in order to the committing of the\nhouse-trespass, or in order to the quitting of the house after a house-trespass;\n(e) if he effects his entrance or departure by using criminal force or committing\nan assault, or by threatening any person with assault;\n(f) if he enters or quits by any passage which he knows to have been fastened\nagainst such entrance or departure, and to have been unfastened by himself or by an\nabettor of the house-trespass."
+        },
+        {
+            "claim_id": "b59973d6-de91-4d80-aa9c-55ee3d028b54",
+            "claim_text": "A person intentionally aids the doing of that thing by an illegal omission.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Explanation 1.\u2014A person who, by wilful misrepresentation, or by wilful concealment\nof a material fact which he is bound to disclose, voluntarily causes or procures, or attempts\nto cause or procure, a thing to be done, is said to instigate the doing of that thing."
+        }
+    ],
+    "corrective_actions": [],
+    "ragas_metrics": null,
+    "artifact_version": "1.0",
+    "analysis_status": "COMPLETED",
+    "created_at": "2026-07-18T20:38:03.230107Z",
+    "metadata": {
+        "missing_artifacts": []
+    }
+}

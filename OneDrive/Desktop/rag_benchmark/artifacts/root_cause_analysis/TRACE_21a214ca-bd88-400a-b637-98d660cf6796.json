@@ -1,0 +1,18 @@
+{
+    "trace_id": "21a214ca-bd88-400a-b637-98d660cf6796",
+    "artifact_version": "1.0",
+    "primary_cause": "UNKNOWN",
+    "secondary_effects": [],
+    "reasoning_chain": [
+        "Starting root cause analysis for trace 21a214ca-bd88-400a-b637-98d660cf6796.",
+        "Skipping CORPUS: State is UNKNOWN. Insufficient evidence.",
+        "Skipping RETRIEVER: State is UNKNOWN. Insufficient evidence.",
+        "Skipping CHUNKING: State is UNKNOWN. Insufficient evidence.",
+        "Assumption Passed at GENERATOR. Moving to next stage.",
+        "Skipping GROUNDING: State is UNKNOWN. Insufficient evidence.",
+        "No failures detected. Pipeline is healthy or evidence is purely UNKNOWN."
+    ],
+    "confidence": 0.95,
+    "recommendations_needed": false,
+    "metadata": {}
+}

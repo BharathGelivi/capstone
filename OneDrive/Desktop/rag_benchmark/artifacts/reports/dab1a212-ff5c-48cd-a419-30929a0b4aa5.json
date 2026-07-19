@@ -1,0 +1,236 @@
+{
+    "framework_metadata": {
+        "trace_id": "dab1a212-ff5c-48cd-a419-30929a0b4aa5",
+        "framework_name": "X-RAG Diagnostic Framework",
+        "framework_version": "1.0",
+        "analysis_timestamp": "2026-07-19T07:11:48.344039Z",
+        "metadata": {}
+    },
+    "executive_summary": {
+        "question": "What is the punishment for abetting the commission of an offence by the public generally, or by a class of persons exceeding ten?",
+        "generated_answer": "The punishment for abetting the commission of an offence by the public generally, or by a class of persons exceeding ten, is imprisonment of either description for a term which may extend to seven years and with fine [Chunk-ID: 90f9986c-9b72-4d18-a9f8-5c536442d5b5].",
+        "overall_health_score": 0.90625,
+        "primary_issue": "CHUNK_BOUNDARY",
+        "supported_claims": 14,
+        "total_claims": 16,
+        "number_of_corrective_actions": 1,
+        "summary": "Analysis completed."
+    },
+    "pipeline_overview": {
+        "pipeline_stages": [
+            {
+                "stage": "CORPUS",
+                "status": "PASS",
+                "observation": "Corpus contains sufficient relevant content, evidenced by at least one supported claim.",
+                "confidence": "0.9"
+            },
+            {
+                "stage": "RETRIEVER",
+                "status": "PASS",
+                "observation": "At least one retrieved chunk provides supporting evidence for a verified claim.",
+                "confidence": "0.95"
+            },
+            {
+                "stage": "CHUNKING",
+                "status": "FAIL",
+                "observation": "1 partially supported claim(s) have best evidence adjacent to another retrieved chunk from the same document.",
+                "confidence": "0.8"
+            },
+            {
+                "stage": "GENERATOR",
+                "status": "PASS",
+                "observation": "All generated claims are fully supported by evidence.",
+                "confidence": "0.95"
+            },
+            {
+                "stage": "GROUNDING",
+                "status": "PASS",
+                "observation": "No claims are contradicted by retrieved evidence.",
+                "confidence": "0.9"
+            }
+        ]
+    },
+    "evaluation_metrics": {
+        "retrieved_chunks": 3,
+        "verified_claims": 16,
+        "supported_claims": 14,
+        "partially_supported_claims": 1,
+        "unsupported_claims": 0,
+        "contradicted_claims": 0,
+        "grounding_score": 0.90625,
+        "evidence_coverage": 0.3333333333333333,
+        "average_entailment": 0.9173521548509598,
+        "retrieval_latency_ms": 1558.8650703430176,
+        "generation_latency_ms": 558.0487251281738,
+        "verification_latency_ms": 2204710.3168964386
+    },
+    "root_cause_analysis": {
+        "primary_cause": "CHUNK_BOUNDARY",
+        "secondary_effects": [],
+        "reasoning_chain": [
+            "Starting root cause analysis for trace dab1a212-ff5c-48cd-a419-30929a0b4aa5.",
+            "Assumption Passed at CORPUS. Moving to next stage.",
+            "Assumption Passed at RETRIEVER. Moving to next stage.",
+            "Failure Observed at CHUNKING: CHUNK_BOUNDARY. Observation: 1 partially supported claim(s) have best evidence adjacent to another retrieved chunk from the same document.",
+            "Assumption Passed at GENERATOR. Moving to next stage.",
+            "Assumption Passed at GROUNDING. Moving to next stage.",
+            "Primary Cause Identified at CHUNKING: CHUNK_BOUNDARY (confidence=0.8).",
+            "Concluding analysis with primary cause: CHUNK_BOUNDARY."
+        ],
+        "diagnosis_confidence": 0.9
+    },
+    "overall_assessment": {
+        "major_strength": "Strong evidence grounding.",
+        "major_weakness": "CHUNK_BOUNDARY",
+        "next_priority": "Increase Chunk Overlap",
+        "overall_recommendation": "Pipeline is healthy."
+    },
+    "evidence_analysis": [
+        {
+            "claim_id": "3397922b-c417-44cc-ad82-053b723d98a5",
+            "claim_text": "The punishment for abetting the commission of an offence exists.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "46dd2658-4b02-48fc-9346-592812bfde22",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally exists.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "82410806-c971-49b5-878c-fdd3c3b1088d",
+            "claim_text": "The punishment for abetting the commission of an offence by a class of persons exists.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "62e9d4da-29d5-4a00-bfdf-bc3bde5066da",
+            "claim_text": "The punishment for abetting the commission of an offence by a class of persons exceeding ten exists.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "25c54ef0-b574-46fe-b3b7-fa4ef726d457",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally or by a class of persons exceeding ten is imprisonment.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "71e1a712-90a8-42e3-b831-c8852ae25ef7",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally or by a class of persons exceeding ten can be imprisonment of either description.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "9b853af5-b870-43a5-95b3-e76cef6f7f39",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally or by a class of persons exceeding ten is imprisonment for a term.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "80fb283b-bd9f-4e8e-942a-6b620588f1bc",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally or by a class of persons exceeding ten is imprisonment for a term which may extend to seven years.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "51fd244d-d5a5-494c-8a85-7c9110fb391c",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally or by a class of persons exceeding ten is imprisonment for a term which may extend to seven years and with fine.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "a02b750a-9c02-44bd-975a-f10262589998",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally or by a class of persons exceeding ten can be imprisonment for a term which may extend to seven years.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "2968b50f-8172-4474-a2bd-d2052857842b",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally or by a class of persons exceeding ten can be imprisonment for a term which may extend to seven years and with fine.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "22711c09-4472-4298-866d-759f72a9599d",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally or by a class of persons exceeding ten can be a fine.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "91b85eb9-8f9d-497f-97db-45abfba5ebc1",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally or by a class of persons exceeding ten can be a fine of up to seven years.",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "01a942a9-23f8-4771-b9c2-173138777027",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally or by a class of persons exceeding ten can be a fine of up to seven years and with fine.",
+            "verification_status": "PARTIALLY_SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "54266384-3a70-4f20-90d3-f5a9813fd598",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally or by a class of persons exceeding ten can extend to seven years.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        },
+        {
+            "claim_id": "1880324a-5e13-4b43-a5ea-2456d20af398",
+            "claim_text": "The punishment for abetting the commission of an offence by the public generally or by a class of persons exceeding ten can extend to seven years and with fine.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine."
+        }
+    ],
+    "corrective_actions": [
+        {
+            "priority": "immediate",
+            "title": "Increase Chunk Overlap",
+            "description": "Adjust text splitter to increase overlap between adjacent chunks by 10-20%.",
+            "observed_evidence": "LLM answers partially but misses critical context that was split into the next unretrieved chunk (1 partially supported claim(s) affected).",
+            "expected_improvement": "Context is preserved across chunks.",
+            "success_metric": "Reduction in 'Partially Supported' claims (currently 1).",
+            "tradeoff": "Increases total chunk count, redundancy, and storage."
+        }
+    ],
+    "ragas_metrics": null,
+    "artifact_version": "1.0",
+    "analysis_status": "COMPLETED",
+    "created_at": "2026-07-19T07:11:48.344480Z",
+    "metadata": {
+        "missing_artifacts": []
+    }
+}

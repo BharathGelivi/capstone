@@ -1,0 +1,85 @@
+{
+    "trace_id": "84ef86e7-c4bd-456b-b7fe-a3de73b0efb4",
+    "trace_version": "1.0",
+    "pipeline_version": "1.0",
+    "framework_version": "1.0",
+    "timestamp": "2026-07-18T20:45:44.631260Z",
+    "question": "According to the BNS, what three ways can a person 'abet' the doing of a thing?",
+    "generated_answer": "According to the context chunk 1 [Chunk-ID: 5827b990-b669-4dc2-96fd-629c903da94a], a person can abet the doing of a thing in three ways: (a) by instigating any person to do that thing [Chunk-ID: 5827b990-b669-4dc2-96fd-629c903da94a], (b) by engaging with one or more other person or persons in any conspiracy for the doing of that thing, if an act or illegal omission takes place in pursuance of that conspiracy, and in order to the doing of that thing [Chunk-ID: 5827b990-b669-4dc2-96fd-629c903da94a], or (c) by intentionally aiding, by any act or illegal omission, the doing of that thing [Chunk-ID: 5827b990-b669-4dc2-96fd-629c903da94a].",
+    "prompt_snapshot": "[SYSTEM]: You are a helpful assistant. Read the provided context carefully to answer the user's question.\nIf the context contains the answer, summarize it clearly. If the provided context is completely irrelevant to the question, explicitly state 'I do not have enough information to answer this.'\nDo not hallucinate or use outside knowledge.\nCRITICAL: You must append the specific [Chunk-ID] to every single sentence you generate to explicitly cite your sources.\n\n[USER]: --- Context chunk 1 [Chunk-ID: 5827b990-b669-4dc2-96fd-629c903da94a] ---\nexercise that right without risk of harm to an innocent person, his right of private defence\nextends to the running of that risk.\nIllustration.\nA is attacked by a mob who attempt to murder him. He cannot effectually exercise his\nright of private defence without firing on the mob, and he cannot fire without risk of harming\nyoung children who are mingled with the mob.Acommits no offence if by so firing he harms\nany of the children.\nCHAPTERIV\nOF ABETMENT, CRIMINAL CONSPIRACY AND ATTEMPT\nof abetment\n45. A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing.\nExplanation 1.\u2014A person who, by wilful misrepresentation, or by wilful concealment\nof a material fact which he is bound to disclose, voluntarily causes or procures, or attempts\nto cause or procure, a thing to be done, is said to instigate the doing of that thing.\nIllustration.\nA, a public officer, is authorised by a warrant from a Court to apprehend Z. B, knowing\nthat fact and also that C is not Z, wilfully represents toAthat C is Z, and thereby intentionally\ncauses A to apprehend C. Here B abets by instigation the apprehension of C.\nExplanation 2.\u2014Whoever, either prior to or at the time of the commission of an act,\ndoes anything in order to facilitate the commission of that act, and thereby facilitates the\ncommission thereof, is said to aid the doing of that act.\n46. A person abets an offence, who abets either the commission of an offence, or the\ncommission of an act which would be an offence, if committed by a person capable by law of\ncommitting an offence with the same intention or knowledge as that of the abettor.\n\n--- Context chunk 2 [Chunk-ID: 124467d2-caab-4b47-8e51-9f9a229033e7] ---\n(2) A person is said to commit house-breaking who commits house-trespass if he\neffects his entrance into the house or any part of it in any of the six ways hereinafter\ndescribed; or if, being in the house or any part of it for the purpose of committing an offence,\nor having committed an offence therein, he quits the house or any part of it in any of the\nfollowing ways, namely:\u2013\u2013\n(a) if he enters or quits through a passage made by himself, or by any abettor of\nthe house-trespass, in order to the committing of the house-trespass;\n(b) if he enters or quits through any passage not intended by any person, other\nthan himself or an abettor of the offence, for human entrance; or through any passage\nto which he has obtained access by scaling or climbing over any wall or building;\n(c) if he enters or quits through any passage which he or any abettor of the\nhouse-trespass has opened, in order to the committing of the house-trespass by any\nmeans by which that passage was not intended by the occupier of the house to be\nopened;\n(d) if he enters or quits by opening any lock in order to the committing of the\nhouse-trespass, or in order to the quitting of the house after a house-trespass;\n(e) if he effects his entrance or departure by using criminal force or committing\nan assault, or by threatening any person with assault;\n(f) if he enters or quits by any passage which he knows to have been fastened\nagainst such entrance or departure, and to have been unfastened by himself or by an\nabettor of the house-trespass.\nPunishment for\nintentionally\nrunning vessel\naground or\nashore with\nintent to\ncommit theft,\netc.\nCriminal\ntrespass and\nhouse-trespass.\nHouse-trespass\nand house-\nbreaking.\n90\nTHE GAZETTE OF INDIA EXTRAORDINARY\n[Part II\u2014\n____________________________________________________________\n_____________________________________________________________\n____________________________________________________________\n___________________________________________________________\n________________________________________________________\n_____________________________________________________________\n\n--- Context chunk 3 [Chunk-ID: f555bdb9-442b-43a5-a93a-631a24816143] ---\n(3) Every person shall be liable to punishment under this Sanhita and not otherwise for\nevery act or omission contrary to the provisions thereof, of which he shall be guilty within\nIndia.\n(4) Any person liable, by any law for the time being in force in India, to be tried for an\noffence committed beyond India shall be dealt with according to the provisions of this\nSanhita for any act committed beyond India in the same manner as if such act had been\ncommitted within India.\n(5) The provisions of this Sanhita shall also apply to any offence committed by\u2014\n(a) any citizen of India in any place without and beyond India;\n(b) any person on any ship or aircraft registered in India wherever it may be;\n(c) any person in any place without and beyond India committing offence targeting\na computer resource located in India.\nExplanation.\u2014In this section, the word \u201coffence\u201d includes every act committed outside\nIndia which, if committed in India, would be punishable under this Sanhita.\nIllustration.\nA, who is a citizen of India, commits a murder in any place without and beyond India.\nHe can be tried and convicted of murder in any place in India in which he may be found.\n(6) Nothing in this Sanhita shall affect the provisions of any Act for punishing mutiny\nand desertion of officers, soldiers, sailors or airmen in the service of the Government of India\nor the provisions of any special or local law.\n2. In this Sanhita, unless the context otherwise requires,\u2013\u2013\n(1) \u201cact\u201d denotes as well a series of acts as a single act;\n(2) \u201canimal\u201d means any living creature, other than a human being;\n(3) \u201cchild\u201d means any person below the age of eighteen years;\n(4) \u201ccounterfeit\u201d.\u2013\u2013A person is said to \u201ccounterfeit\u201d who causes one thing to\nresemble another thing, intending by means of that resemblance to practise deception,\nor knowing it to be likely that deception will thereby be practised.\nExplanation 1.\u2014It is not essential to counterfeiting that the imitation should be\nexact.\n\n\nQuestion: According to the BNS, what three ways can a person 'abet' the doing of a thing?",
+    "prompt_length": 6788,
+    "retrieved_chunk_references": [
+        {
+            "chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "rank": 1,
+            "similarity_score": 0.6819270849227905,
+            "rrf_score": 0.032266458495966696,
+            "reranker_score": 0.6819270849227905,
+            "dense_score": 0.2855675220489502,
+            "sparse_score": 12.790460273486808,
+            "dense_rank": 3,
+            "sparse_rank": 1,
+            "page_number": "17",
+            "source_file": "bns.pdf",
+            "chunk_index": 0,
+            "parent_document_id": "f890fab8-ee26-4ca9-8b3e-b80d5622bcb4"
+        },
+        {
+            "chunk_id": "124467d2-caab-4b47-8e51-9f9a229033e7",
+            "rank": 2,
+            "similarity_score": 0.043667685240507126,
+            "rrf_score": 0.028381642512077296,
+            "reranker_score": 0.043667685240507126,
+            "dense_score": 0.3296513557434082,
+            "sparse_score": 8.76679450710119,
+            "dense_rank": 12,
+            "sparse_rank": 9,
+            "page_number": "90",
+            "source_file": "bns.pdf",
+            "chunk_index": 1,
+            "parent_document_id": "cd327e2d-db9a-4ecb-9359-98fc0384c7b4"
+        },
+        {
+            "chunk_id": "f555bdb9-442b-43a5-a93a-631a24816143",
+            "rank": 3,
+            "similarity_score": 0.0004769891675096005,
+            "rrf_score": 0.016129032258064516,
+            "reranker_score": 0.0004769891675096005,
+            "dense_score": 0.0,
+            "sparse_score": 11.285473226128584,
+            "dense_rank": -1,
+            "sparse_rank": 2,
+            "page_number": "2",
+            "source_file": "bns.pdf",
+            "chunk_index": 0,
+            "parent_document_id": "95cc8da3-5637-4a01-ad49-632514e2135c"
+        }
+    ],
+    "configuration_snapshot": {
+        "embedding_model": "BAAI/bge-small-en-v1.5",
+        "chunk_size": 512,
+        "chunk_overlap": 50,
+        "retrieval_top_k": 5,
+        "reranker_model": "BAAI/bge-reranker-base",
+        "reranker_top_n": 5,
+        "llm_model": "Qwen/Qwen2.5-7B-Instruct",
+        "llm_temperature": 0.1,
+        "llm_max_tokens": 1024
+    },
+    "execution_statistics": {
+        "retrieval_time": 1.793407678604126,
+        "generation_time": 1.7632040977478027,
+        "total_pipeline_time": 3.5566117763519287,
+        "pre_rerank_candidate_pool_size": 38,
+        "pre_rerank_min_dense_distance": 0.2855675220489502
+    },
+    "pipeline_stage_status": {
+        "document_loader": "completed",
+        "chunk_engine": "completed",
+        "embedding_engine": "completed",
+        "vector_store": "completed",
+        "retriever": "completed",
+        "generator": "completed"
+    },
+    "diagnostics": null
+}

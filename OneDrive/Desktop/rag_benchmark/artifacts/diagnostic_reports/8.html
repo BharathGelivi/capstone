@@ -1,0 +1,865 @@
+<title>X-RAG Diagnostic Report — 9c59becd-e338-473c-9dcd-5f828d8d779b</title>
+<style>
+:root {
+  --bg: #F4F5F7; --surface: #FFFFFF; --ink: #1A1D24; --ink-soft: #565C68; --ink-faint: #8A8F9A;
+  --accent: #2E3B6E; --good: #2F7D5D; --warn: #A6742D; --bad: #A6402D;
+  --line: #E0E2E7; --line-strong: #C9CCD3;
+}
+:root[data-theme="dark"] {
+  --bg: #12141A; --surface: #1B1E26; --ink: #E7E9EE; --ink-soft: #A6ACB8; --ink-faint: #6B7280;
+  --accent: #8C9BE8; --good: #5FCB9B; --warn: #E3B15C; --bad: #E38C7A;
+  --line: #2A2E38; --line-strong: #383D4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12141A; --surface: #1B1E26; --ink: #E7E9EE; --ink-soft: #A6ACB8; --ink-faint: #6B7280;
+    --accent: #8C9BE8; --good: #5FCB9B; --warn: #E3B15C; --bad: #E38C7A;
+    --line: #2A2E38; --line-strong: #383D4A;
+  }
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.55; padding: 48px 24px 80px; }
+.page { max-width: 940px; margin: 0 auto; }
+.mono { font-family: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+.muted { color: var(--ink-faint); }
+header { border-bottom: 2px solid var(--ink); padding-bottom: 20px; margin-bottom: 32px; }
+.eyebrow { font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+h1 { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif; font-size: 1.8rem; font-weight: 600; line-height: 1.2; text-wrap: balance; margin: 0 0 10px; }
+.dek { color: var(--ink-soft); font-size: 1rem; max-width: 70ch; }
+.meta-row { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px; font-size: 0.82rem; color: var(--ink-faint); }
+.meta-row span b { color: var(--ink-soft); font-weight: 600; }
+.section-title { font-size: 0.78rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; margin: 40px 0 14px; display: flex; align-items: center; gap: 10px; }
+.section-title::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.summary-tile { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.summary-tile .tile-label { font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; margin-bottom: 6px; }
+.summary-tile .tile-val { font-size: 1.3rem; font-weight: 700; }
+.case { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px 24px; }
+.case .q-label, .case .a-label { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+.case .q-text { font-size: 1.05rem; font-weight: 500; margin-bottom: 18px; }
+.case .a-text { font-size: 0.95rem; color: var(--ink-soft); }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 10px; }
+details > summary { cursor: pointer; padding: 14px 18px; font-weight: 600; list-style: none; display: flex; align-items: center; gap: 10px; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary::before { content: "▸"; color: var(--accent); font-size: 0.8em; transition: transform 0.15s; flex-shrink: 0; }
+details[open] > summary::before { transform: rotate(90deg); }
+details.top-level > summary { font-size: 0.95rem; }
+.details-body-outer { padding: 0 18px 18px; }
+.claim-detail, .chunk-detail { margin: 8px 18px; border-radius: 8px; }
+.claim-detail summary, .chunk-detail summary { padding: 10px 12px; font-weight: 500; font-size: 0.86rem; }
+.claim-body, .chunk-body { padding: 4px 12px 14px; font-size: 0.84rem; }
+.claim-field { margin-bottom: 6px; }
+.claim-field.muted { font-style: italic; }
+.evidence-text { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; font-size: 0.78rem; white-space: pre-wrap; max-height: 260px; overflow-y: auto; margin-top: 4px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; display: inline-block; background: var(--ink-faint); }
+.dot.good { background: var(--good); } .dot.warn { background: var(--warn); } .dot.bad { background: var(--bad); }
+.claim-status { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; flex-shrink: 0; }
+.claim-status.good { color: var(--good); } .claim-status.warn { color: var(--warn); } .claim-status.bad { color: var(--bad); }
+.claim-summary-text { color: var(--ink-soft); font-weight: 400; }
+.chunk-rank { font-family: ui-monospace, monospace; background: var(--bg); border-radius: 5px; padding: 2px 7px; font-size: 0.75rem; flex-shrink: 0; }
+.chunk-id { flex-shrink: 0; }
+.chunk-src { color: var(--ink-faint); font-weight: 400; font-size: 0.8rem; }
+.score-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 20px; margin-bottom: 10px; padding: 10px; background: var(--bg); border-radius: 8px; }
+.score-grid > div { display: flex; justify-content: space-between; font-size: 0.78rem; }
+.stage-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.stage { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--good); border-radius: 8px; padding: 12px; }
+.stage.unknown { border-top-color: var(--line-strong); }
+.stage.fail { border-top-color: var(--bad); }
+.stage-name { font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; color: var(--ink-faint); margin-bottom: 6px; }
+.stage-status { font-size: 0.85rem; font-weight: 600; color: var(--good); margin-bottom: 4px; }
+.stage.unknown .stage-status { color: var(--ink-faint); }
+.stage.fail .stage-status { color: var(--bad); }
+.stage-obs { font-size: 0.72rem; color: var(--ink-faint); line-height: 1.4; }
+.stage-conf { font-size: 0.66rem; color: var(--ink-faint); margin-top: 6px; }
+.stage-efficiency { font-size: 0.66rem; color: var(--accent); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); }
+.reasoning-chain { padding-left: 22px; font-size: 0.88rem; color: var(--ink-soft); }
+.reasoning-chain li { margin-bottom: 6px; }
+.action-card { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--warn); border-radius: 0 8px 8px 0; padding: 12px 16px; margin-bottom: 8px; }
+.action-title { font-weight: 700; font-size: 0.86rem; margin-bottom: 4px; }
+.action-desc { font-size: 0.82rem; color: var(--ink-soft); }
+.fw-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.fw-card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px 16px; display: flex; flex-direction: column; gap: 12px; }
+.fw-card.xrag { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.fw-card.ragas { border-color: var(--good); }
+.fw-name { font-weight: 700; font-size: 0.95rem; }
+.fw-name .tag { display: block; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); margin-top: 2px; }
+.fw-desc { font-size: 0.72rem; color: var(--ink-faint); line-height: 1.4; min-height: 3.5em; }
+.metric-list { display: flex; flex-direction: column; gap: 7px; border-top: 1px solid var(--line); padding-top: 10px; }
+.metric-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.82rem; }
+.metric-row .m-val { font-weight: 700; }
+.metric-row .m-val.hi { color: var(--good); }
+.metric-row .m-val.mid { color: var(--warn); }
+footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 0.76rem; color: var(--ink-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.scroll-x { overflow-x: auto; }
+@media (max-width: 720px) {
+  .fw-grid, .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  .stage-strip { grid-template-columns: repeat(2, 1fr); }
+  .score-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .fw-grid, .summary-grid, .stage-strip, .score-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 1.4rem; }
+}
+</style>
+<div class="page">
+
+  <header>
+    <div class="eyebrow">X-RAG Diagnostic Framework — Full Report</div>
+    <h1>What two types of conduct constitute the offence of &#x27;stalking&#x27; under BNS section 78?</h1>
+    <p class="dek">Trace <span class="mono">9c59becd-e338-473c-9dcd-5f828d8d779b</span>, generated 2026-07-19T09:45:09.007684Z.</p>
+    <div class="meta-row">
+      <span><b>Generator:</b> llama-3.3-70b-versatile</span>
+      <span><b>Embedding:</b> BAAI/bge-small-en-v1.5</span>
+      <span><b>Chunk size / overlap:</b> 512 / 50</span>
+      <span><b>Retrieval top-k:</b> 5</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-title">Executive Summary</div>
+    <div class="summary-grid">
+      <div class="summary-tile"><div class="tile-label">Overall Health</div><div class="tile-val mono">57%</div></div>
+      <div class="summary-tile"><div class="tile-label">Primary Issue</div><div class="tile-val mono">UNKNOWN</div></div>
+      <div class="summary-tile"><div class="tile-label">Claims Supported</div><div class="tile-val mono">4 / 7</div></div>
+      <div class="summary-tile"><div class="tile-label">Avg. Entailment</div><div class="tile-val mono">0.595</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">The Case</div>
+    <div class="case">
+      <div class="q-label">Question</div>
+      <div class="q-text">What two types of conduct constitute the offence of &#x27;stalking&#x27; under BNS section 78?</div>
+      <div class="a-label">X-RAG's Answer</div>
+      <div class="a-text">The two types of conduct that constitute the offence of &#x27;stalking&#x27; under BNS section 78 are: (i) following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman, and (ii) monitoring the use by a woman of the internet, e-mail or any other form of electronic communication [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484].</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">Raw Retrieval &amp; Generation Trace</div>
+    <details class="top-level">
+      <summary>View full RAG trace (3 chunks retrieved, 0.54s retrieval + 0.65s generation)</summary>
+      <div class="details-body-outer">
+        <div class="claim-field"><b>Total pipeline time:</b> <span class="mono">1.193s</span></div>
+        <div class="claim-field"><b>Pre-rerank candidate pool:</b> <span class="mono">39</span> chunks (BM25 + dense, before RRF fusion and reranking)</div>
+        <div class="claim-field"><b>Full prompt sent to the generator:</b></div>
+        <pre class="evidence-text">[SYSTEM]: You are a helpful assistant. Read the provided context carefully to answer the user&#x27;s question.
+If the context contains the answer, summarize it clearly. If the provided context is completely irrelevant to the question, explicitly state &#x27;I do not have enough information to answer this.&#x27;
+Do not hallucinate or use outside knowledge.
+CRITICAL: You must append the specific [Chunk-ID] to every single sentence you generate to explicitly cite your sources.
+
+[USER]: --- Context chunk 1 [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484] ---
+Explanation 2.—Where the victim consents to the capture of the images or any act,
+but not to their dissemination to third persons and where such image or act is disseminated,
+such dissemination shall be considered an offence under this section.
+78. (1) Any man who—
+(i) follows a woman and contacts, or attempts to contact such woman to foster
+personal interaction repeatedly despite a clear indication of disinterest by such woman; or
+(ii) monitors the use by a woman of the internet, e-mail or any other form of
+electronic communication,
+commits the offence of stalking:
+Provided that such conduct shall not amount to stalking if the man who pursued it
+proves that—
+(i) it was pursued for the purpose of preventing or detecting crime and the man
+accused of stalking had been entrusted with the responsibility of prevention and
+detection of crime by the State; or
+(ii) it was pursued under any law or to comply with any condition or requirement
+imposed by any person under any law; or
+(iii) in the particular circumstances such conduct was reasonable and justified.
+(2) Whoever commits the offence of stalking shall be punished on first conviction with
+imprisonment of either description for a term which may extend to three years, and shall also
+be liable to fine; and be punished on a second or subsequent conviction, with imprisonment
+of either description for a term which may extend to five years, and shall also be liable to fine.
+79. Whoever, intending to insult the modesty of any woman, utters any words, makes
+any sound or gesture, or exhibits any object in any form, intending that such word or sound
+shall be heard, or that such gesture or object shall be seen, by such woman, or intrudes upon
+the privacy of such woman, shall be punished with simple imprisonment for a term which may
+extend to three years, and also with fine.
+Of offences relating to marriage
+80.
+
+--- Context chunk 2 [Chunk-ID: 9086bb6b-d946-4100-af0b-8f1bb8868c31] ---
+47. In criminal proceedings the fact that the person accused is of a good character, is
+relevant.
+48. In a prosecution for an offence under section 64, section 65, section 66,
+section 67, section 68, section 69, section 70, section 71, section 74, section 75, section 76,
+section 77 or section 78 of the Bharatiya Nyaya Sanhita, 2023 or for attempt to commit any
+such offence, where the question of consent is in issue, evidence of the character of the
+victim or of such person&#x27;s previous sexual experience with any person shall not be relevant
+on the issue of such consent or the quality of consent.
+49. In criminal proceedings, the fact that the accused has a bad character, is irrelevant,
+unless evidence has been given that he has a good character, in which case it becomes
+relevant.
+Explanation 1.—This section does not apply to cases in which the bad character of
+any person is itself a fact in issue.
+Explanation 2.—A previous conviction is relevant as evidence of bad character.
+Opinion on
+relationship,
+when relevant.
+Grounds of
+opinion, when
+relevant.
+In civil cases
+character to
+prove conduct
+imputed,
+irrelevant.
+In criminal
+cases previous
+good character
+relevant.
+Evidence of
+character or
+previous sexual
+experience not
+relevant in
+certain cases.
+Previous bad
+character not
+relevant,
+except in reply.
+4 of 1869.
+18
+THE GAZETTE OF INDIA EXTRAORDINARY
+[Part II—
+_________________________________________________________
+_________________________________________________________
+_________________________________________________________
+_______________________________________________________________
+___________________________________________________________
+__________________________________________________________
+
+--- Context chunk 3 [Chunk-ID: c18a688d-8329-4690-92de-a0a7533d70f6] ---
+243. (1) If, in one series of acts so connected together as to form the same transaction,
+more offences than one are committed by the same person, he may be charged with, and
+tried at one trial for, every such offence.
+(2) When a person charged with one or more offences of criminal breach of trust or
+dishonest misappropriation of property as provided in sub-section (2) of section 235 or in
+sub-section (1) of section 242, is accused of committing, for the purpose of facilitating or
+concealing the commission of that offence or those offences, one or more offences of
+falsification of accounts, he may be charged with, and tried at one trial for, every such
+offence.
+(3) If the acts alleged constitute an offence falling within two or more separate definitions
+of any law in force for the time being by which offences are defined or punished, the person
+accused of them may be charged with, and tried at one trial for, each of such offences.
+(4) If several acts, of which one or more than one would by itself or themselves
+constitute an offence, constitute when combined a different offence, the person accused of
+them may be charged with, and tried at one trial for the offence constituted by such acts
+when combined, and for any offence constituted by any one, or more, of such acts.
+(5)
+Nothing contained in this section shall affect section 9 of
+the Bharatiya Nyaya Sanhita, 2023.
+Illustrations to sub-section (1)
+(a) A rescues B, a person in lawful custody, and in so doing causes grievous hurt to
+C, a constable in whose custody B was. A may be charged with, and convicted of, offences
+under sub-section (2) of section 121 and section 263 of the Bharatiya Nyaya Sanhita, 2023.
+(b) A commits house-breaking by day with intent to commit rape, and commits, in the
+house so entered, rape with B&#x27;s wife.
+
+
+Question: What two types of conduct constitute the offence of &#x27;stalking&#x27; under BNS section 78?</pre>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <div class="section-title">Claim Decomposition &amp; Verification (7 atomic claims)</div>
+    
+        <details class="claim-detail">
+          <summary>
+            <span class="dot good"></span>
+            <span class="claim-status good">SUPPORTED</span>
+            <span class="claim-summary-text">There are two types of conduct that constitute the offence of &#x27;stalking&#x27; under BNS section 78.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Claim ID:</b> <span class="mono">50918ddf-5f57-4ff8-bb7a-a3e14dd42271</span></div>
+            <div class="claim-field"><b>Supporting chunk:</b> <span class="mono">c4decaec-7514-4b58-baf3-a269b0e3f484</span> (rank 1)</div>
+            <div class="claim-field"><b>Evidence text:</b></div>
+            <pre class="evidence-text">Explanation 2.—Where the victim consents to the capture of the images or any act,
+but not to their dissemination to third persons and where such image or act is disseminated,
+such dissemination shall be considered an offence under this section.
+78. (1) Any man who—
+(i) follows a woman and contacts, or attempts to contact such woman to foster
+personal interaction repeatedly despite a clear indication of disinterest by such woman; or
+(ii) monitors the use by a woman of the internet, e-mail or any other form of
+electronic communication,
+commits the offence of stalking:
+Provided that such conduct shall not amount to stalking if the man who pursued it
+proves that—
+(i) it was pursued for the purpose of preventing or detecting crime and the man
+accused of stalking had been entrusted with the responsibility of prevention and
+detection of crime by the State; or
+(ii) it was pursued under any law or to comply with any condition or requirement
+imposed by any person under any law; or
+(iii) in the particular circumstances such conduct was reasonable and justified.
+(2) Whoever commits the offence of stalking shall be punished on first conviction with
+imprisonment of either description for a term which may extend to three years, and shall also
+be liable to fine; and be punished on a second or subsequent conviction, with imprisonment
+of either description for a term which may extend to five years, and shall also be liable to fine.
+79.</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot good"></span>
+            <span class="claim-status good">SUPPORTED</span>
+            <span class="claim-summary-text">The two types of conduct are following a woman and contacting, or attempting to contact such woman.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Claim ID:</b> <span class="mono">5062eda2-b5ca-433e-a4dd-c550ab7e9efd</span></div>
+            <div class="claim-field"><b>Supporting chunk:</b> <span class="mono">c4decaec-7514-4b58-baf3-a269b0e3f484</span> (rank 1)</div>
+            <div class="claim-field"><b>Evidence text:</b></div>
+            <pre class="evidence-text">Explanation 2.—Where the victim consents to the capture of the images or any act,
+but not to their dissemination to third persons and where such image or act is disseminated,
+such dissemination shall be considered an offence under this section.
+78. (1) Any man who—
+(i) follows a woman and contacts, or attempts to contact such woman to foster
+personal interaction repeatedly despite a clear indication of disinterest by such woman; or
+(ii) monitors the use by a woman of the internet, e-mail or any other form of
+electronic communication,
+commits the offence of stalking:
+Provided that such conduct shall not amount to stalking if the man who pursued it
+proves that—
+(i) it was pursued for the purpose of preventing or detecting crime and the man
+accused of stalking had been entrusted with the responsibility of prevention and
+detection of crime by the State; or
+(ii) it was pursued under any law or to comply with any condition or requirement
+imposed by any person under any law; or
+(iii) in the particular circumstances such conduct was reasonable and justified.
+(2) Whoever commits the offence of stalking shall be punished on first conviction with
+imprisonment of either description for a term which may extend to three years, and shall also
+be liable to fine; and be punished on a second or subsequent conviction, with imprisonment
+of either description for a term which may extend to five years, and shall also be liable to fine.
+79.</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot good"></span>
+            <span class="claim-status good">SUPPORTED</span>
+            <span class="claim-summary-text">The two types of conduct are following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Claim ID:</b> <span class="mono">ad72c0b8-e8b4-4332-b76d-c80e4f928a0b</span></div>
+            <div class="claim-field"><b>Supporting chunk:</b> <span class="mono">c4decaec-7514-4b58-baf3-a269b0e3f484</span> (rank 1)</div>
+            <div class="claim-field"><b>Evidence text:</b></div>
+            <pre class="evidence-text">Explanation 2.—Where the victim consents to the capture of the images or any act,
+but not to their dissemination to third persons and where such image or act is disseminated,
+such dissemination shall be considered an offence under this section.
+78. (1) Any man who—
+(i) follows a woman and contacts, or attempts to contact such woman to foster
+personal interaction repeatedly despite a clear indication of disinterest by such woman; or
+(ii) monitors the use by a woman of the internet, e-mail or any other form of
+electronic communication,
+commits the offence of stalking:
+Provided that such conduct shall not amount to stalking if the man who pursued it
+proves that—
+(i) it was pursued for the purpose of preventing or detecting crime and the man
+accused of stalking had been entrusted with the responsibility of prevention and
+detection of crime by the State; or
+(ii) it was pursued under any law or to comply with any condition or requirement
+imposed by any person under any law; or
+(iii) in the particular circumstances such conduct was reasonable and justified.
+(2) Whoever commits the offence of stalking shall be punished on first conviction with
+imprisonment of either description for a term which may extend to three years, and shall also
+be liable to fine; and be punished on a second or subsequent conviction, with imprisonment
+of either description for a term which may extend to five years, and shall also be liable to fine.
+79.</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot good"></span>
+            <span class="claim-status good">SUPPORTED</span>
+            <span class="claim-summary-text">The two types of conduct are following a woman and contacting, or attempting to contact such woman despite a clear indication of disinterest by such woman.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Claim ID:</b> <span class="mono">2b65050c-1ce0-484f-afcd-959a766769cb</span></div>
+            <div class="claim-field"><b>Supporting chunk:</b> <span class="mono">c4decaec-7514-4b58-baf3-a269b0e3f484</span> (rank 1)</div>
+            <div class="claim-field"><b>Evidence text:</b></div>
+            <pre class="evidence-text">Explanation 2.—Where the victim consents to the capture of the images or any act,
+but not to their dissemination to third persons and where such image or act is disseminated,
+such dissemination shall be considered an offence under this section.
+78. (1) Any man who—
+(i) follows a woman and contacts, or attempts to contact such woman to foster
+personal interaction repeatedly despite a clear indication of disinterest by such woman; or
+(ii) monitors the use by a woman of the internet, e-mail or any other form of
+electronic communication,
+commits the offence of stalking:
+Provided that such conduct shall not amount to stalking if the man who pursued it
+proves that—
+(i) it was pursued for the purpose of preventing or detecting crime and the man
+accused of stalking had been entrusted with the responsibility of prevention and
+detection of crime by the State; or
+(ii) it was pursued under any law or to comply with any condition or requirement
+imposed by any person under any law; or
+(iii) in the particular circumstances such conduct was reasonable and justified.
+(2) Whoever commits the offence of stalking shall be punished on first conviction with
+imprisonment of either description for a term which may extend to three years, and shall also
+be liable to fine; and be punished on a second or subsequent conviction, with imprisonment
+of either description for a term which may extend to five years, and shall also be liable to fine.
+79.</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot warn"></span>
+            <span class="claim-status warn">NOT_VERIFIABLE</span>
+            <span class="claim-summary-text">The two types of conduct are monitoring the use by a woman of the internet.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Claim ID:</b> <span class="mono">3625eaa4-69af-40d3-94ef-2a95ccd74a35</span></div>
+            <div class="claim-field"><b>Supporting chunk:</b> <span class="mono">c4decaec-7514-4b58-baf3-a269b0e3f484</span> (rank 1)</div>
+            <div class="claim-field"><b>Evidence text:</b></div>
+            <pre class="evidence-text">Explanation 2.—Where the victim consents to the capture of the images or any act,
+but not to their dissemination to third persons and where such image or act is disseminated,
+such dissemination shall be considered an offence under this section.
+78. (1) Any man who—
+(i) follows a woman and contacts, or attempts to contact such woman to foster
+personal interaction repeatedly despite a clear indication of disinterest by such woman; or
+(ii) monitors the use by a woman of the internet, e-mail or any other form of
+electronic communication,
+commits the offence of stalking:
+Provided that such conduct shall not amount to stalking if the man who pursued it
+proves that—
+(i) it was pursued for the purpose of preventing or detecting crime and the man
+accused of stalking had been entrusted with the responsibility of prevention and
+detection of crime by the State; or
+(ii) it was pursued under any law or to comply with any condition or requirement
+imposed by any person under any law; or
+(iii) in the particular circumstances such conduct was reasonable and justified.
+(2) Whoever commits the offence of stalking shall be punished on first conviction with
+imprisonment of either description for a term which may extend to three years, and shall also
+be liable to fine; and be punished on a second or subsequent conviction, with imprisonment
+of either description for a term which may extend to five years, and shall also be liable to fine.
+79.</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot warn"></span>
+            <span class="claim-status warn">NOT_VERIFIABLE</span>
+            <span class="claim-summary-text">The two types of conduct are monitoring the use by a woman of e-mail.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Claim ID:</b> <span class="mono">ca233c2e-9a10-4480-aea7-f21581f028d0</span></div>
+            <div class="claim-field"><b>Supporting chunk:</b> <span class="mono">c4decaec-7514-4b58-baf3-a269b0e3f484</span> (rank 1)</div>
+            <div class="claim-field"><b>Evidence text:</b></div>
+            <pre class="evidence-text">Explanation 2.—Where the victim consents to the capture of the images or any act,
+but not to their dissemination to third persons and where such image or act is disseminated,
+such dissemination shall be considered an offence under this section.
+78. (1) Any man who—
+(i) follows a woman and contacts, or attempts to contact such woman to foster
+personal interaction repeatedly despite a clear indication of disinterest by such woman; or
+(ii) monitors the use by a woman of the internet, e-mail or any other form of
+electronic communication,
+commits the offence of stalking:
+Provided that such conduct shall not amount to stalking if the man who pursued it
+proves that—
+(i) it was pursued for the purpose of preventing or detecting crime and the man
+accused of stalking had been entrusted with the responsibility of prevention and
+detection of crime by the State; or
+(ii) it was pursued under any law or to comply with any condition or requirement
+imposed by any person under any law; or
+(iii) in the particular circumstances such conduct was reasonable and justified.
+(2) Whoever commits the offence of stalking shall be punished on first conviction with
+imprisonment of either description for a term which may extend to three years, and shall also
+be liable to fine; and be punished on a second or subsequent conviction, with imprisonment
+of either description for a term which may extend to five years, and shall also be liable to fine.
+79.</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot warn"></span>
+            <span class="claim-status warn">NOT_VERIFIABLE</span>
+            <span class="claim-summary-text">The two types of conduct are monitoring the use by a woman of any other form of electronic communication.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Claim ID:</b> <span class="mono">059178b6-f945-4969-80ef-8214a565706c</span></div>
+            <div class="claim-field"><b>Supporting chunk:</b> <span class="mono">c4decaec-7514-4b58-baf3-a269b0e3f484</span> (rank 1)</div>
+            <div class="claim-field"><b>Evidence text:</b></div>
+            <pre class="evidence-text">Explanation 2.—Where the victim consents to the capture of the images or any act,
+but not to their dissemination to third persons and where such image or act is disseminated,
+such dissemination shall be considered an offence under this section.
+78. (1) Any man who—
+(i) follows a woman and contacts, or attempts to contact such woman to foster
+personal interaction repeatedly despite a clear indication of disinterest by such woman; or
+(ii) monitors the use by a woman of the internet, e-mail or any other form of
+electronic communication,
+commits the offence of stalking:
+Provided that such conduct shall not amount to stalking if the man who pursued it
+proves that—
+(i) it was pursued for the purpose of preventing or detecting crime and the man
+accused of stalking had been entrusted with the responsibility of prevention and
+detection of crime by the State; or
+(ii) it was pursued under any law or to comply with any condition or requirement
+imposed by any person under any law; or
+(iii) in the particular circumstances such conduct was reasonable and justified.
+(2) Whoever commits the offence of stalking shall be punished on first conviction with
+imprisonment of either description for a term which may extend to three years, and shall also
+be liable to fine; and be punished on a second or subsequent conviction, with imprisonment
+of either description for a term which may extend to five years, and shall also be liable to fine.
+79.</pre>
+          </div>
+        </details>
+  </section>
+
+  <section>
+    <div class="section-title">Chunk Mapping &amp; Provenance</div>
+    
+        <details class="chunk-detail">
+          <summary>
+            <span class="chunk-rank">#1</span>
+            <span class="mono chunk-id">c4decaec-7514-4b58-baf3-a269b0e3f484</span>
+            <span class="chunk-src">bns.pdf p.28</span>
+          </summary>
+          <div class="chunk-body">
+            <div class="score-grid">
+              <div><span class="m-name">Dense score</span><span class="mono">0.201</span></div>
+              <div><span class="m-name">Sparse (BM25)</span><span class="mono">20.64</span></div>
+              <div><span class="m-name">RRF score</span><span class="mono">0.0323</span></div>
+              <div><span class="m-name">Reranker score</span><span class="mono">0.690</span></div>
+              <div><span class="m-name">Dense rank</span><span class="mono">3</span></div>
+              <div><span class="m-name">Sparse rank</span><span class="mono">1</span></div>
+            </div>
+            <div class="claim-field"><b>Parent document:</b> <span class="mono">3efc678a-3a44-4ffd-b44b-c0efd6cdedf9</span></div>
+            <div class="claim-field"><b>Chunk index in document:</b> <span class="mono">0</span></div>
+            <div class="claim-field"><b>Configured chunk size / overlap:</b> <span class="mono">512 / 50</span></div>
+            <div class="claim-field"><b>Character span:</b> <span class="mono">0 - 1877 (1877 chars)</span></div>
+            <div class="claim-field"><b>Full chunk text:</b></div>
+            <pre class="evidence-text">Explanation 2.—Where the victim consents to the capture of the images or any act,
+but not to their dissemination to third persons and where such image or act is disseminated,
+such dissemination shall be considered an offence under this section.
+78. (1) Any man who—
+(i) follows a woman and contacts, or attempts to contact such woman to foster
+personal interaction repeatedly despite a clear indication of disinterest by such woman; or
+(ii) monitors the use by a woman of the internet, e-mail or any other form of
+electronic communication,
+commits the offence of stalking:
+Provided that such conduct shall not amount to stalking if the man who pursued it
+proves that—
+(i) it was pursued for the purpose of preventing or detecting crime and the man
+accused of stalking had been entrusted with the responsibility of prevention and
+detection of crime by the State; or
+(ii) it was pursued under any law or to comply with any condition or requirement
+imposed by any person under any law; or
+(iii) in the particular circumstances such conduct was reasonable and justified.
+(2) Whoever commits the offence of stalking shall be punished on first conviction with
+imprisonment of either description for a term which may extend to three years, and shall also
+be liable to fine; and be punished on a second or subsequent conviction, with imprisonment
+of either description for a term which may extend to five years, and shall also be liable to fine.
+79. Whoever, intending to insult the modesty of any woman, utters any words, makes
+any sound or gesture, or exhibits any object in any form, intending that such word or sound
+shall be heard, or that such gesture or object shall be seen, by such woman, or intrudes upon
+the privacy of such woman, shall be punished with simple imprisonment for a term which may
+extend to three years, and also with fine.
+Of offences relating to marriage
+80.</pre>
+          </div>
+        </details>
+        <details class="chunk-detail">
+          <summary>
+            <span class="chunk-rank">#2</span>
+            <span class="mono chunk-id">9086bb6b-d946-4100-af0b-8f1bb8868c31</span>
+            <span class="chunk-src">bsa.pdf p.18</span>
+          </summary>
+          <div class="chunk-body">
+            <div class="score-grid">
+              <div><span class="m-name">Dense score</span><span class="mono">0.000</span></div>
+              <div><span class="m-name">Sparse (BM25)</span><span class="mono">11.67</span></div>
+              <div><span class="m-name">RRF score</span><span class="mono">0.0159</span></div>
+              <div><span class="m-name">Reranker score</span><span class="mono">0.041</span></div>
+              <div><span class="m-name">Dense rank</span><span class="mono">-1</span></div>
+              <div><span class="m-name">Sparse rank</span><span class="mono">3</span></div>
+            </div>
+            <div class="claim-field"><b>Parent document:</b> <span class="mono">2932a605-241f-4134-a597-aa9b409fa1bd</span></div>
+            <div class="claim-field"><b>Chunk index in document:</b> <span class="mono">1</span></div>
+            <div class="claim-field"><b>Configured chunk size / overlap:</b> <span class="mono">512 / 50</span></div>
+            <div class="claim-field"><b>Character span:</b> <span class="mono">1562 - 3291 (1729 chars)</span></div>
+            <div class="claim-field"><b>Full chunk text:</b></div>
+            <pre class="evidence-text">47. In criminal proceedings the fact that the person accused is of a good character, is
+relevant.
+48. In a prosecution for an offence under section 64, section 65, section 66,
+section 67, section 68, section 69, section 70, section 71, section 74, section 75, section 76,
+section 77 or section 78 of the Bharatiya Nyaya Sanhita, 2023 or for attempt to commit any
+such offence, where the question of consent is in issue, evidence of the character of the
+victim or of such person&#x27;s previous sexual experience with any person shall not be relevant
+on the issue of such consent or the quality of consent.
+49. In criminal proceedings, the fact that the accused has a bad character, is irrelevant,
+unless evidence has been given that he has a good character, in which case it becomes
+relevant.
+Explanation 1.—This section does not apply to cases in which the bad character of
+any person is itself a fact in issue.
+Explanation 2.—A previous conviction is relevant as evidence of bad character.
+Opinion on
+relationship,
+when relevant.
+Grounds of
+opinion, when
+relevant.
+In civil cases
+character to
+prove conduct
+imputed,
+irrelevant.
+In criminal
+cases previous
+good character
+relevant.
+Evidence of
+character or
+previous sexual
+experience not
+relevant in
+certain cases.
+Previous bad
+character not
+relevant,
+except in reply.
+4 of 1869.
+18
+THE GAZETTE OF INDIA EXTRAORDINARY
+[Part II—
+_________________________________________________________
+_________________________________________________________
+_________________________________________________________
+_______________________________________________________________
+___________________________________________________________
+__________________________________________________________</pre>
+          </div>
+        </details>
+        <details class="chunk-detail">
+          <summary>
+            <span class="chunk-rank">#3</span>
+            <span class="mono chunk-id">c18a688d-8329-4690-92de-a0a7533d70f6</span>
+            <span class="chunk-src">bnss.pdf p.79</span>
+          </summary>
+          <div class="chunk-body">
+            <div class="score-grid">
+              <div><span class="m-name">Dense score</span><span class="mono">0.000</span></div>
+              <div><span class="m-name">Sparse (BM25)</span><span class="mono">11.93</span></div>
+              <div><span class="m-name">RRF score</span><span class="mono">0.0161</span></div>
+              <div><span class="m-name">Reranker score</span><span class="mono">0.000</span></div>
+              <div><span class="m-name">Dense rank</span><span class="mono">-1</span></div>
+              <div><span class="m-name">Sparse rank</span><span class="mono">2</span></div>
+            </div>
+            <div class="claim-field"><b>Parent document:</b> <span class="mono">ecdb5ee5-f40e-436d-99fb-10a8762d6205</span></div>
+            <div class="claim-field"><b>Chunk index in document:</b> <span class="mono">1</span></div>
+            <div class="claim-field"><b>Configured chunk size / overlap:</b> <span class="mono">512 / 50</span></div>
+            <div class="claim-field"><b>Character span:</b> <span class="mono">1794 - 3601 (1807 chars)</span></div>
+            <div class="claim-field"><b>Full chunk text:</b></div>
+            <pre class="evidence-text">243. (1) If, in one series of acts so connected together as to form the same transaction,
+more offences than one are committed by the same person, he may be charged with, and
+tried at one trial for, every such offence.
+(2) When a person charged with one or more offences of criminal breach of trust or
+dishonest misappropriation of property as provided in sub-section (2) of section 235 or in
+sub-section (1) of section 242, is accused of committing, for the purpose of facilitating or
+concealing the commission of that offence or those offences, one or more offences of
+falsification of accounts, he may be charged with, and tried at one trial for, every such
+offence.
+(3) If the acts alleged constitute an offence falling within two or more separate definitions
+of any law in force for the time being by which offences are defined or punished, the person
+accused of them may be charged with, and tried at one trial for, each of such offences.
+(4) If several acts, of which one or more than one would by itself or themselves
+constitute an offence, constitute when combined a different offence, the person accused of
+them may be charged with, and tried at one trial for the offence constituted by such acts
+when combined, and for any offence constituted by any one, or more, of such acts.
+(5)
+Nothing contained in this section shall affect section 9 of
+the Bharatiya Nyaya Sanhita, 2023.
+Illustrations to sub-section (1)
+(a) A rescues B, a person in lawful custody, and in so doing causes grievous hurt to
+C, a constable in whose custody B was. A may be charged with, and convicted of, offences
+under sub-section (2) of section 121 and section 263 of the Bharatiya Nyaya Sanhita, 2023.
+(b) A commits house-breaking by day with intent to commit rape, and commits, in the
+house so entered, rape with B&#x27;s wife.</pre>
+          </div>
+        </details>
+  </section>
+
+  <section>
+    <div class="section-title">X-RAG Stage Attribution</div>
+    <div class="stage-strip">
+      
+        <div class="stage ">
+          <div class="stage-name">CORPUS</div>
+          <div class="stage-status">PASS</div>
+          <div class="stage-obs">Corpus contains sufficient relevant content, evidenced by at least one supported claim.</div>
+          <div class="stage-conf">confidence 0.9</div>
+          
+        </div>
+        <div class="stage ">
+          <div class="stage-name">RETRIEVER</div>
+          <div class="stage-status">PASS</div>
+          <div class="stage-obs">At least one retrieved chunk provides supporting evidence for a verified claim.</div>
+          <div class="stage-conf">confidence 0.95</div>
+          <div class="stage-efficiency">Efficiency: 1/3 chunks used (33%)</div>
+        </div>
+        <div class="stage unknown">
+          <div class="stage-name">CHUNKING</div>
+          <div class="stage-status">UNKNOWN</div>
+          <div class="stage-obs">Deterministic chunk-boundary evidence is currently unobservable.</div>
+          <div class="stage-conf">confidence 1.0</div>
+          
+        </div>
+        <div class="stage ">
+          <div class="stage-name">GENERATOR</div>
+          <div class="stage-status">PASS</div>
+          <div class="stage-obs">All generated claims are fully supported by evidence.</div>
+          <div class="stage-conf">confidence 0.95</div>
+          
+        </div>
+        <div class="stage ">
+          <div class="stage-name">GROUNDING</div>
+          <div class="stage-status">PASS</div>
+          <div class="stage-obs">No claims are contradicted by retrieved evidence.</div>
+          <div class="stage-conf">confidence 0.9</div>
+          
+        </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">Root Cause Reasoning Chain</div>
+    <ol class='reasoning-chain'><li>Starting root cause analysis for trace 9c59becd-e338-473c-9dcd-5f828d8d779b.</li><li>Assumption Passed at CORPUS. Moving to next stage.</li><li>Assumption Passed at RETRIEVER. Moving to next stage.</li><li>Skipping CHUNKING: State is UNKNOWN. Insufficient evidence.</li><li>Assumption Passed at GENERATOR. Moving to next stage.</li><li>Assumption Passed at GROUNDING. Moving to next stage.</li><li>No failures detected. Pipeline is healthy or evidence is purely UNKNOWN.</li></ol>
+    <div class="claim-field" style="margin-top: 10px;"><b>Diagnosis confidence:</b> <span class="mono">0.930</span></div>
+  </section>
+
+  <section>
+    <div class="section-title">Corrective Actions</div>
+    
+        <div class="action-card">
+          <div class="action-title"><span class="claim-status" style="margin-right:8px;">[INFORMATIONAL]</span>Review Retrieval Top-K / Reranker Cutoff</div>
+          <div class="action-desc">Retrieval efficiency is low (33%); consider reducing top-k or tightening the reranker score cutoff.</div>
+          <div class='claim-field muted' style='margin-top:6px;'>1/3 retrieved chunks were used as supporting evidence for any verified claim.</div>
+        </div>
+  </section>
+
+  <section>
+    <div class="section-title">Answer Correctness (Claim Recall)</div>
+    
+    <div class="summary-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 14px;">
+      <div class="summary-tile"><div class="tile-label">Claim Recall</div><div class="tile-val mono">0.200</div></div>
+      <div class="summary-tile"><div class="tile-label">Gold Claims Recalled</div><div class="tile-val mono">1 / 5</div></div>
+    </div>
+    <div class="claim-field"><b>Gold answer used:</b></div>
+    <pre class="evidence-text">(i) Following a woman and contacting or attempting to contact her to foster personal interaction repeatedly despite a clear indication of her disinterest, or (ii) monitoring her use of the internet, e-mail, or any other form of electronic communication.</pre>
+    
+        <details class="claim-detail">
+          <summary>
+            <span class="dot good"></span>
+            <span class="claim-status good">SUPPORTED</span>
+            <span class="claim-summary-text">A woman has indicated disinterest in personal interaction.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Confidence:</b> <span class="mono">0.954</span></div>
+            <div class="claim-field"><b>Best-matching sentence in generated answer:</b></div>
+            <pre class="evidence-text">The two types of conduct that constitute the offence of &#x27;stalking&#x27; under BNS section 78 are: (i) following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman, and (ii) monitoring the use by a woman of the internet, e-mail or any other form of electronic communication [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484].</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot warn"></span>
+            <span class="claim-status warn">NOT_VERIFIABLE</span>
+            <span class="claim-summary-text">A person is contacting or attempting to contact a woman repeatedly.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Confidence:</b> <span class="mono">0.257</span></div>
+            <div class="claim-field"><b>Best-matching sentence in generated answer:</b></div>
+            <pre class="evidence-text">The two types of conduct that constitute the offence of &#x27;stalking&#x27; under BNS section 78 are: (i) following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman, and (ii) monitoring the use by a woman of the internet, e-mail or any other form of electronic communication [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484].</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot warn"></span>
+            <span class="claim-status warn">NOT_VERIFIABLE</span>
+            <span class="claim-summary-text">A person is monitoring a woman&#x27;s use of the internet.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Confidence:</b> <span class="mono">0.051</span></div>
+            <div class="claim-field"><b>Best-matching sentence in generated answer:</b></div>
+            <pre class="evidence-text">The two types of conduct that constitute the offence of &#x27;stalking&#x27; under BNS section 78 are: (i) following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman, and (ii) monitoring the use by a woman of the internet, e-mail or any other form of electronic communication [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484].</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot warn"></span>
+            <span class="claim-status warn">NOT_VERIFIABLE</span>
+            <span class="claim-summary-text">A person is monitoring a woman&#x27;s use of email.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Confidence:</b> <span class="mono">0.043</span></div>
+            <div class="claim-field"><b>Best-matching sentence in generated answer:</b></div>
+            <pre class="evidence-text">The two types of conduct that constitute the offence of &#x27;stalking&#x27; under BNS section 78 are: (i) following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman, and (ii) monitoring the use by a woman of the internet, e-mail or any other form of electronic communication [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484].</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot warn"></span>
+            <span class="claim-status warn">NOT_VERIFIABLE</span>
+            <span class="claim-summary-text">A person is monitoring a woman&#x27;s use of electronic communication.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Confidence:</b> <span class="mono">0.065</span></div>
+            <div class="claim-field"><b>Best-matching sentence in generated answer:</b></div>
+            <pre class="evidence-text">The two types of conduct that constitute the offence of &#x27;stalking&#x27; under BNS section 78 are: (i) following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman, and (ii) monitoring the use by a woman of the internet, e-mail or any other form of electronic communication [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484].</pre>
+          </div>
+        </details>
+    
+  </section>
+
+  <section>
+    <div class="section-title">Cross-Framework Comparison</div>
+    <div class="scroll-x">
+      
+    <div class="fw-grid">
+      <div class="fw-card xrag">
+        <div class="fw-name">X-RAG<span class="tag">this project</span></div>
+        <div class="fw-desc">Claim-level NLI verification + root-cause attribution to a specific pipeline stage.</div>
+        <div class="metric-list">
+          <div class="metric-row"><span class="m-name">Avg. entailment</span><span class="m-val hi mono">0.595</span></div>
+          <div class="metric-row"><span class="m-name">Primary cause</span><span class="m-val mono">UNKNOWN</span></div>
+        </div>
+      </div>
+      <div class="fw-card ragas">
+        <div class="fw-name">RAGAS<span class="tag">real ragas==0.2.15</span></div>
+        <div class="fw-desc">LLM-judged faithfulness, relevancy, and context quality. No stage attribution.</div>
+        <div class="metric-list">
+          <div class="metric-row"><span class="m-name">Faithfulness</span><span class="m-val hi mono">1.000</span></div>
+          <div class="metric-row"><span class="m-name">Answer relevancy</span><span class="m-val hi mono">0.988</span></div>
+          <div class="metric-row"><span class="m-name">Context precision</span><span class="m-val hi mono">1.000</span></div>
+          <div class="metric-row"><span class="m-name">Context recall</span><span class="m-val hi mono">1.000</span></div>
+          <div class="metric-row"><span class="m-name">Answer correctness</span><span class="m-val mid mono">0.615</span></div>
+        </div>
+      </div>
+      <div class="fw-card">
+        <div class="fw-name">RAGChecker<span class="tag">retriever vs. generator</span></div>
+        <div class="fw-desc">Claim-level precision/recall against the gold answer.</div>
+        <div class="metric-list">
+          <div class="metric-row"><span class="m-name">Precision</span><span class="m-val hi mono">0.750</span></div>
+          <div class="metric-row"><span class="m-name">Recall</span><span class="m-val hi mono">0.857</span></div>
+          <div class="metric-row"><span class="m-name">F1</span><span class="m-val hi mono">0.800</span></div>
+          <div class="metric-row"><span class="m-name">Faithfulness</span><span class="m-val hi mono">0.750</span></div>
+          <div class="metric-row"><span class="m-name">Hallucination</span><span class="m-val mid mono">0.250</span></div>
+        </div>
+      </div>
+      <div class="fw-card">
+        <div class="fw-name">ARES<span class="tag">ues_idp judge</span></div>
+        <div class="fw-desc">Per-document LLM relevance and faithfulness judgments.</div>
+        <div class="metric-list">
+          <div class="metric-row"><span class="m-name">Context relevance</span><span class="m-val mid mono">0.333</span></div>
+          <div class="metric-row"><span class="m-name">Answer relevance</span><span class="m-val mid mono">0.333</span></div>
+          <div class="metric-row"><span class="m-name">Answer faithfulness</span><span class="m-val mid mono">0.333</span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>X-RAG Diagnostic Framework</span>
+    <span>Trace 9c59becd-e338-473c-9dcd-5f828d8d779b -- generated from a live run, not simulated data</span>
+  </footer>
+
+</div>

@@ -1,0 +1,96 @@
+{
+    "framework_metadata": {
+        "trace_id": "bc7a2fc3-da4b-449d-b46f-3969eff46911",
+        "framework_name": "X-RAG Diagnostic Framework",
+        "framework_version": "1.0",
+        "analysis_timestamp": "2026-07-18T16:09:55.143832Z",
+        "metadata": {}
+    },
+    "executive_summary": {
+        "question": "Under what circumstances does the right of private defence of the body NOT extend to voluntarily causing the assailant's death?",
+        "generated_answer": "The right of private defence of the body does not extend to the voluntary causing of death to the assailant if the offence is not of the descriptions specified in section 38. Specifically, if the offence is not an assault that may reasonably cause the apprehension of death or grievous hurt, the right of private defence of the body does not extend to causing death. [Chunk-ID: d3d93d06-b511-4735-9b84-6085daecad6e]",
+        "overall_health_score": 0.0,
+        "primary_issue": "UNKNOWN",
+        "supported_claims": 0,
+        "total_claims": 0,
+        "number_of_corrective_actions": 0,
+        "summary": "Analysis completed."
+    },
+    "pipeline_overview": {
+        "pipeline_stages": [
+            {
+                "stage": "CORPUS",
+                "status": "UNKNOWN",
+                "observation": "Corpus relevance is inconclusive.",
+                "confidence": "0.5"
+            },
+            {
+                "stage": "RETRIEVER",
+                "status": "UNKNOWN",
+                "observation": "Retrieval evidence does not definitively confirm or refute pipeline success.",
+                "confidence": "0.5"
+            },
+            {
+                "stage": "CHUNKING",
+                "status": "UNKNOWN",
+                "observation": "Deterministic chunk-boundary evidence is currently unobservable.",
+                "confidence": "1.0"
+            },
+            {
+                "stage": "GENERATOR",
+                "status": "PASS",
+                "observation": "All generated claims are fully supported by evidence.",
+                "confidence": "0.95"
+            },
+            {
+                "stage": "GROUNDING",
+                "status": "UNKNOWN",
+                "observation": "No claims were available to assess grounding.",
+                "confidence": "0.5"
+            }
+        ]
+    },
+    "evaluation_metrics": {
+        "retrieved_chunks": 5,
+        "verified_claims": 0,
+        "supported_claims": 0,
+        "partially_supported_claims": 0,
+        "unsupported_claims": 0,
+        "contradicted_claims": 0,
+        "grounding_score": 0.0,
+        "evidence_coverage": 0.0,
+        "average_entailment": 0.0,
+        "retrieval_latency_ms": 6133.162260055542,
+        "generation_latency_ms": 1843.5907363891602,
+        "verification_latency_ms": 0.48089027404785156
+    },
+    "root_cause_analysis": {
+        "primary_cause": "UNKNOWN",
+        "secondary_effects": [],
+        "reasoning_chain": [
+            "Starting root cause analysis for trace bc7a2fc3-da4b-449d-b46f-3969eff46911.",
+            "Skipping CORPUS: State is UNKNOWN. Insufficient evidence.",
+            "Skipping RETRIEVER: State is UNKNOWN. Insufficient evidence.",
+            "Skipping CHUNKING: State is UNKNOWN. Insufficient evidence.",
+            "Assumption Passed at GENERATOR. Moving to next stage.",
+            "Skipping GROUNDING: State is UNKNOWN. Insufficient evidence.",
+            "No failures detected. Pipeline is healthy or evidence is purely UNKNOWN."
+        ],
+        "diagnosis_confidence": 0.95
+    },
+    "overall_assessment": {
+        "major_strength": "N/A",
+        "major_weakness": "UNKNOWN",
+        "next_priority": "Monitor pipeline",
+        "overall_recommendation": "Requires architectural adjustments."
+    },
+    "evidence_analysis": [],
+    "corrective_actions": [],
+    "ragas_metrics": null,
+    "artifact_version": "1.0",
+    "analysis_status": "COMPLETED",
+    "created_at": "2026-07-18T16:09:55.144923Z",
+    "metadata": {
+        "missing_artifacts": []
+    }
+}

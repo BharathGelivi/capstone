@@ -1,0 +1,53 @@
+{
+    "trace_id": "eede0799-8f8f-4d3a-b2a4-42fa2eb5a985",
+    "claims": [
+        {
+            "claim_id": "eede0799-8f8f-4d3a-b2a4-42fa2eb5a985_C001",
+            "trace_id": "eede0799-8f8f-4d3a-b2a4-42fa2eb5a985",
+            "claim_text": "The punishment for murder is death or imprisonment for life.",
+            "source_sentence": "",
+            "sentence_id": "S001",
+            "claim_index": 0,
+            "character_start": 36,
+            "character_end": 96,
+            "normalized_text": null,
+            "claim_type": null,
+            "verification_complexity": null,
+            "claim_hash": null,
+            "metadata": {}
+        },
+        {
+            "claim_id": "eede0799-8f8f-4d3a-b2a4-42fa2eb5a985_C002",
+            "trace_id": "eede0799-8f8f-4d3a-b2a4-42fa2eb5a985",
+            "claim_text": "Imprisonment for life means the remainder of the person's natural life.",
+            "source_sentence": "",
+            "sentence_id": "S002",
+            "claim_index": 1,
+            "character_start": 77,
+            "character_end": 148,
+            "normalized_text": null,
+            "claim_type": null,
+            "verification_complexity": null,
+            "claim_hash": null,
+            "metadata": {}
+        },
+        {
+            "claim_id": "eede0799-8f8f-4d3a-b2a4-42fa2eb5a985_C003",
+            "trace_id": "eede0799-8f8f-4d3a-b2a4-42fa2eb5a985",
+            "claim_text": "This information is detailed in Chunk-ID [63b53cdc-7519-44a9-b89f-c58baebf570b] under section 103(1).",
+            "source_sentence": "",
+            "sentence_id": "S003",
+            "claim_index": 2,
+            "character_start": 140,
+            "character_end": 241,
+            "normalized_text": null,
+            "claim_type": null,
+            "verification_complexity": null,
+            "claim_hash": null,
+            "metadata": {}
+        }
+    ],
+    "total_claims": 3,
+    "created_at": "2026-07-18T04:44:50.017794Z",
+    "metadata": {}
+}

@@ -1,0 +1,38 @@
+{
+    "trace_id": "772fa9e6-922e-46fe-9cab-aca89401dd46",
+    "claims": [
+        {
+            "claim_id": "772fa9e6-922e-46fe-9cab-aca89401dd46_C001",
+            "trace_id": "772fa9e6-922e-46fe-9cab-aca89401dd46",
+            "claim_text": "Whoever commits murder shall be punished with death or imprisonment for life.",
+            "source_sentence": "",
+            "sentence_id": "S001",
+            "claim_index": 0,
+            "character_start": 133,
+            "character_end": 210,
+            "normalized_text": null,
+            "claim_type": null,
+            "verification_complexity": null,
+            "claim_hash": null,
+            "metadata": {}
+        },
+        {
+            "claim_id": "772fa9e6-922e-46fe-9cab-aca89401dd46_C002",
+            "trace_id": "772fa9e6-922e-46fe-9cab-aca89401dd46",
+            "claim_text": "Whoever commits murder shall also be liable to fine.",
+            "source_sentence": "",
+            "sentence_id": "S001",
+            "claim_index": 1,
+            "character_start": 195,
+            "character_end": 247,
+            "normalized_text": null,
+            "claim_type": null,
+            "verification_complexity": null,
+            "claim_hash": null,
+            "metadata": {}
+        }
+    ],
+    "total_claims": 2,
+    "created_at": "2026-07-18T04:41:38.622184Z",
+    "metadata": {}
+}

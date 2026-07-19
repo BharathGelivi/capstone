@@ -1,0 +1,209 @@
+{
+    "framework_metadata": {
+        "trace_id": "8a9de852-a48f-4c38-aebe-e09ae6890f0d",
+        "framework_name": "X-RAG Diagnostic Framework",
+        "framework_version": "1.0",
+        "analysis_timestamp": "2026-07-19T07:55:24.040014Z",
+        "metadata": {}
+    },
+    "executive_summary": {
+        "question": "How does the BNS define 'criminal conspiracy'?",
+        "generated_answer": "Error generating answer: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxv1gwh8e3grmsnsr0zjnfyh` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98329, Requested 3499. Please try again in 26m19.392s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+        "overall_health_score": 0.03571428571428571,
+        "primary_issue": "UNKNOWN",
+        "supported_claims": 0,
+        "total_claims": 14,
+        "number_of_corrective_actions": 0,
+        "summary": "Analysis completed."
+    },
+    "pipeline_overview": {
+        "pipeline_stages": [
+            {
+                "stage": "CORPUS",
+                "status": "PASS",
+                "observation": "Corpus contains sufficient relevant content, evidenced by at least one supported claim.",
+                "confidence": "0.9"
+            },
+            {
+                "stage": "RETRIEVER",
+                "status": "PASS",
+                "observation": "At least one retrieved chunk provides supporting evidence for a verified claim.",
+                "confidence": "0.95"
+            },
+            {
+                "stage": "CHUNKING",
+                "status": "UNKNOWN",
+                "observation": "Deterministic chunk-boundary evidence is currently unobservable.",
+                "confidence": "1.0"
+            },
+            {
+                "stage": "GENERATOR",
+                "status": "PASS",
+                "observation": "All generated claims are fully supported by evidence.",
+                "confidence": "0.95"
+            },
+            {
+                "stage": "GROUNDING",
+                "status": "PASS",
+                "observation": "No claims are contradicted by retrieved evidence.",
+                "confidence": "0.9"
+            }
+        ]
+    },
+    "evaluation_metrics": {
+        "retrieved_chunks": 5,
+        "verified_claims": 14,
+        "supported_claims": 0,
+        "partially_supported_claims": 1,
+        "unsupported_claims": 0,
+        "contradicted_claims": 0,
+        "grounding_score": 0.03571428571428571,
+        "evidence_coverage": 0.4,
+        "average_entailment": 0.13230365395013774,
+        "retrieval_latency_ms": 2242.96498298645,
+        "generation_latency_ms": 120174.3414402008,
+        "verification_latency_ms": 2013649.2776870728
+    },
+    "root_cause_analysis": {
+        "primary_cause": "UNKNOWN",
+        "secondary_effects": [],
+        "reasoning_chain": [
+            "Starting root cause analysis for trace 8a9de852-a48f-4c38-aebe-e09ae6890f0d.",
+            "Assumption Passed at CORPUS. Moving to next stage.",
+            "Assumption Passed at RETRIEVER. Moving to next stage.",
+            "Skipping CHUNKING: State is UNKNOWN. Insufficient evidence.",
+            "Assumption Passed at GENERATOR. Moving to next stage.",
+            "Assumption Passed at GROUNDING. Moving to next stage.",
+            "No failures detected. Pipeline is healthy or evidence is purely UNKNOWN."
+        ],
+        "diagnosis_confidence": 0.93
+    },
+    "overall_assessment": {
+        "major_strength": "N/A",
+        "major_weakness": "UNKNOWN",
+        "next_priority": "Monitor pipeline",
+        "overall_recommendation": "Requires architectural adjustments."
+    },
+    "evidence_analysis": [
+        {
+            "claim_id": "6c35672f-97fa-437f-a9b4-104ad8d15e2c",
+            "claim_text": "Error code: 429",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "a0fbd176-db8c-4fb5-9fe9-59bc97db8bf0",
+            "claim_text": "Error code 429 is for rate limit reached",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "08d7b886-8862-4f6e-ba92-d079233e90ac",
+            "claim_text": "Rate limit reached for model `llama-3.3-70b-versatile`",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "0dcf8684-70bf-4702-84f6-007ba7fc087a",
+            "claim_text": "Model is `llama-3.3-70b-versatile`",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "3516258d-5c79-4f0e-8999-568549e65047",
+            "claim_text": "Organization is `org_01kxv1gwh8e3grmsnsr0zjnfyh`",
+            "verification_status": "PARTIALLY_SUPPORTED",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "f7570a9b-9397-4730-832c-1ed0ed4da760",
+            "claim_text": "Service tier is `on_demand`",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "e43a5895-17fd-4e48-86b7-25469d5e2449",
+            "claim_text": "Tokens per day (TPD) limit is 100000",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "Explanation 1.\u2014A person who, by wilful misrepresentation, or by wilful concealment\nof a material fact which he is bound to disclose, voluntarily causes or procures, or attempts\nto cause or procure, a thing to be done, is said to instigate the doing of that thing."
+        },
+        {
+            "claim_id": "2565378e-5e14-4bf5-9469-bed2c9f1e1e8",
+            "claim_text": "Tokens per day (TPD) used is 98329",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "daf64058-8397-4066-8eaa-e67bef920183",
+            "claim_text": "Tokens per day (TPD) requested is 3499",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "0f0ded96-72ed-4518-8f24-581bc4706638",
+            "claim_text": "Need to try again in 26m19.392s",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "38c5680e-e342-4837-bc52-538615c810d7",
+            "claim_text": "Need to upgrade to Dev Tier",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "Explanation 1.\u2014A person who, by wilful misrepresentation, or by wilful concealment\nof a material fact which he is bound to disclose, voluntarily causes or procures, or attempts\nto cause or procure, a thing to be done, is said to instigate the doing of that thing."
+        },
+        {
+            "claim_id": "642abb83-fcaa-48c3-87a0-4534a6eac215",
+            "claim_text": "Dev Tier can be upgraded at https://console.groq.com/settings/billing",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "ccc1bc8e-2e51-484d-87a2-7020c69dc07c",
+            "claim_text": "Error type is `tokens`",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "5827b990-b669-4dc2-96fd-629c903da94a",
+            "supporting_chunk_rank": 3,
+            "supporting_evidence": "A person abets the doing of a thing, who\u2014\n(a) instigates any person to do that thing; or\n(b) engages with one or more other person or persons in any conspiracy for the\ndoing of that thing, if an act or illegal omission takes place in pursuance of that\nconspiracy, and in order to the doing of that thing; or\n(c) intentionally aids, by any act or illegal omission, the doing of that thing."
+        },
+        {
+            "claim_id": "e5096d04-e930-4074-82f1-bf8e5df3dbad",
+            "claim_text": "Error code is `rate_limit_exceeded`",
+            "verification_status": "NOT_VERIFIABLE",
+            "supporting_chunk_id": "c3698be5-faf4-43cd-9958-b77fa47ebfaa",
+            "supporting_chunk_rank": 2,
+            "supporting_evidence": "A has fabricated false evidence.\n229. (1) Whoever intentionally gives false evidence in any stage of a judicial\nproceeding, or fabricates false evidence for the purpose of being used in any stage of a\njudicial proceeding, shall be punished with imprisonment of either description for a term\nwhich may extend to seven years, and shall also be liable to fine which may extend to ten\nthousand rupees.\n(2) Whoever intentionally gives or fabricates false evidence in any case other than\nthat referred to in sub-section (1), shall be punished with imprisonment of either description\nfor a term which may extend to three years, and shall also be liable to fine which may\nextend to five thousand rupees."
+        }
+    ],
+    "corrective_actions": [],
+    "ragas_metrics": null,
+    "artifact_version": "1.0",
+    "analysis_status": "COMPLETED",
+    "created_at": "2026-07-19T07:55:24.040108Z",
+    "metadata": {
+        "missing_artifacts": []
+    }
+}

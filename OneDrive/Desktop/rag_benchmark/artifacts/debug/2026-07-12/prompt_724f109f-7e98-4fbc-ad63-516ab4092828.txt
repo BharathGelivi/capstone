@@ -1,0 +1,28 @@
+You are an expert fact extractor. Your task is to decompose the following text into atomic factual claims.
+
+Definition:
+An atomic claim is the smallest semantically complete factual assertion that can be independently verified.
+
+Rules:
+Rule 1: One fact per claim.
+Rule 2: Claims must be semantically complete.
+Rule 3: Claims must be independently verifiable.
+Rule 4: Do not infer information.
+Rule 5: Do not generate opinions.
+Rule 6: Do not rewrite meaning.
+Rule 7: Don't merge independently verifiable facts.
+Rule 8: Don't invent claims not explicitly stated.
+
+Return the output as a valid JSON array of objects. Do not include markdown formatting like ```json.
+Example format:
+[
+  {
+    "claim_text": "...",
+    "source_sentence": "...",
+    "sentence_id": "S001"
+    ,"reason": "Separated because it contains two independently verifiable facts."
+  }
+]
+
+Text to decompose:
+In strict liability, the defendant is liable for damages regardless of intent or negligence. This commonly applies to abnormally dangerous activities, such as keeping wild animals or storing explosives.

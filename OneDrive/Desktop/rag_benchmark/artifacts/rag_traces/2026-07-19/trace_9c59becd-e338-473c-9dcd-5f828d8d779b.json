@@ -1,0 +1,85 @@
+{
+    "trace_id": "9c59becd-e338-473c-9dcd-5f828d8d779b",
+    "trace_version": "1.0",
+    "pipeline_version": "1.0",
+    "framework_version": "1.0",
+    "timestamp": "2026-07-19T09:45:09.007684Z",
+    "question": "What two types of conduct constitute the offence of 'stalking' under BNS section 78?",
+    "generated_answer": "The two types of conduct that constitute the offence of 'stalking' under BNS section 78 are: (i) following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman, and (ii) monitoring the use by a woman of the internet, e-mail or any other form of electronic communication [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484].",
+    "prompt_snapshot": "[SYSTEM]: You are a helpful assistant. Read the provided context carefully to answer the user's question.\nIf the context contains the answer, summarize it clearly. If the provided context is completely irrelevant to the question, explicitly state 'I do not have enough information to answer this.'\nDo not hallucinate or use outside knowledge.\nCRITICAL: You must append the specific [Chunk-ID] to every single sentence you generate to explicitly cite your sources.\n\n[USER]: --- Context chunk 1 [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484] ---\nExplanation 2.\u2014Where the victim consents to the capture of the images or any act,\nbut not to their dissemination to third persons and where such image or act is disseminated,\nsuch dissemination shall be considered an offence under this section.\n78. (1) Any man who\u2014\n(i) follows a woman and contacts, or attempts to contact such woman to foster\npersonal interaction repeatedly despite a clear indication of disinterest by such woman; or\n(ii) monitors the use by a woman of the internet, e-mail or any other form of\nelectronic communication,\ncommits the offence of stalking:\nProvided that such conduct shall not amount to stalking if the man who pursued it\nproves that\u2014\n(i) it was pursued for the purpose of preventing or detecting crime and the man\naccused of stalking had been entrusted with the responsibility of prevention and\ndetection of crime by the State; or\n(ii) it was pursued under any law or to comply with any condition or requirement\nimposed by any person under any law; or\n(iii) in the particular circumstances such conduct was reasonable and justified.\n(2) Whoever commits the offence of stalking shall be punished on first conviction with\nimprisonment of either description for a term which may extend to three years, and shall also\nbe liable to fine; and be punished on a second or subsequent conviction, with imprisonment\nof either description for a term which may extend to five years, and shall also be liable to fine.\n79. Whoever, intending to insult the modesty of any woman, utters any words, makes\nany sound or gesture, or exhibits any object in any form, intending that such word or sound\nshall be heard, or that such gesture or object shall be seen, by such woman, or intrudes upon\nthe privacy of such woman, shall be punished with simple imprisonment for a term which may\nextend to three years, and also with fine.\nOf offences relating to marriage\n80.\n\n--- Context chunk 2 [Chunk-ID: 9086bb6b-d946-4100-af0b-8f1bb8868c31] ---\n47. In criminal proceedings the fact that the person accused is of a good character, is\nrelevant.\n48. In a prosecution for an offence under section 64, section 65, section 66,\nsection 67, section 68, section 69, section 70, section 71, section 74, section 75, section 76,\nsection 77 or section 78 of the Bharatiya Nyaya Sanhita, 2023 or for attempt to commit any\nsuch offence, where the question of consent is in issue, evidence of the character of the\nvictim or of such person's previous sexual experience with any person shall not be relevant\non the issue of such consent or the quality of consent.\n49. In criminal proceedings, the fact that the accused has a bad character, is irrelevant,\nunless evidence has been given that he has a good character, in which case it becomes\nrelevant.\nExplanation 1.\u2014This section does not apply to cases in which the bad character of\nany person is itself a fact in issue.\nExplanation 2.\u2014A previous conviction is relevant as evidence of bad character.\nOpinion on\nrelationship,\nwhen relevant.\nGrounds of\nopinion, when\nrelevant.\nIn civil cases\ncharacter to\nprove conduct\nimputed,\nirrelevant.\nIn criminal\ncases previous\ngood character\nrelevant.\nEvidence of\ncharacter or\nprevious sexual\nexperience not\nrelevant in\ncertain cases.\nPrevious bad\ncharacter not\nrelevant,\nexcept in reply.\n4 of 1869.\n18\nTHE GAZETTE OF INDIA EXTRAORDINARY\n[Part II\u2014\n_________________________________________________________\n_________________________________________________________\n_________________________________________________________\n_______________________________________________________________\n___________________________________________________________\n__________________________________________________________\n\n--- Context chunk 3 [Chunk-ID: c18a688d-8329-4690-92de-a0a7533d70f6] ---\n243. (1) If, in one series of acts so connected together as to form the same transaction,\nmore offences than one are committed by the same person, he may be charged with, and\ntried at one trial for, every such offence.\n(2) When a person charged with one or more offences of criminal breach of trust or\ndishonest misappropriation of property as provided in sub-section (2) of section 235 or in\nsub-section (1) of section 242, is accused of committing, for the purpose of facilitating or\nconcealing the commission of that offence or those offences, one or more offences of\nfalsification of accounts, he may be charged with, and tried at one trial for, every such\noffence.\n(3) If the acts alleged constitute an offence falling within two or more separate definitions\nof any law in force for the time being by which offences are defined or punished, the person\naccused of them may be charged with, and tried at one trial for, each of such offences.\n(4) If several acts, of which one or more than one would by itself or themselves\nconstitute an offence, constitute when combined a different offence, the person accused of\nthem may be charged with, and tried at one trial for the offence constituted by such acts\nwhen combined, and for any offence constituted by any one, or more, of such acts.\n(5)\nNothing contained in this section shall affect section 9 of\nthe Bharatiya Nyaya Sanhita, 2023.\nIllustrations to sub-section (1)\n(a) A rescues B, a person in lawful custody, and in so doing causes grievous hurt to\nC, a constable in whose custody B was. A may be charged with, and convicted of, offences\nunder sub-section (2) of section 121 and section 263 of the Bharatiya Nyaya Sanhita, 2023.\n(b) A commits house-breaking by day with intent to commit rape, and commits, in the\nhouse so entered, rape with B's wife.\n\n\nQuestion: What two types of conduct constitute the offence of 'stalking' under BNS section 78?",
+    "prompt_length": 6206,
+    "retrieved_chunk_references": [
+        {
+            "chunk_id": "c4decaec-7514-4b58-baf3-a269b0e3f484",
+            "rank": 1,
+            "similarity_score": 0.6901837587356567,
+            "rrf_score": 0.032266458495966696,
+            "reranker_score": 0.6901837587356567,
+            "dense_score": 0.20101666450500488,
+            "sparse_score": 20.644737778189928,
+            "dense_rank": 3,
+            "sparse_rank": 1,
+            "page_number": "28",
+            "source_file": "bns.pdf",
+            "chunk_index": 0,
+            "parent_document_id": "3efc678a-3a44-4ffd-b44b-c0efd6cdedf9"
+        },
+        {
+            "chunk_id": "9086bb6b-d946-4100-af0b-8f1bb8868c31",
+            "rank": 2,
+            "similarity_score": 0.04070846363902092,
+            "rrf_score": 0.015873015873015872,
+            "reranker_score": 0.04070846363902092,
+            "dense_score": 0.0,
+            "sparse_score": 11.673058254178576,
+            "dense_rank": -1,
+            "sparse_rank": 3,
+            "page_number": "18",
+            "source_file": "bsa.pdf",
+            "chunk_index": 1,
+            "parent_document_id": "2932a605-241f-4134-a597-aa9b409fa1bd"
+        },
+        {
+            "chunk_id": "c18a688d-8329-4690-92de-a0a7533d70f6",
+            "rank": 3,
+            "similarity_score": 0.00011344977974658832,
+            "rrf_score": 0.016129032258064516,
+            "reranker_score": 0.00011344977974658832,
+            "dense_score": 0.0,
+            "sparse_score": 11.927580631501133,
+            "dense_rank": -1,
+            "sparse_rank": 2,
+            "page_number": "79",
+            "source_file": "bnss.pdf",
+            "chunk_index": 1,
+            "parent_document_id": "ecdb5ee5-f40e-436d-99fb-10a8762d6205"
+        }
+    ],
+    "configuration_snapshot": {
+        "embedding_model": "BAAI/bge-small-en-v1.5",
+        "chunk_size": 512,
+        "chunk_overlap": 50,
+        "retrieval_top_k": 5,
+        "reranker_model": "BAAI/bge-reranker-base",
+        "reranker_top_n": 5,
+        "llm_model": "llama-3.3-70b-versatile",
+        "llm_temperature": 0.1,
+        "llm_max_tokens": 1024
+    },
+    "execution_statistics": {
+        "retrieval_time": 0.538144588470459,
+        "generation_time": 0.6544277667999268,
+        "total_pipeline_time": 1.1925723552703857,
+        "pre_rerank_candidate_pool_size": 39,
+        "pre_rerank_min_dense_distance": 0.20101666450500488
+    },
+    "pipeline_stage_status": {
+        "document_loader": "completed",
+        "chunk_engine": "completed",
+        "embedding_engine": "completed",
+        "vector_store": "completed",
+        "retriever": "completed",
+        "generator": "completed"
+    },
+    "diagnostics": null
+}

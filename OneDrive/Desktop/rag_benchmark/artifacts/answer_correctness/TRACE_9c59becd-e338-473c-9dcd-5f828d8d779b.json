@@ -1,0 +1,45 @@
+{
+    "trace_id": "9c59becd-e338-473c-9dcd-5f828d8d779b",
+    "gold_answer": "(i) Following a woman and contacting or attempting to contact her to foster personal interaction repeatedly despite a clear indication of her disinterest, or (ii) monitoring her use of the internet, e-mail, or any other form of electronic communication.",
+    "artifact_version": "1.0",
+    "total_gold_claims": 5,
+    "claim_recall": 0.2,
+    "results": [
+        {
+            "claim_id": "c949ffdc-97a2-45ff-8455-9cdf236a8044",
+            "claim_text": "A woman has indicated disinterest in personal interaction.",
+            "verification_status": "SUPPORTED",
+            "best_matching_sentence": "The two types of conduct that constitute the offence of 'stalking' under BNS section 78 are: (i) following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman, and (ii) monitoring the use by a woman of the internet, e-mail or any other form of electronic communication [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484].",
+            "confidence": 0.953923225402832
+        },
+        {
+            "claim_id": "43baca1a-8c82-4a11-afd7-3e654ef6dfab",
+            "claim_text": "A person is contacting or attempting to contact a woman repeatedly.",
+            "verification_status": "NOT_VERIFIABLE",
+            "best_matching_sentence": "The two types of conduct that constitute the offence of 'stalking' under BNS section 78 are: (i) following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman, and (ii) monitoring the use by a woman of the internet, e-mail or any other form of electronic communication [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484].",
+            "confidence": 0.25650593638420105
+        },
+        {
+            "claim_id": "41c1c66d-51c8-43ef-b4fa-08589a4c698e",
+            "claim_text": "A person is monitoring a woman's use of the internet.",
+            "verification_status": "NOT_VERIFIABLE",
+            "best_matching_sentence": "The two types of conduct that constitute the offence of 'stalking' under BNS section 78 are: (i) following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman, and (ii) monitoring the use by a woman of the internet, e-mail or any other form of electronic communication [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484].",
+            "confidence": 0.05146276578307152
+        },
+        {
+            "claim_id": "de4f5dc3-1091-4093-a89c-787a2e446070",
+            "claim_text": "A person is monitoring a woman's use of email.",
+            "verification_status": "NOT_VERIFIABLE",
+            "best_matching_sentence": "The two types of conduct that constitute the offence of 'stalking' under BNS section 78 are: (i) following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman, and (ii) monitoring the use by a woman of the internet, e-mail or any other form of electronic communication [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484].",
+            "confidence": 0.04304284602403641
+        },
+        {
+            "claim_id": "ee3750e4-210d-4404-bf14-22a820b77bc5",
+            "claim_text": "A person is monitoring a woman's use of electronic communication.",
+            "verification_status": "NOT_VERIFIABLE",
+            "best_matching_sentence": "The two types of conduct that constitute the offence of 'stalking' under BNS section 78 are: (i) following a woman and contacting, or attempting to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman, and (ii) monitoring the use by a woman of the internet, e-mail or any other form of electronic communication [Chunk-ID: c4decaec-7514-4b58-baf3-a269b0e3f484].",
+            "confidence": 0.06512755155563354
+        }
+    ],
+    "created_at": "2026-07-19T09:52:44.596790Z"
+}

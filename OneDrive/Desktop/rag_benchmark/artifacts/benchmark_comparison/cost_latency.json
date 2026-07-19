@@ -1,0 +1,26 @@
+{
+  "xrag": {
+    "n_examples": 10,
+    "mean_retrieval_latency_ms": 3956.5,
+    "mean_generation_latency_ms": 2295.9,
+    "mean_verification_latency_ms": 810334.5,
+    "mean_total_latency_ms": 816586.9
+  },
+  "baselines": {
+    "ragas": {
+      "n_instrumented_examples": 1,
+      "n_total_examples": 10,
+      "mean_latency_ms": 143247.5
+    },
+    "ragchecker": {
+      "n_instrumented_examples": 0,
+      "n_total_examples": 10,
+      "mean_latency_ms": null
+    },
+    "ares": {
+      "n_instrumented_examples": 0,
+      "n_total_examples": 10,
+      "mean_latency_ms": null
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+    "trace_id": "a407284f-d207-41a4-86c9-a04897ef5a47",
+    "gold_answer": "The culpable homicide is of the same description it would have been if the offender had caused the death of the person he originally intended or knew himself likely to kill -- i.e. the intended target's classification transfers to the actual victim.",
+    "artifact_version": "1.0",
+    "total_gold_claims": 4,
+    "claim_recall": 0.5,
+    "results": [
+        {
+            "claim_id": "f5a29a97-2ad1-431a-99e8-f66a244ef12a",
+            "claim_text": "The culpable homicide is of the same description it would have been",
+            "verification_status": "SUPPORTED",
+            "best_matching_sentence": "According to section 102, the culpable homicide committed by the offender is of the description of which it would have been if he had caused the death of the person whose death he intended or knew himself to be likely to cause [Chunk-ID: cb540380-0fc6-40ad-bf08-4db5f0ea2a0a].",
+            "confidence": 0.9915870428085327
+        },
+        {
+            "claim_id": "b717fa4e-2ea2-4eba-b72e-98cd5e191c7b",
+            "claim_text": "the offender had caused the death of the person he originally intended",
+            "verification_status": "NOT_VERIFIABLE",
+            "best_matching_sentence": "This means that the offender's intention or knowledge regarding the original intended victim is used to determine the classification of the culpable homicide, even though the actual victim was different [Chunk-ID: cb540380-0fc6-40ad-bf08-4db5f0ea2a0a].",
+            "confidence": 0.010268432088196278
+        },
+        {
+            "claim_id": "a2842ad5-b707-4bb9-8331-3f4a8329c078",
+            "claim_text": "the offender had caused the death of the person he knew himself likely to kill",
+            "verification_status": "NOT_VERIFIABLE",
+            "best_matching_sentence": "This means that the offender's intention or knowledge regarding the original intended victim is used to determine the classification of the culpable homicide, even though the actual victim was different [Chunk-ID: cb540380-0fc6-40ad-bf08-4db5f0ea2a0a].",
+            "confidence": 0.03170859441161156
+        },
+        {
+            "claim_id": "ab65170f-5aaf-4c8b-a283-ba543d0af287",
+            "claim_text": "the intended target's classification transfers to the actual victim",
+            "verification_status": "SUPPORTED",
+            "best_matching_sentence": "If a person intends to kill one individual but instead unintentionally causes the death of a different person, the resulting culpable homicide is classified as culpable homicide by causing death of person other than person whose death was intended [Chunk-ID: cb540380-0fc6-40ad-bf08-4db5f0ea2a0a].",
+            "confidence": 0.7338334918022156
+        }
+    ],
+    "created_at": "2026-07-19T16:36:38.933985Z"
+}

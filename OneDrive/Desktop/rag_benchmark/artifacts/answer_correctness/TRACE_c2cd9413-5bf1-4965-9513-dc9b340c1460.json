@@ -1,0 +1,24 @@
+{
+    "trace_id": "c2cd9413-5bf1-4965-9513-dc9b340c1460",
+    "gold_answer": "Imprisonment of either description for a term which may extend to ten years, and the offender shall also be liable to fine.",
+    "artifact_version": "1.0",
+    "total_gold_claims": 2,
+    "claim_recall": 1.0,
+    "results": [
+        {
+            "claim_id": "f3bec98a-9377-45ad-b63f-3d464d866a70",
+            "claim_text": "Imprisonment may extend to ten years",
+            "verification_status": "SUPPORTED",
+            "best_matching_sentence": "According to section 69, the punishment for having sexual intercourse with a woman by deceitful means or a false promise of marriage, where it does not amount to rape, is imprisonment of either description for a term which may extend to ten years and shall also be liable to fine [Chunk-ID: a83c2bce-ea76-4859-9604-7f1b9d86d751].",
+            "confidence": 0.9935992956161499
+        },
+        {
+            "claim_id": "6c807f83-4cbb-457d-9d75-c4005b20ed32",
+            "claim_text": "The offender shall be liable to fine",
+            "verification_status": "SUPPORTED",
+            "best_matching_sentence": "According to section 69, the punishment for having sexual intercourse with a woman by deceitful means or a false promise of marriage, where it does not amount to rape, is imprisonment of either description for a term which may extend to ten years and shall also be liable to fine [Chunk-ID: a83c2bce-ea76-4859-9604-7f1b9d86d751].",
+            "confidence": 0.9812389612197876
+        }
+    ],
+    "created_at": "2026-07-19T09:37:24.236494Z"
+}

@@ -1,0 +1,349 @@
+{
+    "trace_id": "2385202c-f539-4844-a507-6a6a63529e39",
+    "total_claims": 7,
+    "supported_claims": 2,
+    "partially_supported_claims": 0,
+    "contradicted_claims": 0,
+    "unsupported_claims": 0,
+    "not_verifiable_claims": 5,
+    "average_entailment_score": 0.3669973218015262,
+    "total_verification_latency_ms": 3997739.2728328705,
+    "results": [
+        {
+            "verification_id": "44f6571c-a572-488f-8e1d-0bc0dacbc954",
+            "trace_id": "2385202c-f539-4844-a507-6a6a63529e39",
+            "claim_id": "245c0974-baef-48aa-89e5-8c5e694efe26",
+            "claim_text": "The sections that punish murder are 110 and 111.",
+            "verification_status": "NOT_VERIFIABLE",
+            "verification_reason": "Evidence is insufficient for conclusive verification.",
+            "confidence": 0.017712298780679703,
+            "best_chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+            "best_chunk_rank": 1,
+            "best_chunk_score": null,
+            "best_sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s7",
+            "evidence_text": "Whoever does any act with such intention or knowledge and under such\ncircumstances that, if he by that act caused death, he would be guilty of culpable homicide\nnot amounting to murder, shall be punished with imprisonment of either description for a\nterm which may extend to three years, or with fine, or with both; and, if hurt is caused to any\nperson by such act, shall be punished with imprisonment of either description for a term\nwhich may extend to seven years, or with fine, or with both.",
+            "entailment_score": 0.017712298780679703,
+            "contradiction_score": 0.0,
+            "neutral_score": 0.0,
+            "top_evidence": [
+                {
+                    "sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s7",
+                    "chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+                    "chunk_rank": 1,
+                    "text": "Whoever does any act with such intention or knowledge and under such\ncircumstances that, if he by that act caused death, he would be guilty of culpable homicide\nnot amounting to murder, shall be punished with imprisonment of either description for a\nterm which may extend to three years, or with fine, or with both; and, if hurt is caused to any\nperson by such act, shall be punished with imprisonment of either description for a term\nwhich may extend to seven years, or with fine, or with both.",
+                    "entailment_score": 0.017712298780679703,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d_s8",
+                    "chunk_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d",
+                    "chunk_rank": 3,
+                    "text": "B, having ill-will towards Z and intending\nSec. 1]\nTHE GAZETTE OF INDIA EXTRAORDINARY\n7\n____________________________________________________________\n_____________________________________________________________\n____________________________________________________________\n___________________________________________________________\n________________________________________________________\n_____________________________________________________________",
+                    "entailment_score": 0.015087132342159748,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "035df602-d632-4bf6-96c1-c931c9a9fc3e_s9",
+                    "chunk_id": "035df602-d632-4bf6-96c1-c931c9a9fc3e",
+                    "chunk_rank": 2,
+                    "text": "Abettor.",
+                    "entailment_score": 0.009055264294147491,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                }
+            ],
+            "verification_latency_ms": 227841.79496765137,
+            "verification_model": "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
+        },
+        {
+            "verification_id": "f3752b85-d06a-4e40-bebd-ae91879d071c",
+            "trace_id": "2385202c-f539-4844-a507-6a6a63529e39",
+            "claim_id": "411aff2c-474e-4a46-963f-794e9e2c8e77",
+            "claim_text": "Section 110 states that whoever does any act with the intention or knowledge that would make them guilty of culpable homicide not amounting to murder, shall be punished.",
+            "verification_status": "NOT_VERIFIABLE",
+            "verification_reason": "Evidence is insufficient for conclusive verification.",
+            "confidence": 0.08701921254396439,
+            "best_chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+            "best_chunk_rank": 1,
+            "best_chunk_score": null,
+            "best_sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s7",
+            "evidence_text": "Whoever does any act with such intention or knowledge and under such\ncircumstances that, if he by that act caused death, he would be guilty of culpable homicide\nnot amounting to murder, shall be punished with imprisonment of either description for a\nterm which may extend to three years, or with fine, or with both; and, if hurt is caused to any\nperson by such act, shall be punished with imprisonment of either description for a term\nwhich may extend to seven years, or with fine, or with both.",
+            "entailment_score": 0.08701921254396439,
+            "contradiction_score": 0.0,
+            "neutral_score": 0.0,
+            "top_evidence": [
+                {
+                    "sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s7",
+                    "chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+                    "chunk_rank": 1,
+                    "text": "Whoever does any act with such intention or knowledge and under such\ncircumstances that, if he by that act caused death, he would be guilty of culpable homicide\nnot amounting to murder, shall be punished with imprisonment of either description for a\nterm which may extend to three years, or with fine, or with both; and, if hurt is caused to any\nperson by such act, shall be punished with imprisonment of either description for a term\nwhich may extend to seven years, or with fine, or with both.",
+                    "entailment_score": 0.08701921254396439,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d_s8",
+                    "chunk_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d",
+                    "chunk_rank": 3,
+                    "text": "B, having ill-will towards Z and intending\nSec. 1]\nTHE GAZETTE OF INDIA EXTRAORDINARY\n7\n____________________________________________________________\n_____________________________________________________________\n____________________________________________________________\n___________________________________________________________\n________________________________________________________\n_____________________________________________________________",
+                    "entailment_score": 0.08479540795087814,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "035df602-d632-4bf6-96c1-c931c9a9fc3e_s10",
+                    "chunk_id": "035df602-d632-4bf6-96c1-c931c9a9fc3e",
+                    "chunk_rank": 2,
+                    "text": "Sec. 1]\nTHE GAZETTE OF INDIA EXTRAORDINARY\n17\n____________________________________________________________\n_____________________________________________________________\n____________________________________________________________\n___________________________________________________________\n________________________________________________________\n_____________________________________________________________",
+                    "entailment_score": 0.03358950465917587,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                }
+            ],
+            "verification_latency_ms": 469514.6448612213,
+            "verification_model": "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
+        },
+        {
+            "verification_id": "1c379ce2-5778-4e93-b61a-5c08a40c173c",
+            "trace_id": "2385202c-f539-4844-a507-6a6a63529e39",
+            "claim_id": "6ac7b142-0ad1-40e9-bd82-099b4cd7f388",
+            "claim_text": "If hurt is caused, the punishment is increased.",
+            "verification_status": "SUPPORTED",
+            "verification_reason": "Evidence directly supports the claim (Score: 0.85).",
+            "confidence": 0.8534858822822571,
+            "best_chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+            "best_chunk_rank": 1,
+            "best_chunk_score": null,
+            "best_sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s7",
+            "evidence_text": "Whoever does any act with such intention or knowledge and under such\ncircumstances that, if he by that act caused death, he would be guilty of culpable homicide\nnot amounting to murder, shall be punished with imprisonment of either description for a\nterm which may extend to three years, or with fine, or with both; and, if hurt is caused to any\nperson by such act, shall be punished with imprisonment of either description for a term\nwhich may extend to seven years, or with fine, or with both.",
+            "entailment_score": 0.8534858822822571,
+            "contradiction_score": 0.0,
+            "neutral_score": 0.0,
+            "top_evidence": [
+                {
+                    "sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s7",
+                    "chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+                    "chunk_rank": 1,
+                    "text": "Whoever does any act with such intention or knowledge and under such\ncircumstances that, if he by that act caused death, he would be guilty of culpable homicide\nnot amounting to murder, shall be punished with imprisonment of either description for a\nterm which may extend to three years, or with fine, or with both; and, if hurt is caused to any\nperson by such act, shall be punished with imprisonment of either description for a term\nwhich may extend to seven years, or with fine, or with both.",
+                    "entailment_score": 0.8534858822822571,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s0",
+                    "chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+                    "chunk_rank": 1,
+                    "text": "(2) When any person offending under sub-section (1) is under sentence of imprisonment\nfor life, he may, if hurt is caused, be punished with death or with imprisonment for life, which\nshall mean the remainder of that person\u2019s natural life.",
+                    "entailment_score": 0.628264844417572,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "69d10467-b33e-47cd-9b2a-e45515b51f5a_s2",
+                    "chunk_id": "69d10467-b33e-47cd-9b2a-e45515b51f5a",
+                    "chunk_rank": 4,
+                    "text": "Akills Z.",
+                    "entailment_score": 0.049085184931755066,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                }
+            ],
+            "verification_latency_ms": 439904.4756889343,
+            "verification_model": "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
+        },
+        {
+            "verification_id": "ee7a7882-9019-4594-95c6-821d7f5d11ac",
+            "trace_id": "2385202c-f539-4844-a507-6a6a63529e39",
+            "claim_id": "7581e8f2-725f-4f64-8732-89f7c8a65698",
+            "claim_text": "Section 111 covers the abetment of such acts.",
+            "verification_status": "NOT_VERIFIABLE",
+            "verification_reason": "Evidence is insufficient for conclusive verification.",
+            "confidence": 0.03317983075976372,
+            "best_chunk_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d",
+            "best_chunk_rank": 3,
+            "best_chunk_score": null,
+            "best_sentence_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d_s5",
+            "evidence_text": "B is guilty of murder,\nbut, as A did not cooperate with B.A is guilty only of an attempt to commit murder.\n(9) Where several persons are engaged or concerned in the commission of a criminal\nact, they may be guilty of different offences by means of that act.",
+            "entailment_score": 0.03317983075976372,
+            "contradiction_score": 0.0,
+            "neutral_score": 0.0,
+            "top_evidence": [
+                {
+                    "sentence_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d_s5",
+                    "chunk_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d",
+                    "chunk_rank": 3,
+                    "text": "B is guilty of murder,\nbut, as A did not cooperate with B.A is guilty only of an attempt to commit murder.\n(9) Where several persons are engaged or concerned in the commission of a criminal\nact, they may be guilty of different offences by means of that act.",
+                    "entailment_score": 0.03317983075976372,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d_s2",
+                    "chunk_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d",
+                    "chunk_rank": 3,
+                    "text": "Both A and B are guilty of the murder\nof Z.\n(c)A, a jailor, has the charge of Z, a prisoner.A, intending to cause Z\u2019s death, illegally\nomits to supply Z with food; in consequence of which Z is much reduced in strength, but the\nstarvation is not sufficient to cause his death.A is dismissed from his office, and B succeeds\nhim.",
+                    "entailment_score": 0.03158888220787048,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d_s0",
+                    "chunk_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d",
+                    "chunk_rank": 3,
+                    "text": "Here A and B\nintentionally cooperate in the commission of murder and as each of them does an act by\nwhich the death is caused, they are both guilty of the offence though their acts are separate.\n(b) A and B are joint jailors, and as such have the charge of Z, a prisoner, alternatively\nfor six hours at a time.Aand B, intending to cause Z\u2019s death, knowingly cooperate in causing\nthat effect by illegally omitting, each during the time of his attendance, to furnish Z with food\nsupplied to them for that purpose.",
+                    "entailment_score": 0.031232351437211037,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                }
+            ],
+            "verification_latency_ms": 411764.96386528015,
+            "verification_model": "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
+        },
+        {
+            "verification_id": "fb532fa8-894d-4acd-90a2-b0cff154bc0b",
+            "trace_id": "2385202c-f539-4844-a507-6a6a63529e39",
+            "claim_id": "e85a6a11-a51f-42e4-97a0-bfee41fe4650",
+            "claim_text": "Murder without intent refers to situations where the act committed would normally result in culpable homicide not amounting to murder, but without the specific intent to kill.",
+            "verification_status": "NOT_VERIFIABLE",
+            "verification_reason": "Evidence is insufficient for conclusive verification.",
+            "confidence": 0.3600670099258423,
+            "best_chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+            "best_chunk_rank": 1,
+            "best_chunk_score": null,
+            "best_sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s9",
+            "evidence_text": "A, on grave and sudden provocation, fires a pistol at Z, under such circumstances that\nif he thereby caused death, he would be guilty of culpable homicide not amounting to\nmurder.",
+            "entailment_score": 0.3600670099258423,
+            "contradiction_score": 0.0,
+            "neutral_score": 0.0,
+            "top_evidence": [
+                {
+                    "sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s9",
+                    "chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+                    "chunk_rank": 1,
+                    "text": "A, on grave and sudden provocation, fires a pistol at Z, under such circumstances that\nif he thereby caused death, he would be guilty of culpable homicide not amounting to\nmurder.",
+                    "entailment_score": 0.3600670099258423,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s7",
+                    "chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+                    "chunk_rank": 1,
+                    "text": "Whoever does any act with such intention or knowledge and under such\ncircumstances that, if he by that act caused death, he would be guilty of culpable homicide\nnot amounting to murder, shall be punished with imprisonment of either description for a\nterm which may extend to three years, or with fine, or with both; and, if hurt is caused to any\nperson by such act, shall be punished with imprisonment of either description for a term\nwhich may extend to seven years, or with fine, or with both.",
+                    "entailment_score": 0.17695587873458862,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d_s7",
+                    "chunk_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d",
+                    "chunk_rank": 3,
+                    "text": "A attacks Z under such circumstances of grave provocation that his killing of Z would\nbe only culpable homicide not amounting to murder.",
+                    "entailment_score": 0.0937194749712944,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                }
+            ],
+            "verification_latency_ms": 497028.9089679718,
+            "verification_model": "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
+        },
+        {
+            "verification_id": "fe79f5ed-9e5b-4680-8e78-acdf752e1d78",
+            "trace_id": "2385202c-f539-4844-a507-6a6a63529e39",
+            "claim_id": "7c863dbf-299c-4215-bfaa-7ba1d84f644c",
+            "claim_text": "Illustration (a) of Section 110 describes a situation where A fires a pistol at Z under provocation that would make A guilty of culpable homicide not amounting to murder if death resulted, but A does not have the specific intent to kill.",
+            "verification_status": "NOT_VERIFIABLE",
+            "verification_reason": "Evidence is insufficient for conclusive verification.",
+            "confidence": 0.32332664728164673,
+            "best_chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+            "best_chunk_rank": 1,
+            "best_chunk_score": null,
+            "best_sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s4",
+            "evidence_text": "A has not yet committed the\noffence.Afires the gun at Z.",
+            "entailment_score": 0.32332664728164673,
+            "contradiction_score": 0.0,
+            "neutral_score": 0.0,
+            "top_evidence": [
+                {
+                    "sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s4",
+                    "chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+                    "chunk_rank": 1,
+                    "text": "A has not yet committed the\noffence.Afires the gun at Z.",
+                    "entailment_score": 0.32332664728164673,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d_s8",
+                    "chunk_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d",
+                    "chunk_rank": 3,
+                    "text": "B, having ill-will towards Z and intending\nSec. 1]\nTHE GAZETTE OF INDIA EXTRAORDINARY\n7\n____________________________________________________________\n_____________________________________________________________\n____________________________________________________________\n___________________________________________________________\n________________________________________________________\n_____________________________________________________________",
+                    "entailment_score": 0.13741667568683624,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s9",
+                    "chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+                    "chunk_rank": 1,
+                    "text": "A, on grave and sudden provocation, fires a pistol at Z, under such circumstances that\nif he thereby caused death, he would be guilty of culpable homicide not amounting to\nmurder.",
+                    "entailment_score": 0.10762491822242737,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                }
+            ],
+            "verification_latency_ms": 746293.4195995331,
+            "verification_model": "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
+        },
+        {
+            "verification_id": "0eea7b58-e02a-4b0e-aeb4-66e56a3621d5",
+            "trace_id": "2385202c-f539-4844-a507-6a6a63529e39",
+            "claim_id": "8b017bc8-765b-4320-94f8-f2c01d241ad6",
+            "claim_text": "In such cases, the act still constitutes murder due to the circumstances and intent, even if death was not the specific aim.",
+            "verification_status": "SUPPORTED",
+            "verification_reason": "Evidence directly supports the claim (Score: 0.89).",
+            "confidence": 0.8941903710365295,
+            "best_chunk_id": "69d10467-b33e-47cd-9b2a-e45515b51f5a",
+            "best_chunk_rank": 4,
+            "best_chunk_score": null,
+            "best_sentence_id": "69d10467-b33e-47cd-9b2a-e45515b51f5a_s1",
+            "evidence_text": "This is murder, in as much as the provocation was not given by the child, and\nthe death of the child was not caused by accident or misfortune in doing an act caused by the\nprovocation.\n(b)Y gives grave and sudden provocation to A.A, on this provocation, fires a pistol at\nY, neither intending nor knowing himself to be likely to kill Z, who is near him, but out of sight.",
+            "entailment_score": 0.8941903710365295,
+            "contradiction_score": 0.0,
+            "neutral_score": 0.0,
+            "top_evidence": [
+                {
+                    "sentence_id": "69d10467-b33e-47cd-9b2a-e45515b51f5a_s1",
+                    "chunk_id": "69d10467-b33e-47cd-9b2a-e45515b51f5a",
+                    "chunk_rank": 4,
+                    "text": "This is murder, in as much as the provocation was not given by the child, and\nthe death of the child was not caused by accident or misfortune in doing an act caused by the\nprovocation.\n(b)Y gives grave and sudden provocation to A.A, on this provocation, fires a pistol at\nY, neither intending nor knowing himself to be likely to kill Z, who is near him, but out of sight.",
+                    "entailment_score": 0.8941903710365295,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s3",
+                    "chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+                    "chunk_rank": 1,
+                    "text": "A has committed the offence defined by this section, though the death of the\nchild does not ensue.\n(c) A, intending to murder Z, buys a gun and loads it.",
+                    "entailment_score": 0.7214488983154297,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d_s2",
+                    "chunk_id": "57a3b27a-33ae-44b5-aaa3-4d381947cb6d",
+                    "chunk_rank": 3,
+                    "text": "Both A and B are guilty of the murder\nof Z.\n(c)A, a jailor, has the charge of Z, a prisoner.A, intending to cause Z\u2019s death, illegally\nomits to supply Z with food; in consequence of which Z is much reduced in strength, but the\nstarvation is not sufficient to cause his death.A is dismissed from his office, and B succeeds\nhim.",
+                    "entailment_score": 0.530632734298706,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                }
+            ],
+            "verification_latency_ms": 1205379.8570632935,
+            "verification_model": "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
+        }
+    ]
+}

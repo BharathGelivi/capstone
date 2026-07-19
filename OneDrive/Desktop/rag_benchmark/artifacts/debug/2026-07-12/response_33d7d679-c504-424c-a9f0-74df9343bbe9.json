@@ -1,0 +1,20 @@
+[
+  {
+    "claim_text": "A contract with a minor is voidable at the minor's discretion.",
+    "source_sentence": "Generally, a contract with a minor is voidable at the minor's discretion.",
+    "sentence_id": "S001",
+    "reason": "This is a complete and independently verifiable fact."
+  },
+  {
+    "claim_text": "Contracts for necessities are often binding.",
+    "source_sentence": "However, contracts for necessities, such as food, clothing, and shelter, are often binding to ensure minors can obtain essential goods and services.",
+    "sentence_id": "S002",
+    "reason": "This is a complete and independently verifiable fact."
+  },
+  {
+    "claim_text": "Necessities include food, clothing, and shelter.",
+    "source_sentence": "However, contracts for necessities, such as food, clothing, and shelter, are often binding to ensure minors can obtain essential goods and services.",
+    "sentence_id": "S002",
+    "reason": "This is a complete and independently verifiable fact."
+  }
+]

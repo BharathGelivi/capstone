@@ -13,7 +13,7 @@ from chromadb.config import Settings
 
 from src.embedding_engine import EmbeddingRecord
 from src.chunk_registry import ChunkRegistry
-from src.config import CHROMA_PERSIST_DIR, CHROMA_COLLECTION_NAME
+from configs.pipeline import CHROMA_PERSIST_DIR, CHROMA_COLLECTION_NAME
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -182,9 +182,10 @@ class ChromaVectorStore(VectorStore):
             return None
             
         # Repackage the output for cleaner consumption
+        embeddings = results.get('embeddings')
         return {
             "id": results['ids'][0],
-            "embedding": results['embeddings'][0] if results.get('embeddings') else None,
+            "embedding": embeddings[0] if embeddings is not None and len(embeddings) > 0 else None,
             "metadata": results['metadatas'][0],
             "document": results['documents'][0]
         }

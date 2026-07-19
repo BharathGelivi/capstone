@@ -1,0 +1,88 @@
+{
+  "n_examples": 10,
+  "expected_calibration_error": 0.224,
+  "bins": [
+    {
+      "range": "[0.00, 0.50)",
+      "n": 0,
+      "mean_confidence": null,
+      "empirical_accuracy": null
+    },
+    {
+      "range": "[0.50, 0.70)",
+      "n": 0,
+      "mean_confidence": null,
+      "empirical_accuracy": null
+    },
+    {
+      "range": "[0.70, 0.85)",
+      "n": 0,
+      "mean_confidence": null,
+      "empirical_accuracy": null
+    },
+    {
+      "range": "[0.85, 0.95)",
+      "n": 10,
+      "mean_confidence": 0.924,
+      "empirical_accuracy": 0.7
+    },
+    {
+      "range": "[0.95, 1.01)",
+      "n": 0,
+      "mean_confidence": null,
+      "empirical_accuracy": null
+    }
+  ],
+  "raw_pairs": [
+    {
+      "eval_id": "1",
+      "confidence": 0.93,
+      "correct": true
+    },
+    {
+      "eval_id": "2",
+      "confidence": 0.93,
+      "correct": true
+    },
+    {
+      "eval_id": "3",
+      "confidence": 0.93,
+      "correct": true
+    },
+    {
+      "eval_id": "4",
+      "confidence": 0.93,
+      "correct": true
+    },
+    {
+      "eval_id": "5",
+      "confidence": 0.9,
+      "correct": false
+    },
+    {
+      "eval_id": "6",
+      "confidence": 0.93,
+      "correct": true
+    },
+    {
+      "eval_id": "7",
+      "confidence": 0.93,
+      "correct": true
+    },
+    {
+      "eval_id": "8",
+      "confidence": 0.93,
+      "correct": true
+    },
+    {
+      "eval_id": "9",
+      "confidence": 0.9,
+      "correct": false
+    },
+    {
+      "eval_id": "10",
+      "confidence": 0.93,
+      "correct": false
+    }
+  ]
+}

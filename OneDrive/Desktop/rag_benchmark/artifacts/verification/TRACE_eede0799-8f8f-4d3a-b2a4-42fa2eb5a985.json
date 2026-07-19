@@ -1,0 +1,157 @@
+{
+    "trace_id": "eede0799-8f8f-4d3a-b2a4-42fa2eb5a985",
+    "total_claims": 3,
+    "supported_claims": 2,
+    "partially_supported_claims": 0,
+    "contradicted_claims": 0,
+    "unsupported_claims": 0,
+    "not_verifiable_claims": 1,
+    "average_entailment_score": 0.6740979626774788,
+    "total_verification_latency_ms": 286696.3698863983,
+    "results": [
+        {
+            "verification_id": "0e9f73f7-d579-4656-8e06-13e7c0618f47",
+            "trace_id": "eede0799-8f8f-4d3a-b2a4-42fa2eb5a985",
+            "claim_id": "a67e485d-e7a3-48ca-ad66-b04718d25243",
+            "claim_text": "The punishment for murder is death or imprisonment for life.",
+            "verification_status": "SUPPORTED",
+            "verification_reason": "Evidence directly supports the claim (Score: 0.98).",
+            "confidence": 0.9773923754692078,
+            "best_chunk_id": "f69e6aef-3594-43c8-86e9-415389ec638f",
+            "best_chunk_rank": 5,
+            "best_chunk_score": null,
+            "best_sentence_id": "f69e6aef-3594-43c8-86e9-415389ec638f_s5",
+            "evidence_text": "If B had murdered Z, he\nwould have been subject to the punishment of death or imprisonment for life.Therefore, Ais\nliable to imprisonment for a term which may extend to seven years and also to a fine; and if\nany hurt be done to Z in consequence of the abetment, he will be liable to imprisonment for\na term which may extend to fourteen years, and to fine.\n56.",
+            "entailment_score": 0.9773923754692078,
+            "contradiction_score": 0.0,
+            "neutral_score": 0.0,
+            "top_evidence": [
+                {
+                    "sentence_id": "f69e6aef-3594-43c8-86e9-415389ec638f_s5",
+                    "chunk_id": "f69e6aef-3594-43c8-86e9-415389ec638f",
+                    "chunk_rank": 5,
+                    "text": "If B had murdered Z, he\nwould have been subject to the punishment of death or imprisonment for life.Therefore, Ais\nliable to imprisonment for a term which may extend to seven years and also to a fine; and if\nany hurt be done to Z in consequence of the abetment, he will be liable to imprisonment for\na term which may extend to fourteen years, and to fine.\n56.",
+                    "entailment_score": 0.9773923754692078,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "cb540380-0fc6-40ad-bf08-4db5f0ea2a0a_s2",
+                    "chunk_id": "cb540380-0fc6-40ad-bf08-4db5f0ea2a0a",
+                    "chunk_rank": 3,
+                    "text": "Whoever commits culpable homicide not amounting to murder, shall be punished\nwith imprisonment for life, or imprisonment of either description for a term which shall not be\nless than five years but which may extend to ten years, and shall also be liable to fine, if the\nact by which the death is caused is done with the intention of causing death, or of causing\nsuch bodily injury as is likely to cause death; or with imprisonment of either description for\na term which may extend to ten years and with fine, if the act is done with the knowledge that\nit is likely to cause death, but without any intention to cause death, or to cause such bodily\ninjury as is likely to cause death.\n106.",
+                    "entailment_score": 0.9246196150779724,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "cb540380-0fc6-40ad-bf08-4db5f0ea2a0a_s1",
+                    "chunk_id": "cb540380-0fc6-40ad-bf08-4db5f0ea2a0a",
+                    "chunk_rank": 3,
+                    "text": "If a person, by doing anything which he intends or knows to be likely to cause\ndeath, commits culpable homicide by causing the death of any person, whose death he\nneither intends nor knows himself to be likely to cause, the culpable homicide committed by\nthe offender is of the description of which it would have been if he had caused the death of\nthe person whose death he intended or knew himself to be likely to cause.\n103. (1) Whoever commits murder shall be punished with death or imprisonment for\nlife, and shall also be liable to fine.\n(2) When a group of five or more persons acting in concert commits murder on the\nground of race, caste or community, sex, place of birth, language, personal belief or any\nother similar ground each member of such group shall be punished with death or with\nimprisonment for life, and shall also be liable to fine.\n104.Whoever, being under sentence of imprisonment for life, commits murder, shall be\npunished with death or with imprisonment for life, which shall mean the remainder of that\nperson\u2019s natural life.\n105.",
+                    "entailment_score": 0.9244152307510376,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                }
+            ],
+            "verification_latency_ms": 80144.94109153748,
+            "verification_model": "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
+        },
+        {
+            "verification_id": "69cfcd2b-b374-4673-bb24-6dbb616e67ba",
+            "trace_id": "eede0799-8f8f-4d3a-b2a4-42fa2eb5a985",
+            "claim_id": "79de8640-7df5-49c3-bbb7-c1e8fe7e5570",
+            "claim_text": "Imprisonment for life means the remainder of the person's natural life.",
+            "verification_status": "SUPPORTED",
+            "verification_reason": "Evidence directly supports the claim (Score: 0.96).",
+            "confidence": 0.9593451619148254,
+            "best_chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+            "best_chunk_rank": 2,
+            "best_chunk_score": null,
+            "best_sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s0",
+            "evidence_text": "(2) When any person offending under sub-section (1) is under sentence of imprisonment\nfor life, he may, if hurt is caused, be punished with death or with imprisonment for life, which\nshall mean the remainder of that person\u2019s natural life.",
+            "entailment_score": 0.9593451619148254,
+            "contradiction_score": 0.0,
+            "neutral_score": 0.0,
+            "top_evidence": [
+                {
+                    "sentence_id": "63b53cdc-7519-44a9-b89f-c58baebf570b_s0",
+                    "chunk_id": "63b53cdc-7519-44a9-b89f-c58baebf570b",
+                    "chunk_rank": 2,
+                    "text": "(2) When any person offending under sub-section (1) is under sentence of imprisonment\nfor life, he may, if hurt is caused, be punished with death or with imprisonment for life, which\nshall mean the remainder of that person\u2019s natural life.",
+                    "entailment_score": 0.9593451619148254,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "cb540380-0fc6-40ad-bf08-4db5f0ea2a0a_s1",
+                    "chunk_id": "cb540380-0fc6-40ad-bf08-4db5f0ea2a0a",
+                    "chunk_rank": 3,
+                    "text": "If a person, by doing anything which he intends or knows to be likely to cause\ndeath, commits culpable homicide by causing the death of any person, whose death he\nneither intends nor knows himself to be likely to cause, the culpable homicide committed by\nthe offender is of the description of which it would have been if he had caused the death of\nthe person whose death he intended or knew himself to be likely to cause.\n103. (1) Whoever commits murder shall be punished with death or imprisonment for\nlife, and shall also be liable to fine.\n(2) When a group of five or more persons acting in concert commits murder on the\nground of race, caste or community, sex, place of birth, language, personal belief or any\nother similar ground each member of such group shall be punished with death or with\nimprisonment for life, and shall also be liable to fine.\n104.Whoever, being under sentence of imprisonment for life, commits murder, shall be\npunished with death or with imprisonment for life, which shall mean the remainder of that\nperson\u2019s natural life.\n105.",
+                    "entailment_score": 0.777722179889679,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "cb540380-0fc6-40ad-bf08-4db5f0ea2a0a_s2",
+                    "chunk_id": "cb540380-0fc6-40ad-bf08-4db5f0ea2a0a",
+                    "chunk_rank": 3,
+                    "text": "Whoever commits culpable homicide not amounting to murder, shall be punished\nwith imprisonment for life, or imprisonment of either description for a term which shall not be\nless than five years but which may extend to ten years, and shall also be liable to fine, if the\nact by which the death is caused is done with the intention of causing death, or of causing\nsuch bodily injury as is likely to cause death; or with imprisonment of either description for\na term which may extend to ten years and with fine, if the act is done with the knowledge that\nit is likely to cause death, but without any intention to cause death, or to cause such bodily\ninjury as is likely to cause death.\n106.",
+                    "entailment_score": 0.08632348477840424,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                }
+            ],
+            "verification_latency_ms": 92219.58470344543,
+            "verification_model": "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
+        },
+        {
+            "verification_id": "c7fab694-7785-4526-8cff-fba68d9fb081",
+            "trace_id": "eede0799-8f8f-4d3a-b2a4-42fa2eb5a985",
+            "claim_id": "36086a8b-3e8a-46d7-ac27-8143052de195",
+            "claim_text": "This information is detailed in Chunk-ID [63b53cdc-7519-44a9-b89f-c58baebf570b] under section 103(1).",
+            "verification_status": "NOT_VERIFIABLE",
+            "verification_reason": "Evidence is insufficient for conclusive verification.",
+            "confidence": 0.08555635064840317,
+            "best_chunk_id": "5be11998-52fb-42a5-bfea-bf5a90a58ef8",
+            "best_chunk_rank": 4,
+            "best_chunk_score": null,
+            "best_sentence_id": "5be11998-52fb-42a5-bfea-bf5a90a58ef8_s5",
+            "evidence_text": "Explanation.\u2013\u2013For the purposes of this section the expression \u201cappropriate\nGovernment\u201d means,\u2013\u2013\n(a) in cases where the sentence is a sentence of death or is for an offence\nagainst any law relating to a matter to which the executive power of the Union extends,\nthe Central Government; and\n(b) in cases where the sentence (whether of death or not) is for an offence\nagainst any law relating to a matter to which the executive power of the State extends,\nthe Government of the State within which the offender is sentenced.\n6.",
+            "entailment_score": 0.08555635064840317,
+            "contradiction_score": 0.0,
+            "neutral_score": 0.0,
+            "top_evidence": [
+                {
+                    "sentence_id": "5be11998-52fb-42a5-bfea-bf5a90a58ef8_s5",
+                    "chunk_id": "5be11998-52fb-42a5-bfea-bf5a90a58ef8",
+                    "chunk_rank": 4,
+                    "text": "Explanation.\u2013\u2013For the purposes of this section the expression \u201cappropriate\nGovernment\u201d means,\u2013\u2013\n(a) in cases where the sentence is a sentence of death or is for an offence\nagainst any law relating to a matter to which the executive power of the Union extends,\nthe Central Government; and\n(b) in cases where the sentence (whether of death or not) is for an offence\nagainst any law relating to a matter to which the executive power of the State extends,\nthe Government of the State within which the offender is sentenced.\n6.",
+                    "entailment_score": 0.08555635064840317,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "cb540380-0fc6-40ad-bf08-4db5f0ea2a0a_s1",
+                    "chunk_id": "cb540380-0fc6-40ad-bf08-4db5f0ea2a0a",
+                    "chunk_rank": 3,
+                    "text": "If a person, by doing anything which he intends or knows to be likely to cause\ndeath, commits culpable homicide by causing the death of any person, whose death he\nneither intends nor knows himself to be likely to cause, the culpable homicide committed by\nthe offender is of the description of which it would have been if he had caused the death of\nthe person whose death he intended or knew himself to be likely to cause.\n103. (1) Whoever commits murder shall be punished with death or imprisonment for\nlife, and shall also be liable to fine.\n(2) When a group of five or more persons acting in concert commits murder on the\nground of race, caste or community, sex, place of birth, language, personal belief or any\nother similar ground each member of such group shall be punished with death or with\nimprisonment for life, and shall also be liable to fine.\n104.Whoever, being under sentence of imprisonment for life, commits murder, shall be\npunished with death or with imprisonment for life, which shall mean the remainder of that\nperson\u2019s natural life.\n105.",
+                    "entailment_score": 0.05722925812005997,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                },
+                {
+                    "sentence_id": "5be11998-52fb-42a5-bfea-bf5a90a58ef8_s3",
+                    "chunk_id": "5be11998-52fb-42a5-bfea-bf5a90a58ef8",
+                    "chunk_rank": 4,
+                    "text": "The punishments to which offenders are liable under the provisions of this Sanhita\nare\u2014\n(a) Death;\n(b) Imprisonment for life;\n(c) Imprisonment, which is of two descriptions, namely:\u2014\n(1) Rigorous, that is, with hard labour;\n(2) Simple;\n(d) Forfeiture of property;\n(e) Fine;\n(f) Community Service.\n5.",
+                    "entailment_score": 0.04903962463140488,
+                    "contradiction_score": 0.0,
+                    "neutral_score": 0.0
+                }
+            ],
+            "verification_latency_ms": 114331.19559288025,
+            "verification_model": "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
+        }
+    ]
+}

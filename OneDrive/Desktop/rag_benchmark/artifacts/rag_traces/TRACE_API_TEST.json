@@ -1,0 +1,16 @@
+{
+    "trace_id": "TRACE_API_TEST",
+    "trace_version": "1.0",
+    "pipeline_version": "1.0",
+    "framework_version": "1.0",
+    "timestamp": "2026-07-17T12:00:00Z",
+    "question": "Q?",
+    "generated_answer": "A.",
+    "prompt_snapshot": "Prompt",
+    "prompt_length": 6,
+    "retrieved_chunk_references": [],
+    "configuration_snapshot": {},
+    "execution_statistics": {},
+    "pipeline_stage_status": {},
+    "diagnostics": null
+}

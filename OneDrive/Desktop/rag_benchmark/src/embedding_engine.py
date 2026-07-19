@@ -10,7 +10,7 @@ from typing import List, Dict, Any
 from dataclasses import dataclass
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from src.chunk_registry import ChunkRegistry
-from src.config import EMBEDDING_MODEL_NAME
+from configs.models import EMBEDDING_MODEL_NAME
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

@@ -1,0 +1,106 @@
+{
+    "trace_id": "bf1d1260-7dd5-4807-bd86-058e284296d7",
+    "artifact_version": "1.0",
+    "pipeline_states": [
+        {
+            "stage": "CORPUS",
+            "status": "PASS",
+            "observation": "Corpus contains sufficient relevant content, evidenced by at least one supported claim.",
+            "confidence": 0.9,
+            "supporting_claim_ids": [],
+            "supporting_chunk_ids": [],
+            "supporting_verification_ids": [],
+            "metadata": {
+                "pre_rerank_min_dense_distance": 0.18387579917907715,
+                "pool_size": 35
+            }
+        },
+        {
+            "stage": "RETRIEVER",
+            "status": "PASS",
+            "observation": "At least one retrieved chunk provides supporting evidence for a verified claim.",
+            "confidence": 0.95,
+            "supporting_claim_ids": [
+                "c2206bb4-2c48-4258-b7fa-194a0f0b0418",
+                "e372a037-15e8-4e44-9d25-1b93281ee65f",
+                "dd7008c9-0a47-42bd-8e04-254f467ebd9d"
+            ],
+            "supporting_chunk_ids": [
+                "429770e7-e2cb-406a-9551-6298faa8712f",
+                "69d10467-b33e-47cd-9b2a-e45515b51f5a",
+                "69d10467-b33e-47cd-9b2a-e45515b51f5a"
+            ],
+            "supporting_verification_ids": [
+                "3338f4c1-3dc4-4bc6-8e4e-9de36c11e4d1",
+                "2b2ff651-63ea-4b57-8df3-1577769518ab",
+                "ce2646ce-346b-40ee-92a9-336121432433"
+            ],
+            "metadata": {
+                "max_score": 0.3203912675380707,
+                "threshold": 0.5
+            }
+        },
+        {
+            "stage": "CHUNKING",
+            "status": "UNKNOWN",
+            "observation": "Deterministic chunk-boundary evidence is currently unobservable.",
+            "confidence": 1.0,
+            "supporting_claim_ids": [],
+            "supporting_chunk_ids": [],
+            "supporting_verification_ids": [],
+            "metadata": {
+                "boundary_claim_ids": []
+            }
+        },
+        {
+            "stage": "GENERATOR",
+            "status": "PASS",
+            "observation": "All generated claims are fully supported by evidence.",
+            "confidence": 0.95,
+            "supporting_claim_ids": [
+                "c2206bb4-2c48-4258-b7fa-194a0f0b0418",
+                "e372a037-15e8-4e44-9d25-1b93281ee65f",
+                "dd7008c9-0a47-42bd-8e04-254f467ebd9d"
+            ],
+            "supporting_chunk_ids": [
+                "429770e7-e2cb-406a-9551-6298faa8712f",
+                "69d10467-b33e-47cd-9b2a-e45515b51f5a",
+                "69d10467-b33e-47cd-9b2a-e45515b51f5a"
+            ],
+            "supporting_verification_ids": [
+                "3338f4c1-3dc4-4bc6-8e4e-9de36c11e4d1",
+                "2b2ff651-63ea-4b57-8df3-1577769518ab",
+                "ce2646ce-346b-40ee-92a9-336121432433"
+            ],
+            "metadata": {
+                "unsupported_count": 0,
+                "max_score": 0.3203912675380707
+            }
+        },
+        {
+            "stage": "GROUNDING",
+            "status": "PASS",
+            "observation": "No claims are contradicted by retrieved evidence.",
+            "confidence": 0.9,
+            "supporting_claim_ids": [
+                "c2206bb4-2c48-4258-b7fa-194a0f0b0418",
+                "e372a037-15e8-4e44-9d25-1b93281ee65f",
+                "dd7008c9-0a47-42bd-8e04-254f467ebd9d"
+            ],
+            "supporting_chunk_ids": [
+                "429770e7-e2cb-406a-9551-6298faa8712f",
+                "69d10467-b33e-47cd-9b2a-e45515b51f5a",
+                "69d10467-b33e-47cd-9b2a-e45515b51f5a"
+            ],
+            "supporting_verification_ids": [
+                "3338f4c1-3dc4-4bc6-8e4e-9de36c11e4d1",
+                "2b2ff651-63ea-4b57-8df3-1577769518ab",
+                "ce2646ce-346b-40ee-92a9-336121432433"
+            ],
+            "metadata": {
+                "contradicted_count": 0
+            }
+        }
+    ],
+    "created_at": "2026-07-18T05:42:40.086135Z"
+}

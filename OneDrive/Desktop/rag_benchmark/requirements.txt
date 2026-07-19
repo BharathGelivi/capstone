@@ -1,7 +1,7 @@
 llama-index
 llama-index-vector-stores-chroma
 llama-index-embeddings-huggingface
-llama-index-llms-gemini
+llama-index-llms-groq
 chromadb
 python-dotenv
 pypdf
@@ -10,3 +10,9 @@ huggingface-hub
 pymupdf
 llama-index-readers-file
 rank_bm25
+sentence-transformers
+
+fastapi
+uvicorn
+pydantic
+xhtml2pdf

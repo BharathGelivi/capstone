@@ -4,15 +4,20 @@ Responsible exclusively for synthesizing answers using a Large Language Model
 based on the results provided by the Retriever.
 """
 
+import os
 import time
 import logging
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 
+from llama_index.llms.groq import Groq
 from llama_index.llms.huggingface_api import HuggingFaceInferenceAPI
 from llama_index.core.llms import ChatMessage, MessageRole
 from src.retriever import RetrievalResult
-from src.config import LLM_MODEL_NAME, LLM_TEMPERATURE, LLM_MAX_TOKENS
+from configs.models import (
+    LLM_MODEL_NAME, LLM_TEMPERATURE, LLM_MAX_TOKENS, LLM_PROVIDER, GROQ_GENERATION_MODEL,
+)
+from configs.prompts import DEFAULT_SYSTEM_INSTRUCTIONS
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -44,23 +49,18 @@ class PromptBuilder:
     """
     
     @staticmethod
-    def build_messages(question: str, retrieved_chunks: List[Any]) -> List[ChatMessage]:
+    def build_messages(question: str, retrieved_chunks: List[Any], system_instructions: Optional[str] = None) -> List[ChatMessage]:
         """
         Builds the chat messages array (System and User).
         """
         # 1. Instructions
-        instructions = (
-            "You are a helpful legal assistant. Read the provided context carefully to answer the user's question.\n"
-            "The context may refer to legal sections or articles just by their numbers (e.g., '399. (1)'). Be flexible in matching the user's query to the context.\n"
-            "If the context contains the answer, summarize it clearly. If the provided context is completely irrelevant to the question, explicitly state 'I do not have enough information to answer this.'\n"
-            "Do not hallucinate or use outside knowledge.\n"
-        )
-        
+        instructions = system_instructions or DEFAULT_SYSTEM_INSTRUCTIONS
+
         # 2. Context
         context_parts = []
         for i, chunk in enumerate(retrieved_chunks, start=1):
-            context_parts.append(f"--- Context chunk {i} ---\n{chunk.chunk_text}\n")
-        
+            context_parts.append(f"--- Context chunk {i} [Chunk-ID: {chunk.chunk_id}] ---\n{chunk.chunk_text}\n")
+
         context = "\n".join(context_parts)
         if not context.strip():
             context = "No relevant context found."
@@ -78,18 +78,31 @@ class Generator:
     """
     Executes the generation phase using the configured LLM.
     """
-    def __init__(self, model_name: str = LLM_MODEL_NAME, temperature: float = LLM_TEMPERATURE, max_tokens: int = LLM_MAX_TOKENS):
-        self.model_name = model_name
+    def __init__(self, model_name: Optional[str] = None, temperature: float = LLM_TEMPERATURE, max_tokens: int = LLM_MAX_TOKENS, system_instructions: Optional[str] = None):
         self.temperature = temperature
         self.max_tokens = max_tokens
-        
-        logger.info(f"Initializing Generator with model {model_name}")
-        # Initialize HF Inference API. Requires HF_TOKEN environment variable.
-        self.llm = HuggingFaceInferenceAPI(
-            model_name=self.model_name,
-            temperature=self.temperature,
-            max_new_tokens=self.max_tokens
-        )
+        self.system_instructions = system_instructions
+
+        if LLM_PROVIDER == "groq":
+            self.model_name = model_name or GROQ_GENERATION_MODEL
+            logger.info(f"Initializing Generator with Groq model {self.model_name}")
+            self.llm = Groq(
+                model=self.model_name,
+                temperature=self.temperature,
+                max_tokens=self.max_tokens,
+                api_key=os.environ.get("GROQ_API_KEY"),
+            )
+        else:
+            self.model_name = model_name or LLM_MODEL_NAME
+            logger.info(f"Initializing Generator with HF model {self.model_name}")
+            # Requires HF_TOKEN environment variable.
+            self.llm = HuggingFaceInferenceAPI(
+                model_name=self.model_name,
+                temperature=self.temperature,
+                num_output=self.max_tokens,  # NOT max_new_tokens: that kwarg doesn't exist on this
+                # class and is silently dropped, leaving the 256-token library default in place.
+                token=os.environ.get("HF_TOKEN")
+            )
         
     def generate(self, retrieval_result: RetrievalResult) -> GenerationResult:
         """
@@ -101,7 +114,8 @@ class Generator:
         # Build the prompt using the separate builder
         messages = PromptBuilder.build_messages(
             question=retrieval_result.question,
-            retrieved_chunks=retrieval_result.retrieved_chunks
+            retrieved_chunks=retrieval_result.retrieved_chunks,
+            system_instructions=self.system_instructions
         )
         # Store a string representation for logging/metadata
         prompt_str = "\n".join([f"[{m.role.value.upper()}]: {m.content}" for m in messages])

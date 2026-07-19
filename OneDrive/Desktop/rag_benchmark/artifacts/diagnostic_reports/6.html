@@ -1,0 +1,809 @@
+<title>X-RAG Diagnostic Report — 217fafbd-302b-43dd-aee2-651788752a90</title>
+<style>
+:root {
+  --bg: #F4F5F7; --surface: #FFFFFF; --ink: #1A1D24; --ink-soft: #565C68; --ink-faint: #8A8F9A;
+  --accent: #2E3B6E; --good: #2F7D5D; --warn: #A6742D; --bad: #A6402D;
+  --line: #E0E2E7; --line-strong: #C9CCD3;
+}
+:root[data-theme="dark"] {
+  --bg: #12141A; --surface: #1B1E26; --ink: #E7E9EE; --ink-soft: #A6ACB8; --ink-faint: #6B7280;
+  --accent: #8C9BE8; --good: #5FCB9B; --warn: #E3B15C; --bad: #E38C7A;
+  --line: #2A2E38; --line-strong: #383D4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12141A; --surface: #1B1E26; --ink: #E7E9EE; --ink-soft: #A6ACB8; --ink-faint: #6B7280;
+    --accent: #8C9BE8; --good: #5FCB9B; --warn: #E3B15C; --bad: #E38C7A;
+    --line: #2A2E38; --line-strong: #383D4A;
+  }
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.55; padding: 48px 24px 80px; }
+.page { max-width: 940px; margin: 0 auto; }
+.mono { font-family: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+.muted { color: var(--ink-faint); }
+header { border-bottom: 2px solid var(--ink); padding-bottom: 20px; margin-bottom: 32px; }
+.eyebrow { font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+h1 { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif; font-size: 1.8rem; font-weight: 600; line-height: 1.2; text-wrap: balance; margin: 0 0 10px; }
+.dek { color: var(--ink-soft); font-size: 1rem; max-width: 70ch; }
+.meta-row { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px; font-size: 0.82rem; color: var(--ink-faint); }
+.meta-row span b { color: var(--ink-soft); font-weight: 600; }
+.section-title { font-size: 0.78rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; margin: 40px 0 14px; display: flex; align-items: center; gap: 10px; }
+.section-title::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.summary-tile { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.summary-tile .tile-label { font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; margin-bottom: 6px; }
+.summary-tile .tile-val { font-size: 1.3rem; font-weight: 700; }
+.case { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px 24px; }
+.case .q-label, .case .a-label { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+.case .q-text { font-size: 1.05rem; font-weight: 500; margin-bottom: 18px; }
+.case .a-text { font-size: 0.95rem; color: var(--ink-soft); }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 10px; }
+details > summary { cursor: pointer; padding: 14px 18px; font-weight: 600; list-style: none; display: flex; align-items: center; gap: 10px; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary::before { content: "▸"; color: var(--accent); font-size: 0.8em; transition: transform 0.15s; flex-shrink: 0; }
+details[open] > summary::before { transform: rotate(90deg); }
+details.top-level > summary { font-size: 0.95rem; }
+.details-body-outer { padding: 0 18px 18px; }
+.claim-detail, .chunk-detail { margin: 8px 18px; border-radius: 8px; }
+.claim-detail summary, .chunk-detail summary { padding: 10px 12px; font-weight: 500; font-size: 0.86rem; }
+.claim-body, .chunk-body { padding: 4px 12px 14px; font-size: 0.84rem; }
+.claim-field { margin-bottom: 6px; }
+.claim-field.muted { font-style: italic; }
+.evidence-text { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; font-size: 0.78rem; white-space: pre-wrap; max-height: 260px; overflow-y: auto; margin-top: 4px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; display: inline-block; background: var(--ink-faint); }
+.dot.good { background: var(--good); } .dot.warn { background: var(--warn); } .dot.bad { background: var(--bad); }
+.claim-status { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; flex-shrink: 0; }
+.claim-status.good { color: var(--good); } .claim-status.warn { color: var(--warn); } .claim-status.bad { color: var(--bad); }
+.claim-summary-text { color: var(--ink-soft); font-weight: 400; }
+.chunk-rank { font-family: ui-monospace, monospace; background: var(--bg); border-radius: 5px; padding: 2px 7px; font-size: 0.75rem; flex-shrink: 0; }
+.chunk-id { flex-shrink: 0; }
+.chunk-src { color: var(--ink-faint); font-weight: 400; font-size: 0.8rem; }
+.score-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 20px; margin-bottom: 10px; padding: 10px; background: var(--bg); border-radius: 8px; }
+.score-grid > div { display: flex; justify-content: space-between; font-size: 0.78rem; }
+.stage-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.stage { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--good); border-radius: 8px; padding: 12px; }
+.stage.unknown { border-top-color: var(--line-strong); }
+.stage.fail { border-top-color: var(--bad); }
+.stage-name { font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; color: var(--ink-faint); margin-bottom: 6px; }
+.stage-status { font-size: 0.85rem; font-weight: 600; color: var(--good); margin-bottom: 4px; }
+.stage.unknown .stage-status { color: var(--ink-faint); }
+.stage.fail .stage-status { color: var(--bad); }
+.stage-obs { font-size: 0.72rem; color: var(--ink-faint); line-height: 1.4; }
+.stage-conf { font-size: 0.66rem; color: var(--ink-faint); margin-top: 6px; }
+.stage-efficiency { font-size: 0.66rem; color: var(--accent); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); }
+.reasoning-chain { padding-left: 22px; font-size: 0.88rem; color: var(--ink-soft); }
+.reasoning-chain li { margin-bottom: 6px; }
+.action-card { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--warn); border-radius: 0 8px 8px 0; padding: 12px 16px; margin-bottom: 8px; }
+.action-title { font-weight: 700; font-size: 0.86rem; margin-bottom: 4px; }
+.action-desc { font-size: 0.82rem; color: var(--ink-soft); }
+.fw-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.fw-card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px 16px; display: flex; flex-direction: column; gap: 12px; }
+.fw-card.xrag { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.fw-card.ragas { border-color: var(--good); }
+.fw-name { font-weight: 700; font-size: 0.95rem; }
+.fw-name .tag { display: block; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); margin-top: 2px; }
+.fw-desc { font-size: 0.72rem; color: var(--ink-faint); line-height: 1.4; min-height: 3.5em; }
+.metric-list { display: flex; flex-direction: column; gap: 7px; border-top: 1px solid var(--line); padding-top: 10px; }
+.metric-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.82rem; }
+.metric-row .m-val { font-weight: 700; }
+.metric-row .m-val.hi { color: var(--good); }
+.metric-row .m-val.mid { color: var(--warn); }
+footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 0.76rem; color: var(--ink-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.scroll-x { overflow-x: auto; }
+@media (max-width: 720px) {
+  .fw-grid, .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  .stage-strip { grid-template-columns: repeat(2, 1fr); }
+  .score-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .fw-grid, .summary-grid, .stage-strip, .score-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 1.4rem; }
+}
+</style>
+<div class="page">
+
+  <header>
+    <div class="eyebrow">X-RAG Diagnostic Framework — Full Report</div>
+    <h1>How does the BNS define &#x27;criminal conspiracy&#x27;?</h1>
+    <p class="dek">Trace <span class="mono">217fafbd-302b-43dd-aee2-651788752a90</span>, generated 2026-07-19T08:45:25.772562Z.</p>
+    <div class="meta-row">
+      <span><b>Generator:</b> llama-3.3-70b-versatile</span>
+      <span><b>Embedding:</b> BAAI/bge-small-en-v1.5</span>
+      <span><b>Chunk size / overlap:</b> 512 / 50</span>
+      <span><b>Retrieval top-k:</b> 5</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-title">Executive Summary</div>
+    <div class="summary-grid">
+      <div class="summary-tile"><div class="tile-label">Overall Health</div><div class="tile-val mono">100%</div></div>
+      <div class="summary-tile"><div class="tile-label">Primary Issue</div><div class="tile-val mono">UNKNOWN</div></div>
+      <div class="summary-tile"><div class="tile-label">Claims Supported</div><div class="tile-val mono">4 / 4</div></div>
+      <div class="summary-tile"><div class="tile-label">Avg. Entailment</div><div class="tile-val mono">0.996</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">The Case</div>
+    <div class="case">
+      <div class="q-label">Question</div>
+      <div class="q-text">How does the BNS define &#x27;criminal conspiracy&#x27;?</div>
+      <div class="a-label">X-RAG's Answer</div>
+      <div class="a-text">According to the context chunk 1 [Chunk-ID: 40abf7d3-8696-4424-88ed-e3ba45bfe867], the definition of &#x27;criminal conspiracy&#x27; is provided in section 61, which states that when two or more persons agree with the common object to do, or cause to be done, an illegal act or an act which is not illegal by illegal means, such an agreement is designated a criminal conspiracy [Chunk-ID: 40abf7d3-8696-4424-88ed-e3ba45bfe867]. Additionally, it is provided that no agreement except an agreement to commit an offence shall amount to a criminal conspiracy unless some act besides the agreement is done by one or more parties to such agreement in pursuance thereof [Chunk-ID: 40abf7d3-8696-4424-88ed-e3ba45bfe867].</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">Raw Retrieval &amp; Generation Trace</div>
+    <details class="top-level">
+      <summary>View full RAG trace (5 chunks retrieved, 3.21s retrieval + 2.12s generation)</summary>
+      <div class="details-body-outer">
+        <div class="claim-field"><b>Total pipeline time:</b> <span class="mono">5.331s</span></div>
+        <div class="claim-field"><b>Pre-rerank candidate pool:</b> <span class="mono">34</span> chunks (BM25 + dense, before RRF fusion and reranking)</div>
+        <div class="claim-field"><b>Full prompt sent to the generator:</b></div>
+        <pre class="evidence-text">[SYSTEM]: You are a helpful assistant. Read the provided context carefully to answer the user&#x27;s question.
+If the context contains the answer, summarize it clearly. If the provided context is completely irrelevant to the question, explicitly state &#x27;I do not have enough information to answer this.&#x27;
+Do not hallucinate or use outside knowledge.
+CRITICAL: You must append the specific [Chunk-ID] to every single sentence you generate to explicitly cite your sources.
+
+[USER]: --- Context chunk 1 [Chunk-ID: 40abf7d3-8696-4424-88ed-e3ba45bfe867] ---
+Here A has by an illegal omission concealed the existence of B’s design, and is liable to
+punishment according to the provision of this section.
+60. Whoever, intending to facilitate or knowing it to be likely that he will thereby
+facilitate the commission of an offence punishable with imprisonment, voluntarily conceals,
+by any act or illegal omission, the existence of a design to commit such offence, or makes any
+representation which he knows to be false respecting such design shall,––
+(a) if the offence be committed, be punished with imprisonment of the description
+provided for the offence, for a term which may extend to one-fourth; and
+(b) if the offence be not committed, to one-eighth,
+of the longest term of such imprisonment, or with such fine as is provided for the offence, or
+with both.
+Of criminal conspiracy
+61. (1) When two or more persons agree with the common object to do, or cause to be
+done––
+(a) an illegal act; or
+(b) an act which is not illegal by illegal means, such an agreement is designated
+a criminal conspiracy:
+Provided that no agreement except an agreement to commit an offence shall amount to
+a criminal conspiracy unless some act besides the agreement is done by one or more parties
+to such agreement in pursuance thereof.
+Explanation.—It is immaterial whether the illegal act is the ultimate object of such
+agreement, or is merely incidental to that object.
+(2) Whoever is a party to a criminal conspiracy,––
+(a) to commit an offence punishable with death, imprisonment for life or rigorous
+imprisonment for a term of two years or upwards, shall, where no express provision is
+made in this Sanhita for the punishment of such a conspiracy, be punished in the same
+manner as if he had abetted such offence;
+(b) other than a criminal conspiracy to commit an offence punishable as aforesaid
+shall be punished with imprisonment of either description for a term not exceeding six
+months, or with fine or with both.
+Of attempt
+62.
+
+--- Context chunk 2 [Chunk-ID: c3698be5-faf4-43cd-9958-b77fa47ebfaa] ---
+Illustrations.
+(a) A puts jewels into a box belonging to Z, with the intention that they may be
+found in that box, and that this circumstance may cause Z to be convicted of theft. A has
+fabricated false evidence.
+(b)A makes a false entry in his shop-book for the purpose of using it as corroborative
+evidence in a Court. A has fabricated false evidence.
+(c)A, with the intention of causing Z to be convicted of a criminal conspiracy, writes
+a letter in imitation of Z’s handwriting, purporting to be addressed to an accomplice in
+such criminal conspiracy, and puts the letter in a place which he knows that the officers of
+the police are likely to search. A has fabricated false evidence.
+229. (1) Whoever intentionally gives false evidence in any stage of a judicial
+proceeding, or fabricates false evidence for the purpose of being used in any stage of a
+judicial proceeding, shall be punished with imprisonment of either description for a term
+which may extend to seven years, and shall also be liable to fine which may extend to ten
+thousand rupees.
+(2) Whoever intentionally gives or fabricates false evidence in any case other than
+that referred to in sub-section (1), shall be punished with imprisonment of either description
+for a term which may extend to three years, and shall also be liable to fine which may
+extend to five thousand rupees.
+Fabricating
+false evidence.
+Punishment
+for false
+evidence.
+64
+THE GAZETTE OF INDIA EXTRAORDINARY
+[Part II—
+____________________________________________________________
+_____________________________________________________________
+____________________________________________________________
+___________________________________________________________
+________________________________________________________
+_____________________________________________________________
+
+--- Context chunk 3 [Chunk-ID: 5827b990-b669-4dc2-96fd-629c903da94a] ---
+exercise that right without risk of harm to an innocent person, his right of private defence
+extends to the running of that risk.
+Illustration.
+A is attacked by a mob who attempt to murder him. He cannot effectually exercise his
+right of private defence without firing on the mob, and he cannot fire without risk of harming
+young children who are mingled with the mob.Acommits no offence if by so firing he harms
+any of the children.
+CHAPTERIV
+OF ABETMENT, CRIMINAL CONSPIRACY AND ATTEMPT
+of abetment
+45. A person abets the doing of a thing, who—
+(a) instigates any person to do that thing; or
+(b) engages with one or more other person or persons in any conspiracy for the
+doing of that thing, if an act or illegal omission takes place in pursuance of that
+conspiracy, and in order to the doing of that thing; or
+(c) intentionally aids, by any act or illegal omission, the doing of that thing.
+Explanation 1.—A person who, by wilful misrepresentation, or by wilful concealment
+of a material fact which he is bound to disclose, voluntarily causes or procures, or attempts
+to cause or procure, a thing to be done, is said to instigate the doing of that thing.
+Illustration.
+A, a public officer, is authorised by a warrant from a Court to apprehend Z. B, knowing
+that fact and also that C is not Z, wilfully represents toAthat C is Z, and thereby intentionally
+causes A to apprehend C. Here B abets by instigation the apprehension of C.
+Explanation 2.—Whoever, either prior to or at the time of the commission of an act,
+does anything in order to facilitate the commission of that act, and thereby facilitates the
+commission thereof, is said to aid the doing of that act.
+46. A person abets an offence, who abets either the commission of an offence, or the
+commission of an act which would be an offence, if committed by a person capable by law of
+committing an offence with the same intention or knowledge as that of the abettor.
+
+--- Context chunk 4 [Chunk-ID: 226205c5-7e80-416d-9622-e6b7e9b82f0b] ---
+The fact that, at the time when he left home, A had sudden and
+urgent business at the place to which he went, is relevant, as tending to explain the fact that
+he left home suddenly. The details of the business on which he left are not relevant, except
+in so far as they are necessary to show that the business was sudden and urgent.
+(d) A sues B for inducing C to break a contract of service made by him with A. C, on
+leaving A&#x27;s service, says to A—&quot;I am leaving you because B has made me a better offer&quot;.
+This statement is a relevant fact as explanatory of C&#x27;s conduct, which is relevant as a fact in
+issue.
+(e) A, accused of theft, is seen to give the stolen property to B, who is seen to give it
+to A&#x27;s wife. B says as he delivers it—&quot;A says you are to hide this&quot;. B&#x27;s statement is relevant
+as explanatory of a fact which is part of the transaction.
+(f)Ais tried for a riot and is proved to have marched at the head of a mob. The cries of
+the mob are relevant as explanatory of the nature of the transaction.
+8. Where there is reasonable ground to believe that two or more persons have
+conspired together to commit an offence or an actionable wrong, anything said, done or
+written by any one of such persons in reference to their common intention, after the time
+when such intention was first entertained by any one of them, is a relevant fact as against
+each of the persons believed to be so conspiring, as well for the purpose of proving the
+existence of the conspiracy as for the purpose of showing that any such person was a party
+to it.
+Illustration.
+Reasonable ground exists for believing thatAhas joined in a conspiracy to wage war
+against the State.
+The facts that B procured arms in Europe for the purpose of the conspiracy, C collected
+money in Kolkata for a like object, D persuaded persons to join the conspiracy in Mumbai,
+E published writings advocating the object in view atAgra, and F transmitted from Delhi to
+Facts
+necessary to
+explain or
+introduce fact
+in issue or
+relevant facts.
+
+--- Context chunk 5 [Chunk-ID: 429770e7-e2cb-406a-9551-6298faa8712f] ---
+Explanation 4.—The abetment of an offence being an offence, the abetment of such
+an abetment is also an offence.
+Illustration.
+A instigates B to instigate C to murder Z. B accordingly instigates C to murder Z, and
+C commits that offence in consequence of B’s instigation. B is liable to be punished for his
+offence with the punishment for murder; and, as A instigated B to commit the offence, A is
+also liable to the same punishment.
+Explanation 5.—It is not necessary to the commission of the offence of abetment by
+conspiracy that the abettor should concert the offence with the person who commits it. It is
+sufficient if he engages in the conspiracy in pursuance of which the offence is committed.
+Illustration.
+Aconcerts with B a plan for poisoning Z. It is agreed thatAshall administer the poison.
+B then explains the plan to C mentioning that a third person is to administer the poison, but
+without mentioningA’s name. C agrees to procure the poison, and procures and delivers it to
+B for the purpose of its being used in the manner explained.Aadministers the poison; Z dies
+in consequence. Here, though A and C have not conspired together, yet C has been engaged
+in the conspiracy in pursuance of which Z has been murdered. C has therefore committed the
+offence defined in this section and is liable to the punishment for murder.
+47. A person abets an offence within the meaning of this Sanhita who, in India, abets
+the commission of any act without and beyond India which would constitute an offence if
+committed in India.
+Illustration.
+A, in India, instigates B, a foreigner in country X, to commit a murder in that country,
+A is guilty of abetting murder.
+48. A person abets an offence within the meaning of this Sanhita who, without and
+beyond India, abets the commission of any act in India which would constitute an offence if
+committed in India.
+Abetment in
+India of
+offences
+outside India.
+Abetment
+outside India
+for offence in
+India.
+
+
+Question: How does the BNS define &#x27;criminal conspiracy&#x27;?</pre>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <div class="section-title">Claim Decomposition &amp; Verification (4 atomic claims)</div>
+    
+        <details class="claim-detail">
+          <summary>
+            <span class="dot good"></span>
+            <span class="claim-status good">SUPPORTED</span>
+            <span class="claim-summary-text">The definition of &#x27;criminal conspiracy&#x27; is provided in section 61.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Claim ID:</b> <span class="mono">bd1df98c-e92f-495b-82e8-6089eb4e6295</span></div>
+            <div class="claim-field"><b>Supporting chunk:</b> <span class="mono">40abf7d3-8696-4424-88ed-e3ba45bfe867</span> (rank 1)</div>
+            <div class="claim-field"><b>Evidence text:</b></div>
+            <pre class="evidence-text">Of criminal conspiracy
+61. (1) When two or more persons agree with the common object to do, or cause to be
+done––
+(a) an illegal act; or
+(b) an act which is not illegal by illegal means, such an agreement is designated
+a criminal conspiracy:
+Provided that no agreement except an agreement to commit an offence shall amount to
+a criminal conspiracy unless some act besides the agreement is done by one or more parties
+to such agreement in pursuance thereof.</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot good"></span>
+            <span class="claim-status good">SUPPORTED</span>
+            <span class="claim-summary-text">A criminal conspiracy is an agreement to do, or cause to be done, an illegal act or an act which is not illegal by illegal means.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Claim ID:</b> <span class="mono">5eb4eb1d-6336-431b-93df-d42b7a664300</span></div>
+            <div class="claim-field"><b>Supporting chunk:</b> <span class="mono">40abf7d3-8696-4424-88ed-e3ba45bfe867</span> (rank 1)</div>
+            <div class="claim-field"><b>Evidence text:</b></div>
+            <pre class="evidence-text">Of criminal conspiracy
+61. (1) When two or more persons agree with the common object to do, or cause to be
+done––
+(a) an illegal act; or
+(b) an act which is not illegal by illegal means, such an agreement is designated
+a criminal conspiracy:
+Provided that no agreement except an agreement to commit an offence shall amount to
+a criminal conspiracy unless some act besides the agreement is done by one or more parties
+to such agreement in pursuance thereof.</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot good"></span>
+            <span class="claim-status good">SUPPORTED</span>
+            <span class="claim-summary-text">An agreement to commit an offence is required for a criminal conspiracy.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Claim ID:</b> <span class="mono">99942984-05ef-497d-a76a-c9410bf3bc4e</span></div>
+            <div class="claim-field"><b>Supporting chunk:</b> <span class="mono">40abf7d3-8696-4424-88ed-e3ba45bfe867</span> (rank 1)</div>
+            <div class="claim-field"><b>Evidence text:</b></div>
+            <pre class="evidence-text">Of criminal conspiracy
+61. (1) When two or more persons agree with the common object to do, or cause to be
+done––
+(a) an illegal act; or
+(b) an act which is not illegal by illegal means, such an agreement is designated
+a criminal conspiracy:
+Provided that no agreement except an agreement to commit an offence shall amount to
+a criminal conspiracy unless some act besides the agreement is done by one or more parties
+to such agreement in pursuance thereof.</pre>
+          </div>
+        </details>
+        <details class="claim-detail">
+          <summary>
+            <span class="dot good"></span>
+            <span class="claim-status good">SUPPORTED</span>
+            <span class="claim-summary-text">Some act besides the agreement must be done by one or more parties to the agreement for it to be a criminal conspiracy.</span>
+          </summary>
+          <div class="claim-body">
+            <div class="claim-field"><b>Claim ID:</b> <span class="mono">fc364c31-2451-49c6-b457-83ca8732b4de</span></div>
+            <div class="claim-field"><b>Supporting chunk:</b> <span class="mono">40abf7d3-8696-4424-88ed-e3ba45bfe867</span> (rank 1)</div>
+            <div class="claim-field"><b>Evidence text:</b></div>
+            <pre class="evidence-text">Of criminal conspiracy
+61. (1) When two or more persons agree with the common object to do, or cause to be
+done––
+(a) an illegal act; or
+(b) an act which is not illegal by illegal means, such an agreement is designated
+a criminal conspiracy:
+Provided that no agreement except an agreement to commit an offence shall amount to
+a criminal conspiracy unless some act besides the agreement is done by one or more parties
+to such agreement in pursuance thereof.</pre>
+          </div>
+        </details>
+  </section>
+
+  <section>
+    <div class="section-title">Chunk Mapping &amp; Provenance</div>
+    
+        <details class="chunk-detail">
+          <summary>
+            <span class="chunk-rank">#1</span>
+            <span class="mono chunk-id">40abf7d3-8696-4424-88ed-e3ba45bfe867</span>
+            <span class="chunk-src">bns.pdf p.22</span>
+          </summary>
+          <div class="chunk-body">
+            <div class="score-grid">
+              <div><span class="m-name">Dense score</span><span class="mono">0.295</span></div>
+              <div><span class="m-name">Sparse (BM25)</span><span class="mono">10.73</span></div>
+              <div><span class="m-name">RRF score</span><span class="mono">0.0323</span></div>
+              <div><span class="m-name">Reranker score</span><span class="mono">0.401</span></div>
+              <div><span class="m-name">Dense rank</span><span class="mono">3</span></div>
+              <div><span class="m-name">Sparse rank</span><span class="mono">1</span></div>
+            </div>
+            <div class="claim-field"><b>Parent document:</b> <span class="mono">8254df98-0725-42ac-ae6d-9bacdbf3f26b</span></div>
+            <div class="claim-field"><b>Chunk index in document:</b> <span class="mono">0</span></div>
+            <div class="claim-field"><b>Configured chunk size / overlap:</b> <span class="mono">512 / 50</span></div>
+            <div class="claim-field"><b>Character span:</b> <span class="mono">0 - 1962 (1962 chars)</span></div>
+            <div class="claim-field"><b>Full chunk text:</b></div>
+            <pre class="evidence-text">Here A has by an illegal omission concealed the existence of B’s design, and is liable to
+punishment according to the provision of this section.
+60. Whoever, intending to facilitate or knowing it to be likely that he will thereby
+facilitate the commission of an offence punishable with imprisonment, voluntarily conceals,
+by any act or illegal omission, the existence of a design to commit such offence, or makes any
+representation which he knows to be false respecting such design shall,––
+(a) if the offence be committed, be punished with imprisonment of the description
+provided for the offence, for a term which may extend to one-fourth; and
+(b) if the offence be not committed, to one-eighth,
+of the longest term of such imprisonment, or with such fine as is provided for the offence, or
+with both.
+Of criminal conspiracy
+61. (1) When two or more persons agree with the common object to do, or cause to be
+done––
+(a) an illegal act; or
+(b) an act which is not illegal by illegal means, such an agreement is designated
+a criminal conspiracy:
+Provided that no agreement except an agreement to commit an offence shall amount to
+a criminal conspiracy unless some act besides the agreement is done by one or more parties
+to such agreement in pursuance thereof.
+Explanation.—It is immaterial whether the illegal act is the ultimate object of such
+agreement, or is merely incidental to that object.
+(2) Whoever is a party to a criminal conspiracy,––
+(a) to commit an offence punishable with death, imprisonment for life or rigorous
+imprisonment for a term of two years or upwards, shall, where no express provision is
+made in this Sanhita for the punishment of such a conspiracy, be punished in the same
+manner as if he had abetted such offence;
+(b) other than a criminal conspiracy to commit an offence punishable as aforesaid
+shall be punished with imprisonment of either description for a term not exceeding six
+months, or with fine or with both.
+Of attempt
+62.</pre>
+          </div>
+        </details>
+        <details class="chunk-detail">
+          <summary>
+            <span class="chunk-rank">#2</span>
+            <span class="mono chunk-id">c3698be5-faf4-43cd-9958-b77fa47ebfaa</span>
+            <span class="chunk-src">bns.pdf p.64</span>
+          </summary>
+          <div class="chunk-body">
+            <div class="score-grid">
+              <div><span class="m-name">Dense score</span><span class="mono">0.343</span></div>
+              <div><span class="m-name">Sparse (BM25)</span><span class="mono">8.00</span></div>
+              <div><span class="m-name">RRF score</span><span class="mono">0.0284</span></div>
+              <div><span class="m-name">Reranker score</span><span class="mono">0.013</span></div>
+              <div><span class="m-name">Dense rank</span><span class="mono">18</span></div>
+              <div><span class="m-name">Sparse rank</span><span class="mono">4</span></div>
+            </div>
+            <div class="claim-field"><b>Parent document:</b> <span class="mono">1e420ad6-b615-41e4-a6c3-6a79611bba07</span></div>
+            <div class="claim-field"><b>Chunk index in document:</b> <span class="mono">1</span></div>
+            <div class="claim-field"><b>Configured chunk size / overlap:</b> <span class="mono">512 / 50</span></div>
+            <div class="claim-field"><b>Character span:</b> <span class="mono">1848 - 3669 (1821 chars)</span></div>
+            <div class="claim-field"><b>Full chunk text:</b></div>
+            <pre class="evidence-text">Illustrations.
+(a) A puts jewels into a box belonging to Z, with the intention that they may be
+found in that box, and that this circumstance may cause Z to be convicted of theft. A has
+fabricated false evidence.
+(b)A makes a false entry in his shop-book for the purpose of using it as corroborative
+evidence in a Court. A has fabricated false evidence.
+(c)A, with the intention of causing Z to be convicted of a criminal conspiracy, writes
+a letter in imitation of Z’s handwriting, purporting to be addressed to an accomplice in
+such criminal conspiracy, and puts the letter in a place which he knows that the officers of
+the police are likely to search. A has fabricated false evidence.
+229. (1) Whoever intentionally gives false evidence in any stage of a judicial
+proceeding, or fabricates false evidence for the purpose of being used in any stage of a
+judicial proceeding, shall be punished with imprisonment of either description for a term
+which may extend to seven years, and shall also be liable to fine which may extend to ten
+thousand rupees.
+(2) Whoever intentionally gives or fabricates false evidence in any case other than
+that referred to in sub-section (1), shall be punished with imprisonment of either description
+for a term which may extend to three years, and shall also be liable to fine which may
+extend to five thousand rupees.
+Fabricating
+false evidence.
+Punishment
+for false
+evidence.
+64
+THE GAZETTE OF INDIA EXTRAORDINARY
+[Part II—
+____________________________________________________________
+_____________________________________________________________
+____________________________________________________________
+___________________________________________________________
+________________________________________________________
+_____________________________________________________________</pre>
+          </div>
+        </details>
+        <details class="chunk-detail">
+          <summary>
+            <span class="chunk-rank">#3</span>
+            <span class="mono chunk-id">5827b990-b669-4dc2-96fd-629c903da94a</span>
+            <span class="chunk-src">bns.pdf p.17</span>
+          </summary>
+          <div class="chunk-body">
+            <div class="score-grid">
+              <div><span class="m-name">Dense score</span><span class="mono">0.350</span></div>
+              <div><span class="m-name">Sparse (BM25)</span><span class="mono">7.73</span></div>
+              <div><span class="m-name">RRF score</span><span class="mono">0.0279</span></div>
+              <div><span class="m-name">Reranker score</span><span class="mono">0.013</span></div>
+              <div><span class="m-name">Dense rank</span><span class="mono">20</span></div>
+              <div><span class="m-name">Sparse rank</span><span class="mono">5</span></div>
+            </div>
+            <div class="claim-field"><b>Parent document:</b> <span class="mono">f890fab8-ee26-4ca9-8b3e-b80d5622bcb4</span></div>
+            <div class="claim-field"><b>Chunk index in document:</b> <span class="mono">0</span></div>
+            <div class="claim-field"><b>Configured chunk size / overlap:</b> <span class="mono">512 / 50</span></div>
+            <div class="claim-field"><b>Character span:</b> <span class="mono">0 - 1927 (1927 chars)</span></div>
+            <div class="claim-field"><b>Full chunk text:</b></div>
+            <pre class="evidence-text">exercise that right without risk of harm to an innocent person, his right of private defence
+extends to the running of that risk.
+Illustration.
+A is attacked by a mob who attempt to murder him. He cannot effectually exercise his
+right of private defence without firing on the mob, and he cannot fire without risk of harming
+young children who are mingled with the mob.Acommits no offence if by so firing he harms
+any of the children.
+CHAPTERIV
+OF ABETMENT, CRIMINAL CONSPIRACY AND ATTEMPT
+of abetment
+45. A person abets the doing of a thing, who—
+(a) instigates any person to do that thing; or
+(b) engages with one or more other person or persons in any conspiracy for the
+doing of that thing, if an act or illegal omission takes place in pursuance of that
+conspiracy, and in order to the doing of that thing; or
+(c) intentionally aids, by any act or illegal omission, the doing of that thing.
+Explanation 1.—A person who, by wilful misrepresentation, or by wilful concealment
+of a material fact which he is bound to disclose, voluntarily causes or procures, or attempts
+to cause or procure, a thing to be done, is said to instigate the doing of that thing.
+Illustration.
+A, a public officer, is authorised by a warrant from a Court to apprehend Z. B, knowing
+that fact and also that C is not Z, wilfully represents toAthat C is Z, and thereby intentionally
+causes A to apprehend C. Here B abets by instigation the apprehension of C.
+Explanation 2.—Whoever, either prior to or at the time of the commission of an act,
+does anything in order to facilitate the commission of that act, and thereby facilitates the
+commission thereof, is said to aid the doing of that act.
+46. A person abets an offence, who abets either the commission of an offence, or the
+commission of an act which would be an offence, if committed by a person capable by law of
+committing an offence with the same intention or knowledge as that of the abettor.</pre>
+          </div>
+        </details>
+        <details class="chunk-detail">
+          <summary>
+            <span class="chunk-rank">#4</span>
+            <span class="mono chunk-id">226205c5-7e80-416d-9622-e6b7e9b82f0b</span>
+            <span class="chunk-src">bsa.pdf p.6</span>
+          </summary>
+          <div class="chunk-body">
+            <div class="score-grid">
+              <div><span class="m-name">Dense score</span><span class="mono">0.341</span></div>
+              <div><span class="m-name">Sparse (BM25)</span><span class="mono">6.62</span></div>
+              <div><span class="m-name">RRF score</span><span class="mono">0.0282</span></div>
+              <div><span class="m-name">Reranker score</span><span class="mono">0.012</span></div>
+              <div><span class="m-name">Dense rank</span><span class="mono">12</span></div>
+              <div><span class="m-name">Sparse rank</span><span class="mono">10</span></div>
+            </div>
+            <div class="claim-field"><b>Parent document:</b> <span class="mono">2f14c363-4aba-4dc6-a3a0-774d9f8ae359</span></div>
+            <div class="claim-field"><b>Chunk index in document:</b> <span class="mono">1</span></div>
+            <div class="claim-field"><b>Configured chunk size / overlap:</b> <span class="mono">512 / 50</span></div>
+            <div class="claim-field"><b>Character span:</b> <span class="mono">1791 - 3793 (2002 chars)</span></div>
+            <div class="claim-field"><b>Full chunk text:</b></div>
+            <pre class="evidence-text">The fact that, at the time when he left home, A had sudden and
+urgent business at the place to which he went, is relevant, as tending to explain the fact that
+he left home suddenly. The details of the business on which he left are not relevant, except
+in so far as they are necessary to show that the business was sudden and urgent.
+(d) A sues B for inducing C to break a contract of service made by him with A. C, on
+leaving A&#x27;s service, says to A—&quot;I am leaving you because B has made me a better offer&quot;.
+This statement is a relevant fact as explanatory of C&#x27;s conduct, which is relevant as a fact in
+issue.
+(e) A, accused of theft, is seen to give the stolen property to B, who is seen to give it
+to A&#x27;s wife. B says as he delivers it—&quot;A says you are to hide this&quot;. B&#x27;s statement is relevant
+as explanatory of a fact which is part of the transaction.
+(f)Ais tried for a riot and is proved to have marched at the head of a mob. The cries of
+the mob are relevant as explanatory of the nature of the transaction.
+8. Where there is reasonable ground to believe that two or more persons have
+conspired together to commit an offence or an actionable wrong, anything said, done or
+written by any one of such persons in reference to their common intention, after the time
+when such intention was first entertained by any one of them, is a relevant fact as against
+each of the persons believed to be so conspiring, as well for the purpose of proving the
+existence of the conspiracy as for the purpose of showing that any such person was a party
+to it.
+Illustration.
+Reasonable ground exists for believing thatAhas joined in a conspiracy to wage war
+against the State.
+The facts that B procured arms in Europe for the purpose of the conspiracy, C collected
+money in Kolkata for a like object, D persuaded persons to join the conspiracy in Mumbai,
+E published writings advocating the object in view atAgra, and F transmitted from Delhi to
+Facts
+necessary to
+explain or
+introduce fact
+in issue or
+relevant facts.</pre>
+          </div>
+        </details>
+        <details class="chunk-detail">
+          <summary>
+            <span class="chunk-rank">#5</span>
+            <span class="mono chunk-id">429770e7-e2cb-406a-9551-6298faa8712f</span>
+            <span class="chunk-src">bns.pdf p.18</span>
+          </summary>
+          <div class="chunk-body">
+            <div class="score-grid">
+              <div><span class="m-name">Dense score</span><span class="mono">0.336</span></div>
+              <div><span class="m-name">Sparse (BM25)</span><span class="mono">6.14</span></div>
+              <div><span class="m-name">RRF score</span><span class="mono">0.0290</span></div>
+              <div><span class="m-name">Reranker score</span><span class="mono">0.000</span></div>
+              <div><span class="m-name">Dense rank</span><span class="mono">6</span></div>
+              <div><span class="m-name">Sparse rank</span><span class="mono">12</span></div>
+            </div>
+            <div class="claim-field"><b>Parent document:</b> <span class="mono">d245f72f-e5f7-4b87-aa04-09e3af3aba4b</span></div>
+            <div class="claim-field"><b>Chunk index in document:</b> <span class="mono">1</span></div>
+            <div class="claim-field"><b>Configured chunk size / overlap:</b> <span class="mono">512 / 50</span></div>
+            <div class="claim-field"><b>Character span:</b> <span class="mono">1672 - 3621 (1949 chars)</span></div>
+            <div class="claim-field"><b>Full chunk text:</b></div>
+            <pre class="evidence-text">Explanation 4.—The abetment of an offence being an offence, the abetment of such
+an abetment is also an offence.
+Illustration.
+A instigates B to instigate C to murder Z. B accordingly instigates C to murder Z, and
+C commits that offence in consequence of B’s instigation. B is liable to be punished for his
+offence with the punishment for murder; and, as A instigated B to commit the offence, A is
+also liable to the same punishment.
+Explanation 5.—It is not necessary to the commission of the offence of abetment by
+conspiracy that the abettor should concert the offence with the person who commits it. It is
+sufficient if he engages in the conspiracy in pursuance of which the offence is committed.
+Illustration.
+Aconcerts with B a plan for poisoning Z. It is agreed thatAshall administer the poison.
+B then explains the plan to C mentioning that a third person is to administer the poison, but
+without mentioningA’s name. C agrees to procure the poison, and procures and delivers it to
+B for the purpose of its being used in the manner explained.Aadministers the poison; Z dies
+in consequence. Here, though A and C have not conspired together, yet C has been engaged
+in the conspiracy in pursuance of which Z has been murdered. C has therefore committed the
+offence defined in this section and is liable to the punishment for murder.
+47. A person abets an offence within the meaning of this Sanhita who, in India, abets
+the commission of any act without and beyond India which would constitute an offence if
+committed in India.
+Illustration.
+A, in India, instigates B, a foreigner in country X, to commit a murder in that country,
+A is guilty of abetting murder.
+48. A person abets an offence within the meaning of this Sanhita who, without and
+beyond India, abets the commission of any act in India which would constitute an offence if
+committed in India.
+Abetment in
+India of
+offences
+outside India.
+Abetment
+outside India
+for offence in
+India.</pre>
+          </div>
+        </details>
+  </section>
+
+  <section>
+    <div class="section-title">X-RAG Stage Attribution</div>
+    <div class="stage-strip">
+      
+        <div class="stage ">
+          <div class="stage-name">CORPUS</div>
+          <div class="stage-status">PASS</div>
+          <div class="stage-obs">Corpus contains sufficient relevant content, evidenced by at least one supported claim.</div>
+          <div class="stage-conf">confidence 0.9</div>
+          
+        </div>
+        <div class="stage ">
+          <div class="stage-name">RETRIEVER</div>
+          <div class="stage-status">PASS</div>
+          <div class="stage-obs">At least one retrieved chunk provides supporting evidence for a verified claim.</div>
+          <div class="stage-conf">confidence 0.95</div>
+          <div class="stage-efficiency">Efficiency: 1/5 chunks used (20%)</div>
+        </div>
+        <div class="stage unknown">
+          <div class="stage-name">CHUNKING</div>
+          <div class="stage-status">UNKNOWN</div>
+          <div class="stage-obs">Deterministic chunk-boundary evidence is currently unobservable.</div>
+          <div class="stage-conf">confidence 1.0</div>
+          
+        </div>
+        <div class="stage ">
+          <div class="stage-name">GENERATOR</div>
+          <div class="stage-status">PASS</div>
+          <div class="stage-obs">All generated claims are fully supported by evidence.</div>
+          <div class="stage-conf">confidence 0.95</div>
+          
+        </div>
+        <div class="stage ">
+          <div class="stage-name">GROUNDING</div>
+          <div class="stage-status">PASS</div>
+          <div class="stage-obs">No claims are contradicted by retrieved evidence.</div>
+          <div class="stage-conf">confidence 0.9</div>
+          
+        </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">Root Cause Reasoning Chain</div>
+    <ol class='reasoning-chain'><li>Starting root cause analysis for trace 217fafbd-302b-43dd-aee2-651788752a90.</li><li>Assumption Passed at CORPUS. Moving to next stage.</li><li>Assumption Passed at RETRIEVER. Moving to next stage.</li><li>Skipping CHUNKING: State is UNKNOWN. Insufficient evidence.</li><li>Assumption Passed at GENERATOR. Moving to next stage.</li><li>Assumption Passed at GROUNDING. Moving to next stage.</li><li>No failures detected. Pipeline is healthy or evidence is purely UNKNOWN.</li></ol>
+    <div class="claim-field" style="margin-top: 10px;"><b>Diagnosis confidence:</b> <span class="mono">0.930</span></div>
+  </section>
+
+  <section>
+    <div class="section-title">Corrective Actions</div>
+    
+        <div class="action-card">
+          <div class="action-title"><span class="claim-status" style="margin-right:8px;">[INFORMATIONAL]</span>Review Retrieval Top-K / Reranker Cutoff</div>
+          <div class="action-desc">Retrieval efficiency is low (20%); consider reducing top-k or tightening the reranker score cutoff.</div>
+          <div class='claim-field muted' style='margin-top:6px;'>1/5 retrieved chunks were used as supporting evidence for any verified claim.</div>
+        </div>
+  </section>
+
+  <section>
+    <div class="section-title">Answer Correctness (Claim Recall)</div>
+    <p class='muted'>Not computed for this trace -- answer correctness (claim recall) is a standalone module (see <span class='mono'>scripts/evaluate_answer_correctness.py</span>), not yet wired into the core pipeline.</p>
+  </section>
+
+  <section>
+    <div class="section-title">Cross-Framework Comparison</div>
+    <div class="scroll-x">
+      
+    <div class="fw-grid">
+      <div class="fw-card xrag">
+        <div class="fw-name">X-RAG<span class="tag">this project</span></div>
+        <div class="fw-desc">Claim-level NLI verification + root-cause attribution to a specific pipeline stage.</div>
+        <div class="metric-list">
+          <div class="metric-row"><span class="m-name">Avg. entailment</span><span class="m-val hi mono">0.996</span></div>
+          <div class="metric-row"><span class="m-name">Primary cause</span><span class="m-val mono">UNKNOWN</span></div>
+        </div>
+      </div>
+      <div class="fw-card ragas">
+        <div class="fw-name">RAGAS<span class="tag">real ragas==0.2.15</span></div>
+        <div class="fw-desc">LLM-judged faithfulness, relevancy, and context quality. No stage attribution.</div>
+        <div class="metric-list">
+          <div class="metric-row"><span class="m-name">Faithfulness</span><span class="m-val hi mono">0.750</span></div>
+          <div class="metric-row"><span class="m-name">Answer relevancy</span><span class="m-val hi mono">0.802</span></div>
+          <div class="metric-row"><span class="m-name">Context precision</span><span class="m-val hi mono">1.000</span></div>
+          <div class="metric-row"><span class="m-name">Context recall</span><span class="m-val hi mono">1.000</span></div>
+          <div class="metric-row"><span class="m-name">Answer correctness</span><span class="m-val hi mono">0.721</span></div>
+        </div>
+      </div>
+      <div class="fw-card">
+        <div class="fw-name">RAGChecker<span class="tag">retriever vs. generator</span></div>
+        <div class="fw-desc">Claim-level precision/recall against the gold answer.</div>
+        <div class="metric-list">
+          <div class="metric-row"><span class="m-name">Precision</span><span class="m-val hi mono">0.778</span></div>
+          <div class="metric-row"><span class="m-name">Recall</span><span class="m-val hi mono">1.000</span></div>
+          <div class="metric-row"><span class="m-name">F1</span><span class="m-val hi mono">0.875</span></div>
+          <div class="metric-row"><span class="m-name">Faithfulness</span><span class="m-val hi mono">1.000</span></div>
+          <div class="metric-row"><span class="m-name">Hallucination</span><span class="m-val mid mono">0.000</span></div>
+        </div>
+      </div>
+      <div class="fw-card">
+        <div class="fw-name">ARES<span class="tag">ues_idp judge</span></div>
+        <div class="fw-desc">Per-document LLM relevance and faithfulness judgments.</div>
+        <div class="metric-list">
+          <div class="metric-row"><span class="m-name">Context relevance</span><span class="m-val hi mono">0.800</span></div>
+          <div class="metric-row"><span class="m-name">Answer relevance</span><span class="m-val mid mono">0.600</span></div>
+          <div class="metric-row"><span class="m-name">Answer faithfulness</span><span class="m-val mid mono">0.200</span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>X-RAG Diagnostic Framework</span>
+    <span>Trace 217fafbd-302b-43dd-aee2-651788752a90 -- generated from a live run, not simulated data</span>
+  </footer>
+
+</div>

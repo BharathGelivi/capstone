@@ -1,0 +1,25 @@
+[
+  {
+    "eval_id": "1",
+    "question": "According to the BNS, what three ways can a person 'abet' the doing of a thing?",
+    "expected_failure_type": "",
+    "trace_id": "a8358358-4f8d-4526-b42a-3720fc939f12",
+    "xrag_primary_cause": "UNKNOWN",
+    "xrag_avg_entailment_score": 0.9576498717069626,
+    "ragas_faithfulness": NaN,
+    "ragas_answer_relevancy": 0.8811040579080354,
+    "ragas_context_precision": NaN,
+    "ragas_context_recall": 1.0,
+    "ragas_answer_correctness": NaN,
+    "ragchecker_precision": 1.0,
+    "ragchecker_recall": 1.0,
+    "ragchecker_f1": 1.0,
+    "ragchecker_claim_recall": 1.0,
+    "ragchecker_context_precision": 0.3333333333333333,
+    "ragchecker_faithfulness": 1.0,
+    "ragchecker_hallucination": 0.0,
+    "ares_context_relevance": 0.333,
+    "ares_answer_relevance": 0.333,
+    "ares_answer_faithfulness": 0.333
+  }
+]

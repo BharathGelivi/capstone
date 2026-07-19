@@ -1,0 +1,12 @@
+{
+    "trace_id": "84cf0003-27b8-440b-8139-790c6effbbdb",
+    "total_claims": 0,
+    "supported_claims": 0,
+    "partially_supported_claims": 0,
+    "contradicted_claims": 0,
+    "unsupported_claims": 0,
+    "not_verifiable_claims": 0,
+    "average_entailment_score": 0.0,
+    "total_verification_latency_ms": 0.2295970916748047,
+    "results": []
+}

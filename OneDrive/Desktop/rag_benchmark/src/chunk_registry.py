@@ -56,11 +56,22 @@ class ChunkRegistry:
         
         for node in nodes:
             # We extract properties safely. If a metadata field is missing, we provide a default.
+            # page_number can come from any of three possible metadata keys; record which
+            # one was actually used so downstream consumers know its real provenance.
+            if "source" in node.metadata:
+                page_number, page_number_source_key = str(node.metadata["source"]), "source"
+            elif "page_label" in node.metadata:
+                page_number, page_number_source_key = str(node.metadata["page_label"]), "page_label"
+            elif "page_number" in node.metadata:
+                page_number, page_number_source_key = str(node.metadata["page_number"]), "page_number"
+            else:
+                page_number, page_number_source_key = "unknown", "none"
+
             record = ChunkRecord(
                 chunk_id=node.id_,
                 parent_document_id=node.ref_doc_id or "unknown",
-                source_file=node.metadata.get("source_file", "unknown"),
-                page_number=str(node.metadata.get("page_number", "unknown")),
+                source_file=node.metadata.get("file_name", node.metadata.get("source_file", "unknown")),
+                page_number=page_number,
                 chunk_index=node.metadata.get("chunk_index", -1),
                 configured_chunk_size=node.metadata.get("chunk_size_config", -1),
                 configured_chunk_overlap=node.metadata.get("chunk_overlap_config", -1),
@@ -68,7 +79,7 @@ class ChunkRegistry:
                 character_end=node.metadata.get("character_end", -1),
                 text=node.text,
                 text_length=len(node.text),
-                metadata=node.metadata.copy()  # Save a copy of all other metadata just in case
+                metadata={**node.metadata.copy(), "page_number_source_key": page_number_source_key}
             )
             self._records[record.chunk_id] = record
             

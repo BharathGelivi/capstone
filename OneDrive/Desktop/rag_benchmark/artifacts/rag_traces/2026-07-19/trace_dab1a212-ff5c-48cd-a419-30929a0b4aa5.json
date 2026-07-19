@@ -1,0 +1,85 @@
+{
+    "trace_id": "dab1a212-ff5c-48cd-a419-30929a0b4aa5",
+    "trace_version": "1.0",
+    "pipeline_version": "1.0",
+    "framework_version": "1.0",
+    "timestamp": "2026-07-19T06:35:02.732056Z",
+    "question": "What is the punishment for abetting the commission of an offence by the public generally, or by a class of persons exceeding ten?",
+    "generated_answer": "The punishment for abetting the commission of an offence by the public generally, or by a class of persons exceeding ten, is imprisonment of either description for a term which may extend to seven years and with fine [Chunk-ID: 90f9986c-9b72-4d18-a9f8-5c536442d5b5].",
+    "prompt_snapshot": "[SYSTEM]: You are a helpful assistant. Read the provided context carefully to answer the user's question.\nIf the context contains the answer, summarize it clearly. If the provided context is completely irrelevant to the question, explicitly state 'I do not have enough information to answer this.'\nDo not hallucinate or use outside knowledge.\nCRITICAL: You must append the specific [Chunk-ID] to every single sentence you generate to explicitly cite your sources.\n\n[USER]: --- Context chunk 1 [Chunk-ID: 90f9986c-9b72-4d18-a9f8-5c536442d5b5] ---\n(b) A, a police officer, whose duty it is to prevent robbery, abets the commission of\nrobbery. Here, though the robbery be not committed, A is liable to one-half of the longest\nterm of imprisonment provided for that offence, and also to fine.\n(c) B abets the commission of a robbery by A, a police officer, whose duty it is to\nprevent that offence. Here, though the robbery be not committed, B is liable to one-half of the\nlongest term of imprisonment provided for the offence of robbery, and also to fine.\n57. Whoever abets the commission of an offence by the public generally or by any\nnumber or class of persons exceeding ten, shall be punished with imprisonment of either\ndescription for a term which may extend to seven years and with fine.\nIllustration.\nA affixes in a public place a placard instigating a sect consisting of more than ten\nmembers to meet at a certain time and place, for the purpose of attacking the members of an\nadverse sect, while engaged in a procession. A has committed the offence defined in this\nsection.\n58. Whoever intending to facilitate or knowing it to be likely that he will thereby\nfacilitate the commission of an offence punishable with death or imprisonment for life,\nvoluntarily conceals by any act or omission, or by the use of encryption or any other\ninformation hiding tool, the existence of a design to commit such offence or makes any\nrepresentation which he knows to be false respecting such design shall,\u2013\u2013\n(a) if that offence be committed, be punished with imprisonment of either\ndescription for a term which may extend to seven years; or\n(b) if the offence be not committed, with imprisonment of either description, for\na term which may extend to three years,\nand shall also be liable to fine.\nIllustration.\nA, knowing that dacoity is about to be committed at B, falsely informs the Magistrate\nthat a dacoity is about to be committed at C, a place in an opposite direction, and thereby\nmisleads the Magistrate with intent to facilitate the commission of the offence. The dacoity\nis committed at B in pursuance of the design. A is punishable under this section.\n59.\n\n--- Context chunk 2 [Chunk-ID: 3ede5acf-3975-46c2-97f8-926298af6400] ---\nThe dacoity\nis committed at B in pursuance of the design. A is punishable under this section.\n59. Whoever, being a public servant, intending to facilitate or knowing it to be likely\nthat he will thereby facilitate the commission of an offence which it is his duty as such public\nservant to prevent, voluntarily conceals, by any act or omission or by the use of encryption\nor any other information hiding tool, the existence of a design to commit such offence, or\nmakes any representation which he knows to be false respecting such design shall,\u2013\u2013\n(a) if the offence be committed, be punished with imprisonment of any description\nprovided for the offence, for a term which may extend to one-half of the longest term of\nsuch imprisonment, or with such fine as is provided for that offence, or with both; or\n(b) if the offence be punishable with death or imprisonment for life, with\nimprisonment of either description for a term which may extend to ten years; or\n(c) if the offence be not committed, shall be punished with imprisonment of any\ndescription provided for the offence for a term which may extend to one-fourth part of\nthe longest term of such imprisonment or with such fine as is provided for the offence,\nor with both.\nIllustration.\nA, an officer of police, being legally bound to give information of all designs to commit\nrobbery which may come to his knowledge, and knowing that B designs to commit robbery,\nomits to give such information, with intent to so facilitate the commission of that offence.\nAbetting\ncommission of\noffence by\npublic or by\nmore than ten\npersons.\nConcealing\ndesign to\ncommit\noffence\npunishable\nwith death or\nimprisonment\nfor life.\nPublic servant\nconcealing\ndesign to\ncommit\noffence which\nit is his duty\nto prevent.\nSec. 1]\nTHE GAZETTE OF INDIA EXTRAORDINARY\n21\n____________________________________________________________\n_____________________________________________________________\n____________________________________________________________\n___________________________________________________________\n________________________________________________________\n_____________________________________________________________\n\n--- Context chunk 3 [Chunk-ID: f69e6aef-3594-43c8-86e9-415389ec638f] ---\n55. Whoever abets the commission of an offence punishable with death or\nimprisonment for life, shall, if that offence be not committed in consequence of the abetment,\nand no express provision is made under this Sanhita for the punishment of such abetment, be\npunished with imprisonment of either description for a term which may extend to seven\nyears, and shall also be liable to fine; and if any act for which the abettor is liable in consequence\nof the abetment, and which causes hurt to any person, is done, the abettor shall be liable to\nimprisonment of either description for a term which may extend to fourteen years, and shall\nalso be liable to fine.\nIllustration.\nA instigates B to murder Z. The offence is not committed. If B had murdered Z, he\nwould have been subject to the punishment of death or imprisonment for life.Therefore, Ais\nliable to imprisonment for a term which may extend to seven years and also to a fine; and if\nany hurt be done to Z in consequence of the abetment, he will be liable to imprisonment for\na term which may extend to fourteen years, and to fine.\n56. Whoever abets an offence punishable with imprisonment shall, if that offence be\nnot committed in consequence of the abetment, and no express provision is made under this\nSanhita for the punishment of such abetment, be punished with imprisonment of any\ndescription provided for that offence for a term which may extend to one-fourth part of the\nlongest term provided for that offence; or with such fine as is provided for that offence, or\nwith both; and if the abettor or the person abetted is a public servant, whose duty it is to\nprevent the commission of such offence, the abettor shall be punished with imprisonment of\nany description provided for that offence, for a term which may extend to one-half of the\nlongest term provided for that offence, or with such fine as is provided for the offence, or\nwith both.\nIllustrations.\n(a)Ainstigates B to give false evidence.\n\n\nQuestion: What is the punishment for abetting the commission of an offence by the public generally, or by a class of persons exceeding ten?",
+    "prompt_length": 7071,
+    "retrieved_chunk_references": [
+        {
+            "chunk_id": "90f9986c-9b72-4d18-a9f8-5c536442d5b5",
+            "rank": 1,
+            "similarity_score": 0.996738612651825,
+            "rrf_score": 0.030886196246139225,
+            "reranker_score": 0.996738612651825,
+            "dense_score": 0.24264979362487793,
+            "sparse_score": 17.462683696099393,
+            "dense_rank": 9,
+            "sparse_rank": 1,
+            "page_number": "21",
+            "source_file": "bns.pdf",
+            "chunk_index": 0,
+            "parent_document_id": "9fe70c2b-5b18-4824-836d-d46eed05a27b"
+        },
+        {
+            "chunk_id": "3ede5acf-3975-46c2-97f8-926298af6400",
+            "rank": 2,
+            "similarity_score": 0.9569032192230225,
+            "rrf_score": 0.016129032258064516,
+            "reranker_score": 0.9569032192230225,
+            "dense_score": 0.0,
+            "sparse_score": 13.500743758981894,
+            "dense_rank": -1,
+            "sparse_rank": 2,
+            "page_number": "21",
+            "source_file": "bns.pdf",
+            "chunk_index": 1,
+            "parent_document_id": "9fe70c2b-5b18-4824-836d-d46eed05a27b"
+        },
+        {
+            "chunk_id": "f69e6aef-3594-43c8-86e9-415389ec638f",
+            "rank": 3,
+            "similarity_score": 0.8447181582450867,
+            "rrf_score": 0.015873015873015872,
+            "reranker_score": 0.8447181582450867,
+            "dense_score": 0.23429691791534424,
+            "sparse_score": 0.0,
+            "dense_rank": 3,
+            "sparse_rank": -1,
+            "page_number": "20",
+            "source_file": "bns.pdf",
+            "chunk_index": 1,
+            "parent_document_id": "e02f304c-b43b-4701-b645-a3dffd0028cc"
+        }
+    ],
+    "configuration_snapshot": {
+        "embedding_model": "BAAI/bge-small-en-v1.5",
+        "chunk_size": 512,
+        "chunk_overlap": 50,
+        "retrieval_top_k": 5,
+        "reranker_model": "BAAI/bge-reranker-base",
+        "reranker_top_n": 5,
+        "llm_model": "llama-3.3-70b-versatile",
+        "llm_temperature": 0.1,
+        "llm_max_tokens": 1024
+    },
+    "execution_statistics": {
+        "retrieval_time": 1.5588650703430176,
+        "generation_time": 0.5580487251281738,
+        "total_pipeline_time": 2.1169137954711914,
+        "pre_rerank_candidate_pool_size": 39,
+        "pre_rerank_min_dense_distance": 0.23429691791534424
+    },
+    "pipeline_stage_status": {
+        "document_loader": "completed",
+        "chunk_engine": "completed",
+        "embedding_engine": "completed",
+        "vector_store": "completed",
+        "retriever": "completed",
+        "generator": "completed"
+    },
+    "diagnostics": null
+}

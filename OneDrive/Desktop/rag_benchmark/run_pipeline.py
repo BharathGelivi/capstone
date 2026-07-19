@@ -1,11 +1,17 @@
 import os
+from dotenv import load_dotenv
+from src.env_check import ensure_llm_credentials
 from src.ingestion import load_documents_from_directory
 from src.chunk_engine import create_chunks
 from src.chunk_registry import ChunkRegistry
 from src.embedding_engine import generate_embeddings
 from src.vector_store import ChromaVectorStore
 
+load_dotenv()
+
 def main():
+    ensure_llm_credentials()
+
     # 1. Ingestion: Load documents from the data directory
     data_dir = "data"
     print(f"--- Step 1: Loading documents from '{data_dir}' ---")

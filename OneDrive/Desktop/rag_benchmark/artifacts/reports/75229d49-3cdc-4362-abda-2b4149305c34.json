@@ -1,0 +1,137 @@
+{
+    "framework_metadata": {
+        "trace_id": "75229d49-3cdc-4362-abda-2b4149305c34",
+        "framework_name": "X-RAG Diagnostic Framework",
+        "framework_version": "1.0",
+        "analysis_timestamp": "2026-07-19T06:18:49.825390Z",
+        "metadata": {}
+    },
+    "executive_summary": {
+        "question": "What punishment applies to abetment of an offence when the Sanhita makes no express provision for punishing that specific abetment?",
+        "generated_answer": "When the Sanhita makes no express provision for punishing a specific abetment, the punishment for the abetment is the same as the punishment for the offence that was abetted, if the act abetted is committed in consequence of the abetment [Chunk-ID: 3a452a16-b9c6-4177-bd3d-bafce7713aaf]. Additionally, if the person abetted does the act with a different intention or knowledge from that of the abettor, the abettor is punished with the punishment provided for the offence that would have been committed if the act had been done with the intention or knowledge of the abettor [Chunk-ID: 3a452a16-b9c6-4177-bd3d-bafce7713aaf]. Furthermore, if the offence abetted is punishable with death or imprisonment for life and is not committed, the abettor is punished with imprisonment for a term which may extend to seven years, and is also liable to a fine [Chunk-ID: f69e6aef-3594-43c8-86e9-415389ec638f].",
+        "overall_health_score": 1.0,
+        "primary_issue": "UNKNOWN",
+        "supported_claims": 5,
+        "total_claims": 5,
+        "number_of_corrective_actions": 0,
+        "summary": "Analysis completed."
+    },
+    "pipeline_overview": {
+        "pipeline_stages": [
+            {
+                "stage": "CORPUS",
+                "status": "PASS",
+                "observation": "Corpus contains sufficient relevant content, evidenced by at least one supported claim.",
+                "confidence": "0.9"
+            },
+            {
+                "stage": "RETRIEVER",
+                "status": "PASS",
+                "observation": "At least one retrieved chunk provides supporting evidence for a verified claim.",
+                "confidence": "0.95"
+            },
+            {
+                "stage": "CHUNKING",
+                "status": "UNKNOWN",
+                "observation": "Deterministic chunk-boundary evidence is currently unobservable.",
+                "confidence": "1.0"
+            },
+            {
+                "stage": "GENERATOR",
+                "status": "PASS",
+                "observation": "All generated claims are fully supported by evidence.",
+                "confidence": "0.95"
+            },
+            {
+                "stage": "GROUNDING",
+                "status": "PASS",
+                "observation": "No claims are contradicted by retrieved evidence.",
+                "confidence": "0.9"
+            }
+        ]
+    },
+    "evaluation_metrics": {
+        "retrieved_chunks": 3,
+        "verified_claims": 5,
+        "supported_claims": 5,
+        "partially_supported_claims": 0,
+        "unsupported_claims": 0,
+        "contradicted_claims": 0,
+        "grounding_score": 1.0,
+        "evidence_coverage": 0.6666666666666666,
+        "average_entailment": 0.9315080881118775,
+        "retrieval_latency_ms": 6463.84596824646,
+        "generation_latency_ms": 5014.333248138428,
+        "verification_latency_ms": 1032143.4655189514
+    },
+    "root_cause_analysis": {
+        "primary_cause": "UNKNOWN",
+        "secondary_effects": [],
+        "reasoning_chain": [
+            "Starting root cause analysis for trace 75229d49-3cdc-4362-abda-2b4149305c34.",
+            "Assumption Passed at CORPUS. Moving to next stage.",
+            "Assumption Passed at RETRIEVER. Moving to next stage.",
+            "Skipping CHUNKING: State is UNKNOWN. Insufficient evidence.",
+            "Assumption Passed at GENERATOR. Moving to next stage.",
+            "Assumption Passed at GROUNDING. Moving to next stage.",
+            "No failures detected. Pipeline is healthy or evidence is purely UNKNOWN."
+        ],
+        "diagnosis_confidence": 0.93
+    },
+    "overall_assessment": {
+        "major_strength": "Strong evidence grounding.",
+        "major_weakness": "UNKNOWN",
+        "next_priority": "Monitor pipeline",
+        "overall_recommendation": "Pipeline is healthy."
+    },
+    "evidence_analysis": [
+        {
+            "claim_id": "eaae297a-611f-4e8e-be3d-973a51928f68",
+            "claim_text": "The punishment for the abetment is the same as the punishment for the offence that was abetted.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "3a452a16-b9c6-4177-bd3d-bafce7713aaf",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "Whoever abets the commission of an offence shall, if the person abetted does the\nact with a different intention or knowledge from that of the abettor, be punished with the\npunishment provided for the offence which would have been committed if the act had been\ndone with the intention or knowledge of the abettor and with no other.\n51."
+        },
+        {
+            "claim_id": "3c1d8c4a-41bd-4d3d-8ac5-def7c70d09f8",
+            "claim_text": "If the act abetted is committed in consequence of the abetment, the punishment for the abetment is the same as the punishment for the offence that was abetted.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "3a452a16-b9c6-4177-bd3d-bafce7713aaf",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "When an act is abetted and a different act is done, the abettor is liable for the act\ndone, in the same manner and to the same extent as if he had directly abetted it:\nProvided that the act done was a probable consequence of the abetment, and was\ncommitted under the influence of the instigation, or with the aid or in pursuance of the\nconspiracy which constituted the abetment."
+        },
+        {
+            "claim_id": "3e6fcc54-562c-4543-9d66-42fc39e9009e",
+            "claim_text": "The abettor is punished with the punishment provided for the offence that would have been committed if the act had been done with the intention or knowledge of the abettor.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "3a452a16-b9c6-4177-bd3d-bafce7713aaf",
+            "supporting_chunk_rank": 1,
+            "supporting_evidence": "When an act is abetted and a different act is done, the abettor is liable for the act\ndone, in the same manner and to the same extent as if he had directly abetted it:\nProvided that the act done was a probable consequence of the abetment, and was\ncommitted under the influence of the instigation, or with the aid or in pursuance of the\nconspiracy which constituted the abetment."
+        },
+        {
+            "claim_id": "b54e9bbb-00ba-4d44-b412-404918190626",
+            "claim_text": "If the offence abetted is punishable with death or imprisonment for life and is not committed, the abettor is punished with imprisonment for a term which may extend to seven years.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "f69e6aef-3594-43c8-86e9-415389ec638f",
+            "supporting_chunk_rank": 2,
+            "supporting_evidence": "Whoever abets the commission of an offence punishable with death or\nimprisonment for life, shall, if that offence be not committed in consequence of the abetment,\nand no express provision is made under this Sanhita for the punishment of such abetment, be\npunished with imprisonment of either description for a term which may extend to seven\nyears, and shall also be liable to fine; and if any act for which the abettor is liable in consequence\nof the abetment, and which causes hurt to any person, is done, the abettor shall be liable to\nimprisonment of either description for a term which may extend to fourteen years, and shall\nalso be liable to fine."
+        },
+        {
+            "claim_id": "81051cd7-7586-4fbf-bbd1-fc0f4d9f0705",
+            "claim_text": "The abettor is also liable to a fine.",
+            "verification_status": "SUPPORTED",
+            "supporting_chunk_id": "f69e6aef-3594-43c8-86e9-415389ec638f",
+            "supporting_chunk_rank": 2,
+            "supporting_evidence": "If B had murdered Z, he\nwould have been subject to the punishment of death or imprisonment for life.Therefore, Ais\nliable to imprisonment for a term which may extend to seven years and also to a fine; and if\nany hurt be done to Z in consequence of the abetment, he will be liable to imprisonment for\na term which may extend to fourteen years, and to fine.\n56."
+        }
+    ],
+    "corrective_actions": [],
+    "ragas_metrics": null,
+    "artifact_version": "1.0",
+    "analysis_status": "COMPLETED",
+    "created_at": "2026-07-19T06:18:49.826156Z",
+    "metadata": {
+        "missing_artifacts": []
+    }
+}

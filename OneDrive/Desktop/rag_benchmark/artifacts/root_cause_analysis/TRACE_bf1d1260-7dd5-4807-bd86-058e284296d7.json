@@ -1,0 +1,18 @@
+{
+    "trace_id": "bf1d1260-7dd5-4807-bd86-058e284296d7",
+    "artifact_version": "1.0",
+    "primary_cause": "UNKNOWN",
+    "secondary_effects": [],
+    "reasoning_chain": [
+        "Starting root cause analysis for trace bf1d1260-7dd5-4807-bd86-058e284296d7.",
+        "Assumption Passed at CORPUS. Moving to next stage.",
+        "Assumption Passed at RETRIEVER. Moving to next stage.",
+        "Skipping CHUNKING: State is UNKNOWN. Insufficient evidence.",
+        "Assumption Passed at GENERATOR. Moving to next stage.",
+        "Assumption Passed at GROUNDING. Moving to next stage.",
+        "No failures detected. Pipeline is healthy or evidence is purely UNKNOWN."
+    ],
+    "confidence": 0.93,
+    "recommendations_needed": false,
+    "metadata": {}
+}

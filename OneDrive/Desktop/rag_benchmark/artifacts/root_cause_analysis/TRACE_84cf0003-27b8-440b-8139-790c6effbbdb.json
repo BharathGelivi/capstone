@@ -1,0 +1,18 @@
+{
+    "trace_id": "84cf0003-27b8-440b-8139-790c6effbbdb",
+    "artifact_version": "1.0",
+    "primary_cause": "UNKNOWN",
+    "secondary_effects": [],
+    "reasoning_chain": [
+        "Starting root cause analysis for trace 84cf0003-27b8-440b-8139-790c6effbbdb.",
+        "Skipping CORPUS: State is UNKNOWN. Insufficient evidence.",
+        "Skipping RETRIEVER: State is UNKNOWN. Insufficient evidence.",
+        "Skipping CHUNKING: State is UNKNOWN. Insufficient evidence.",
+        "Assumption Passed at GENERATOR. Moving to next stage.",
+        "Skipping GROUNDING: State is UNKNOWN. Insufficient evidence.",
+        "No failures detected. Pipeline is healthy or evidence is purely UNKNOWN."
+    ],
+    "confidence": 0.95,
+    "recommendations_needed": false,
+    "metadata": {}
+}

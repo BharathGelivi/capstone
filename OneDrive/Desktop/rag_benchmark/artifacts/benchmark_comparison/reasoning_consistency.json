@@ -1,0 +1,78 @@
+{
+  "n_examples": 10,
+  "n_consistent": 10,
+  "consistency_rate": 1.0,
+  "per_example": {
+    "1": {
+      "no_fail_stages_when_healthy": true,
+      "chain_states_no_failure": true,
+      "primary_cause_stage_is_fail": null,
+      "all_fail_stages_named_in_chain": true,
+      "consistent": true
+    },
+    "2": {
+      "no_fail_stages_when_healthy": true,
+      "chain_states_no_failure": true,
+      "primary_cause_stage_is_fail": null,
+      "all_fail_stages_named_in_chain": true,
+      "consistent": true
+    },
+    "3": {
+      "no_fail_stages_when_healthy": true,
+      "chain_states_no_failure": true,
+      "primary_cause_stage_is_fail": null,
+      "all_fail_stages_named_in_chain": true,
+      "consistent": true
+    },
+    "4": {
+      "no_fail_stages_when_healthy": true,
+      "chain_states_no_failure": true,
+      "primary_cause_stage_is_fail": null,
+      "all_fail_stages_named_in_chain": true,
+      "consistent": true
+    },
+    "5": {
+      "primary_cause_stage_is_fail": true,
+      "chain_names_primary_cause": true,
+      "no_fail_stages_when_healthy": null,
+      "all_fail_stages_named_in_chain": true,
+      "consistent": true
+    },
+    "6": {
+      "no_fail_stages_when_healthy": true,
+      "chain_states_no_failure": true,
+      "primary_cause_stage_is_fail": null,
+      "all_fail_stages_named_in_chain": true,
+      "consistent": true
+    },
+    "7": {
+      "no_fail_stages_when_healthy": true,
+      "chain_states_no_failure": true,
+      "primary_cause_stage_is_fail": null,
+      "all_fail_stages_named_in_chain": true,
+      "consistent": true
+    },
+    "8": {
+      "no_fail_stages_when_healthy": true,
+      "chain_states_no_failure": true,
+      "primary_cause_stage_is_fail": null,
+      "all_fail_stages_named_in_chain": true,
+      "consistent": true
+    },
+    "9": {
+      "primary_cause_stage_is_fail": true,
+      "chain_names_primary_cause": true,
+      "no_fail_stages_when_healthy": null,
+      "all_fail_stages_named_in_chain": true,
+      "consistent": true
+    },
+    "10": {
+      "no_fail_stages_when_healthy": true,
+      "chain_states_no_failure": true,
+      "primary_cause_stage_is_fail": null,
+      "all_fail_stages_named_in_chain": true,
+      "consistent": true
+    }
+  },
+  "note": "This is an AUTOMATED self-consistency check (does the narrative match its own underlying data), NOT a substitute for human judgment on whether the reasoning is actually sound. See reasoning_chain_worksheet.csv for the human-rating step, which has not yet been completed."
+}
